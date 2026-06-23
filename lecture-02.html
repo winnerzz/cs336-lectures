@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>第 2 讲 Resource Accounting | CS336 学习台</title>
+  <meta name="description" content="本地 CS336 课程书，用 bookdown::gitbook 组织讲义、笔记、作业和源码入口。" />
+  <meta name="generator" content="bookdown 0.47 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="第 2 讲 Resource Accounting | CS336 学习台" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="本地 CS336 课程书，用 bookdown::gitbook 组织讲义、笔记、作业和源码入口。" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="第 2 讲 Resource Accounting | CS336 学习台" />
+  
+  <meta name="twitter:description" content="本地 CS336 课程书，用 bookdown::gitbook 组织讲义、笔记、作业和源码入口。" />
+  
+
+<meta name="author" content="Stanford CS336 + 本地学习笔记" />
+
+
+<meta name="date" content="2026-06-22" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="lecture-01.html"/>
+<link rel="next" href="lecture-03.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">CS336 学习台</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>CS336 学习台</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF"><i class="fa fa-check"></i>学习路线</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#%E8%AF%BE%E7%A8%8B%E7%9B%AE%E5%BD%95"><i class="fa fa-check"></i>课程目录</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="big-picture.html"><a href="big-picture.html"><i class="fa fa-check"></i>全景地图</a>
+<ul>
+<li class="chapter" data-level="" data-path="big-picture.html"><a href="big-picture.html#%E4%B8%80%E4%B8%AA%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3%E6%95%B4%E9%97%A8%E8%AF%BE%E5%B0%B1%E5%BB%BA%E7%AB%8B%E5%9C%A8%E8%BF%99%E4%B8%80%E5%8F%A5%E4%B8%8A"><i class="fa fa-check"></i>一个核心思想（整门课就建立在这一句上）</a></li>
+<li class="chapter" data-level="" data-path="big-picture.html"><a href="big-picture.html#%E6%95%B4%E6%9D%A1%E6%B5%81%E6%B0%B4%E7%BA%BF%E4%B8%80%E5%9B%BE%E7%9C%8B%E6%87%82"><i class="fa fa-check"></i>整条流水线（一图看懂）</a></li>
+<li class="chapter" data-level="" data-path="big-picture.html"><a href="big-picture.html#%E7%94%A8%E5%81%9A%E8%8F%9C%E6%89%93%E4%B8%AA%E6%AF%94%E6%96%B9%E5%B8%AE%E4%BD%A0%E8%AE%B0%E4%BD%8F%E4%BA%94%E5%A4%A7%E5%9D%97"><i class="fa fa-check"></i>用”做菜”打个比方（帮你记住五大块）</a></li>
+<li class="chapter" data-level="" data-path="big-picture.html"><a href="big-picture.html#%E6%AF%8F%E4%B8%80%E8%AE%B2%E6%8C%82%E5%9C%A8%E5%9C%B0%E5%9B%BE%E7%9A%84%E5%93%AA%E9%87%8C%E8%BF%99%E5%B0%B1%E6%98%AF%E5%AD%A6%E4%B9%A0%E9%A1%BA%E5%BA%8F%E7%9A%84%E7%90%86%E7%94%B1"><i class="fa fa-check"></i>每一讲挂在地图的哪里（这就是学习顺序的理由）</a></li>
+<li class="chapter" data-level="" data-path="big-picture.html"><a href="big-picture.html#%E6%80%8E%E4%B9%88%E7%94%A8%E8%BF%99%E5%BC%A0%E5%9B%BE%E6%9D%A5%E5%AD%A6"><i class="fa fa-check"></i>怎么用这张图来学</a></li>
+<li class="chapter" data-level="" data-path="big-picture.html"><a href="big-picture.html#%E4%B8%8B%E4%B8%80%E6%AD%A5"><i class="fa fa-check"></i>下一步</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="lecture-00.html"><a href="lecture-00.html"><i class="fa fa-check"></i>第 0 讲 基础搭建</a>
+<ul>
+<li class="chapter" data-level="" data-path="lecture-00.html"><a href="lecture-00.html#%E6%80%8E%E4%B9%88%E7%94%A8%E8%BF%99%E4%B8%80%E8%AE%B2%E9%87%8D%E8%A6%81"><i class="fa fa-check"></i>怎么用这一讲（重要）</a></li>
+<li class="chapter" data-level="" data-path="lecture-00.html"><a href="lecture-00.html#python-%E8%AF%AD%E6%B3%95%E9%80%9F%E6%9F%A5%E5%8F%AA%E5%88%97%E8%BF%99%E4%B8%A4%E4%B8%AA%E8%84%9A%E6%9C%AC%E7%94%A8%E5%88%B0%E7%9A%84"><i class="fa fa-check"></i>Python 语法速查（只列这两个脚本用到的）</a>
+<ul>
+<li class="chapter" data-level="" data-path="lecture-00.html"><a href="lecture-00.html#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E9%95%BF%E5%BA%A6"><i class="fa fa-check"></i>字符串和长度</a></li>
+<li class="chapter" data-level="" data-path="lecture-00.html"><a href="lecture-00.html#%E5%AD%97%E8%8A%82%E4%B8%8E%E7%BC%96%E7%A0%81%E4%BD%A0%E9%97%AE%E7%9A%84%E6%A0%B8%E5%BF%83"><i class="fa fa-check"></i>字节与编码（你问的核心）</a></li>
+<li class="chapter" data-level="" data-path="lecture-00.html"><a href="lecture-00.html#encode-decode-%E6%98%AF%E4%B8%80%E5%AF%B9%E9%80%86%E6%93%8D%E4%BD%9C"><i class="fa fa-check"></i>encode / decode 是一对逆操作</a></li>
+<li class="chapter" data-level="" data-path="lecture-00.html"><a href="lecture-00.html#%E5%AD%97%E5%85%B8-dict%E6%95%B0%E6%95%B0%E7%94%A8"><i class="fa fa-check"></i>字典 dict（数数用）</a></li>
+<li class="chapter" data-level="" data-path="lecture-00.html"><a href="lecture-00.html#%E5%BE%AA%E7%8E%AF%E5%92%8C%E5%87%BD%E6%95%B0"><i class="fa fa-check"></i>循环和函数</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="lecture-00.html"><a href="lecture-00.html#%E7%AC%AC%E4%B8%80%E8%AE%B2%E7%9A%84%E4%B8%89%E4%B8%AA%E5%9D%8E%E8%BF%99%E4%B8%80%E8%AE%B2%E6%80%8E%E4%B9%88%E5%B8%AE%E4%BD%A0%E8%BF%87"><i class="fa fa-check"></i>第一讲的三个坎，这一讲怎么帮你过</a></li>
+<li class="chapter" data-level="" data-path="lecture-00.html"><a href="lecture-00.html#bpe-%E5%88%B0%E5%BA%95%E5%9C%A8%E5%B9%B2%E5%98%9B%E8%84%9A%E6%9C%AC-2-%E7%9A%84%E4%B8%BB%E7%BA%BF"><i class="fa fa-check"></i>BPE 到底在干嘛（脚本 2 的主线）</a></li>
+<li class="chapter" data-level="" data-path="lecture-00.html"><a href="lecture-00.html#%E5%AD%A6%E5%AE%8C%E8%BF%99%E4%B8%80%E8%AE%B2%E4%BD%A0%E5%B0%B1%E8%83%BD"><i class="fa fa-check"></i>学完这一讲，你就能</a></li>
+<li class="chapter" data-level="" data-path="lecture-00.html"><a href="lecture-00.html#%E4%B8%8B%E4%B8%80%E6%AD%A5-1"><i class="fa fa-check"></i>下一步</a></li>
+<li class="chapter" data-level="" data-path="lecture-00.html"><a href="lecture-00.html#%E6%A3%80%E6%9F%A5%E6%B8%85%E5%8D%95"><i class="fa fa-check"></i>检查清单</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html"><i class="fa fa-check"></i>第 1 讲 Overview and Tokenization</a>
+<ul>
+<li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86%E8%BF%99%E4%B8%80%E8%AE%B2%E9%BB%98%E8%AE%A4%E4%BD%A0%E5%B7%B2%E7%BB%8F%E4%BC%9A%E6%88%91%E4%BB%8E-0-%E7%BB%99%E4%BD%A0%E8%A1%A5"><i class="fa fa-check"></i>前置知识：这一讲默认你已经会（我从 0 给你补）</a></li>
+<li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%AF%BE%E7%A8%8B%E4%BB%8E-tokenizer-%E5%BC%80%E5%A7%8B"><i class="fa fa-check"></i>为什么课程从 tokenizer 开始</a></li>
+<li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#tokenizer-%E6%98%AF%E4%BB%80%E4%B9%88"><i class="fa fa-check"></i>Tokenizer 是什么</a></li>
+<li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#%E4%B8%89%E7%A7%8D%E6%9C%80%E6%9C%B4%E7%B4%A0%E7%9A%84%E5%88%87%E6%B3%95"><i class="fa fa-check"></i>三种最朴素的切法</a>
+<ul>
+<li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#%E5%AD%97%E7%AC%A6-%E5%AD%97%E8%8A%82%E4%B8%80%E4%B8%AA%E5%BF%85%E9%A1%BB%E4%BA%B2%E7%9C%BC%E7%9C%8B%E5%88%B0%E7%9A%84%E4%BE%8B%E5%AD%90"><i class="fa fa-check"></i>字符 ≠ 字节（一个必须亲眼看到的例子）</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#bpe%E8%AE%A9%E6%95%B0%E6%8D%AE%E8%87%AA%E5%B7%B1%E5%86%B3%E5%AE%9A%E8%AF%8D%E8%A1%A8"><i class="fa fa-check"></i>BPE：让数据自己决定词表</a></li>
+<li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#%E6%8E%A5%E5%88%B0-assignment-1"><i class="fa fa-check"></i>接到 Assignment 1</a></li>
+<li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#%E5%8A%A8%E6%89%8B%E7%BB%83%E4%B9%A0"><i class="fa fa-check"></i>动手练习</a></li>
+<li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#%E8%BF%87%E5%85%B3%E6%A3%80%E6%9F%A5"><i class="fa fa-check"></i>过关检查</a></li>
+<li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#%E4%B8%8B%E4%B8%80%E6%AD%A5-2"><i class="fa fa-check"></i>下一步</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="lecture-02.html"><a href="lecture-02.html"><i class="fa fa-check"></i>第 2 讲 Resource Accounting</a>
+<ul>
+<li class="chapter" data-level="" data-path="lecture-02.html"><a href="lecture-02.html#%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86%E8%BF%99%E4%B8%80%E8%AE%B2%E9%BB%98%E8%AE%A4%E4%BD%A0%E5%B7%B2%E7%BB%8F%E4%BC%9A%E6%88%91%E4%BB%8E-0-%E7%BB%99%E4%BD%A0%E8%A1%A5-1"><i class="fa fa-check"></i>前置知识：这一讲默认你已经会（我从 0 给你补）</a></li>
+<li class="chapter" data-level="" data-path="lecture-02.html"><a href="lecture-02.html#%E5%85%88%E8%A1%A5%E5%87%A0%E4%B8%AA%E8%AF%8D%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%90%91%E7%9C%8B%E6%AD%A3%E6%96%87%E5%89%8D%E5%85%88%E6%89%AB%E4%B8%80%E9%81%8D"><i class="fa fa-check"></i>先补几个词（零基础向，看正文前先扫一遍）</a></li>
+<li class="chapter" data-level="" data-path="lecture-02.html"><a href="lecture-02.html#%E5%AD%A6%E5%AE%8C%E4%BD%A0%E8%83%BD"><i class="fa fa-check"></i>学完你能</a></li>
+<li class="chapter" data-level="" data-path="lecture-02.html"><a href="lecture-02.html#%E5%BC%80%E5%9C%BA%E4%B8%A4%E4%B8%AA%E7%AE%97%E8%B4%A6%E4%BE%8B%E5%AD%90%E5%85%88%E5%BB%BA%E7%AB%8B%E7%9B%B4%E8%A7%89"><i class="fa fa-check"></i>开场两个”算账”例子（先建立直觉）</a>
+<ul>
+<li class="chapter" data-level="" data-path="lecture-02.html"><a href="lecture-02.html#%E4%BE%8B-170b-%E6%A8%A1%E5%9E%8B15t-tokens1024-%E5%BC%A0-h100%E8%A6%81%E8%AE%AD%E5%A4%9A%E4%B9%85"><i class="fa fa-check"></i>例 1：70B 模型、15T tokens、1024 张 H100，要训多久？</a></li>
+<li class="chapter" data-level="" data-path="lecture-02.html"><a href="lecture-02.html#%E4%BE%8B-28-%E5%BC%A0-h100%E7%94%A8-adamw%E6%9C%80%E5%A4%A7%E8%83%BD%E8%AE%AD%E5%A4%9A%E5%A4%A7%E6%A8%A1%E5%9E%8B"><i class="fa fa-check"></i>例 2：8 张 H100、用 AdamW，最大能训多大模型？</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="lecture-02.html"><a href="lecture-02.html#%E4%B8%80%E5%88%87%E9%83%BD%E6%98%AF-tensor"><i class="fa fa-check"></i>一切都是 tensor</a></li>
+<li class="chapter" data-level="" data-path="lecture-02.html"><a href="lecture-02.html#%E6%98%BE%E5%AD%98-%E5%85%83%E7%B4%A0%E4%B8%AA%E6%95%B0-%E6%AF%8F%E4%B8%AA%E5%85%83%E7%B4%A0%E5%AD%97%E8%8A%82%E6%95%B0"><i class="fa fa-check"></i>显存 = 元素个数 × 每个元素字节数</a></li>
+<li class="chapter" data-level="" data-path="lecture-02.html"><a href="lecture-02.html#tensor-%E9%BB%98%E8%AE%A4%E5%9C%A8-cpu-%E5%86%85%E5%AD%98%E8%A6%81-.todevice-%E6%90%AC%E5%88%B0-gpu-%E6%89%8D%E8%83%BD%E7%94%A8%E4%B8%8A-gpu-%E7%9A%84%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%B9%B6%E8%A1%8C"><i class="fa fa-check"></i>tensor 默认在 CPU 内存，要 <code>.to(device)</code> 搬到 GPU 才能用上 GPU 的大规模并行。</a></li>
+<li class="chapter" data-level="" data-path="lecture-02.html"><a href="lecture-02.html#einops%E7%BB%99%E7%BB%B4%E5%BA%A6%E8%B5%B7%E5%90%8D%E5%AD%97%E5%88%AB%E5%86%8D%E6%95%B0--1-2"><i class="fa fa-check"></i>einops：给维度起名字，别再数 -1/-2</a></li>
+<li class="chapter" data-level="" data-path="lecture-02.html"><a href="lecture-02.html#flops-%E6%80%8E%E4%B9%88%E6%95%B0"><i class="fa fa-check"></i>FLOPs 怎么数</a></li>
+<li class="chapter" data-level="" data-path="lecture-02.html"><a href="lecture-02.html#arithmetic-intensity-%E4%B8%8E-roofline%E6%9C%AC%E8%AE%B2%E6%9C%80%E9%87%8D%E8%A6%81%E7%9A%84%E6%B4%9E%E8%A7%81"><i class="fa fa-check"></i>Arithmetic Intensity 与 Roofline（本讲最重要的洞见）</a></li>
+<li class="chapter" data-level="" data-path="lecture-02.html"><a href="lecture-02.html#%E8%AE%AD%E7%BB%83%E6%97%B6%E7%9A%84%E6%98%BE%E5%AD%98%E4%B8%8E%E8%AE%A1%E7%AE%97%E8%B4%A6%E6%8A%8A%E4%B8%8A%E9%9D%A2%E9%83%BD%E4%B8%B2%E8%B5%B7%E6%9D%A5"><i class="fa fa-check"></i>训练时的显存与计算账（把上面都串起来）</a></li>
+<li class="chapter" data-level="" data-path="lecture-02.html"><a href="lecture-02.html#%E4%B8%A4%E4%B8%AA%E7%9C%81%E6%98%BE%E5%AD%98%E7%9A%84%E6%8A%80%E5%B7%A7"><i class="fa fa-check"></i>两个省显存的技巧</a></li>
+<li class="chapter" data-level="" data-path="lecture-02.html"><a href="lecture-02.html#%E4%BC%98%E5%8C%96%E5%99%A8%E8%B0%B1%E7%B3%BB%E9%A1%BA%E6%89%8B%E8%AE%B0%E7%9F%A5%E9%81%93%E5%AE%83%E4%BB%AC%E7%9A%84%E5%8C%BA%E5%88%AB%E5%8D%B3%E5%8F%AF"><i class="fa fa-check"></i>优化器谱系（顺手记，知道它们的区别即可）</a></li>
+<li class="chapter" data-level="" data-path="lecture-02.html"><a href="lecture-02.html#%E6%89%8B%E5%B7%A5%E7%BB%83%E4%B9%A0"><i class="fa fa-check"></i>手工练习</a>
+<ul>
+<li class="chapter" data-level="" data-path="lecture-02.html"><a href="lecture-02.html#%E7%BB%83%E4%B9%A0-1%E7%AE%97%E4%B8%80%E6%AC%A1%E8%AE%AD%E7%BB%83%E8%A6%81%E5%A4%9A%E4%B9%85"><i class="fa fa-check"></i>练习 1：算一次训练要多久</a></li>
+<li class="chapter" data-level="" data-path="lecture-02.html"><a href="lecture-02.html#%E7%BB%83%E4%B9%A0-2%E5%88%A4%E6%96%AD%E7%93%B6%E9%A2%88"><i class="fa fa-check"></i>练习 2：判断瓶颈</a></li>
+<li class="chapter" data-level="" data-path="lecture-02.html"><a href="lecture-02.html#%E7%BB%83%E4%B9%A0-3%E6%98%BE%E5%AD%98%E8%B4%A6"><i class="fa fa-check"></i>练习 3：显存账</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="lecture-02.html"><a href="lecture-02.html#%E5%92%8C-assignment-1-%E7%9A%84%E8%BF%9E%E6%8E%A5"><i class="fa fa-check"></i>和 Assignment 1 的连接</a></li>
+<li class="chapter" data-level="" data-path="lecture-02.html"><a href="lecture-02.html#%E4%BB%8A%E5%A4%A9%E7%BB%93%E6%9D%9F%E5%89%8D%E7%9A%84%E6%A3%80%E6%9F%A5%E8%83%BD%E7%AD%94%E4%B8%8A%E6%9D%A5%E5%B0%B1%E7%AE%97%E8%BF%87%E5%85%B3"><i class="fa fa-check"></i>今天结束前的检查（能答上来就算过关）</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="lecture-03.html"><a href="lecture-03.html"><i class="fa fa-check"></i>第 3 讲 Architecture &amp; Hyperparameters</a>
+<ul>
+<li class="chapter" data-level="" data-path="lecture-03.html"><a href="lecture-03.html#%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86%E8%BF%99%E4%B8%80%E8%AE%B2%E9%BB%98%E8%AE%A4%E4%BD%A0%E5%B7%B2%E7%BB%8F%E4%BC%9A%E6%88%91%E4%BB%8E-0-%E7%BB%99%E4%BD%A0%E8%A1%A5-2"><i class="fa fa-check"></i>前置知识：这一讲默认你已经会（我从 0 给你补）</a></li>
+<li class="chapter" data-level="" data-path="lecture-03.html"><a href="lecture-03.html#%E5%85%88%E8%A1%A5%E5%87%A0%E4%B8%AA%E8%AF%8D%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%90%91"><i class="fa fa-check"></i>先补几个词（零基础向）</a></li>
+<li class="chapter" data-level="" data-path="lecture-03.html"><a href="lecture-03.html#%E5%AD%A6%E5%AE%8C%E4%BD%A0%E8%83%BD-1"><i class="fa fa-check"></i>学完你能</a></li>
+<li class="chapter" data-level="" data-path="lecture-03.html"><a href="lecture-03.html#%E7%8E%B0%E4%BB%A3-transformer-%E5%8E%9F%E7%89%88%E6%94%B9%E4%BA%86-4-%E5%A4%84"><i class="fa fa-check"></i>现代 Transformer = 原版改了 4 处</a></li>
+<li class="chapter" data-level="" data-path="lecture-03.html"><a href="lecture-03.html#pre-norm-vs-post-norm2024-%E5%B9%B4%E7%9A%84%E5%94%AF%E4%B8%80%E5%85%B1%E8%AF%86"><i class="fa fa-check"></i>Pre-norm vs Post-norm（2024 年的唯一共识）</a></li>
+<li class="chapter" data-level="" data-path="lecture-03.html"><a href="lecture-03.html#layernorm-vs-rmsnorm"><i class="fa fa-check"></i>LayerNorm vs RMSNorm</a></li>
+<li class="chapter" data-level="" data-path="lecture-03.html"><a href="lecture-03.html#%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E4%B8%8E%E9%97%A8%E6%8E%A7swiglu"><i class="fa fa-check"></i>激活函数与门控（SwiGLU）</a></li>
+<li class="chapter" data-level="" data-path="lecture-03.html"><a href="lecture-03.html#%E4%B8%B2%E8%A1%8C-vs-%E5%B9%B6%E8%A1%8C%E5%B1%82"><i class="fa fa-check"></i>串行 vs 并行层</a></li>
+<li class="chapter" data-level="" data-path="lecture-03.html"><a href="lecture-03.html#%E4%BD%8D%E7%BD%AE%E7%BC%96%E7%A0%81%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF-rope"><i class="fa fa-check"></i>位置编码：为什么是 RoPE</a></li>
+<li class="chapter" data-level="" data-path="lecture-03.html"><a href="lecture-03.html#%E5%85%B1%E8%AF%86%E8%B6%85%E5%8F%82%E5%A4%A7%E5%AE%B6%E5%85%B6%E5%AE%9E%E9%83%BD%E7%94%A8%E5%90%8C%E4%B8%80%E4%B8%AA%E5%80%BC"><i class="fa fa-check"></i>共识超参（“大家其实都用同一个值”）</a></li>
+<li class="chapter" data-level="" data-path="lecture-03.html"><a href="lecture-03.html#%E6%AD%A3%E5%88%99%E5%8C%96%E8%BF%98%E9%9C%80%E8%A6%81%E5%90%97"><i class="fa fa-check"></i>正则化：还需要吗？</a></li>
+<li class="chapter" data-level="" data-path="lecture-03.html"><a href="lecture-03.html#%E7%A8%B3%E5%AE%9A%E6%80%A7%E6%8A%80%E5%B7%A7%E5%88%AB%E8%AE%AD%E5%87%BA%E4%BC%9A%E5%8F%91%E6%95%A3%E7%9A%84%E6%A8%A1%E5%9E%8B"><i class="fa fa-check"></i>稳定性技巧（别训出会发散的模型）</a></li>
+<li class="chapter" data-level="" data-path="lecture-03.html"><a href="lecture-03.html#%E6%B3%A8%E6%84%8F%E5%8A%9B%E5%8F%98%E4%BD%93%E7%9C%81%E6%8E%A8%E7%90%86%E6%88%90%E6%9C%AC%E5%92%8C-l10-%E8%A1%94%E6%8E%A5"><i class="fa fa-check"></i>注意力变体（省推理成本，和 L10 衔接）</a></li>
+<li class="chapter" data-level="" data-path="lecture-03.html"><a href="lecture-03.html#%E6%80%9D%E8%80%83%E7%BB%83%E4%B9%A0"><i class="fa fa-check"></i>思考练习</a></li>
+<li class="chapter" data-level="" data-path="lecture-03.html"><a href="lecture-03.html#%E5%92%8C-assignment-1-%E7%9A%84%E8%BF%9E%E6%8E%A5-1"><i class="fa fa-check"></i>和 Assignment 1 的连接</a></li>
+<li class="chapter" data-level="" data-path="lecture-03.html"><a href="lecture-03.html#%E6%A3%80%E6%9F%A5%E6%B8%85%E5%8D%95-1"><i class="fa fa-check"></i>检查清单</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="lecture-04.html"><a href="lecture-04.html"><i class="fa fa-check"></i>第 4 讲 Attention Alternatives &amp; MoE</a>
+<ul>
+<li class="chapter" data-level="" data-path="lecture-04.html"><a href="lecture-04.html#%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86%E8%BF%99%E4%B8%80%E8%AE%B2%E9%BB%98%E8%AE%A4%E4%BD%A0%E5%B7%B2%E7%BB%8F%E4%BC%9A%E6%88%91%E4%BB%8E-0-%E7%BB%99%E4%BD%A0%E8%A1%A5-3"><i class="fa fa-check"></i>前置知识：这一讲默认你已经会（我从 0 给你补）</a></li>
+<li class="chapter" data-level="" data-path="lecture-04.html"><a href="lecture-04.html#%E5%85%88%E8%A1%A5%E5%87%A0%E4%B8%AA%E8%AF%8D%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%90%91-1"><i class="fa fa-check"></i>先补几个词（零基础向）</a></li>
+<li class="chapter" data-level="" data-path="lecture-04.html"><a href="lecture-04.html#%E5%AD%A6%E5%AE%8C%E4%BD%A0%E8%83%BD-2"><i class="fa fa-check"></i>学完你能</a></li>
+<li class="chapter" data-level="" data-path="lecture-04.html"><a href="lecture-04.html#%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9B%BF%E4%BB%A3%E6%96%B9%E6%A1%88"><i class="fa fa-check"></i>第一部分：注意力替代方案</a>
+<ul>
+<li class="chapter" data-level="" data-path="lecture-04.html"><a href="lecture-04.html#%E7%BA%BF%E6%80%A7%E6%B3%A8%E6%84%8F%E5%8A%9B%E4%B8%80%E4%B8%AA%E6%8D%A2%E6%8B%AC%E5%8F%B7%E7%9A%84%E9%AD%94%E6%B3%95"><i class="fa fa-check"></i>线性注意力：一个”换括号”的魔法</a></li>
+<li class="chapter" data-level="" data-path="lecture-04.html"><a href="lecture-04.html#%E5%92%8C-rnn-%E7%9A%84%E5%AF%B9%E5%81%B6%E6%9C%80%E5%A6%99%E7%9A%84%E7%82%B9"><i class="fa fa-check"></i>和 RNN 的对偶（最妙的点）</a></li>
+<li class="chapter" data-level="" data-path="lecture-04.html"><a href="lecture-04.html#mamba-2-gated-delta-net%E5%8A%A0%E9%97%A8%E6%8E%A7"><i class="fa fa-check"></i>Mamba-2 / Gated Delta Net：加门控</a></li>
+<li class="chapter" data-level="" data-path="lecture-04.html"><a href="lecture-04.html#%E5%8F%A6%E4%B8%80%E6%9D%A1%E8%B7%AF%E7%A8%80%E7%96%8F%E6%B3%A8%E6%84%8F%E5%8A%9Bdsa"><i class="fa fa-check"></i>另一条路：稀疏注意力（DSA）</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="lecture-04.html"><a href="lecture-04.html#%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86mixture-of-experts-moe"><i class="fa fa-check"></i>第二部分：Mixture of Experts (MoE)</a>
+<ul>
+<li class="chapter" data-level="" data-path="lecture-04.html"><a href="lecture-04.html#moe-%E6%98%AF%E4%BB%80%E4%B9%88"><i class="fa fa-check"></i>MoE 是什么</a></li>
+<li class="chapter" data-level="" data-path="lecture-04.html"><a href="lecture-04.html#moe-%E6%80%8E%E4%B9%88%E5%8F%98%E5%8C%96%E4%B8%89%E4%B8%AA%E6%97%8B%E9%92%AE"><i class="fa fa-check"></i>MoE 怎么变化（三个旋钮）</a></li>
+<li class="chapter" data-level="" data-path="lecture-04.html"><a href="lecture-04.html#%E8%AE%AD%E7%BB%83-moe-%E7%9A%84%E4%B8%A4%E5%A4%A7%E9%9A%BE%E7%82%B9"><i class="fa fa-check"></i>训练 MoE 的两大难点</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="lecture-04.html"><a href="lecture-04.html#%E6%80%9D%E8%80%83%E7%BB%83%E4%B9%A0-1"><i class="fa fa-check"></i>思考练习</a></li>
+<li class="chapter" data-level="" data-path="lecture-04.html"><a href="lecture-04.html#%E6%A3%80%E6%9F%A5%E6%B8%85%E5%8D%95-2"><i class="fa fa-check"></i>检查清单</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="lecture-05.html"><a href="lecture-05.html"><i class="fa fa-check"></i>第 5 讲 GPUs</a>
+<ul>
+<li class="chapter" data-level="" data-path="lecture-05.html"><a href="lecture-05.html#%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86%E8%BF%99%E4%B8%80%E8%AE%B2%E9%BB%98%E8%AE%A4%E4%BD%A0%E5%B7%B2%E7%BB%8F%E4%BC%9A%E6%88%91%E4%BB%8E-0-%E7%BB%99%E4%BD%A0%E8%A1%A5-4"><i class="fa fa-check"></i>前置知识：这一讲默认你已经会（我从 0 给你补）</a></li>
+<li class="chapter" data-level="" data-path="lecture-05.html"><a href="lecture-05.html#%E5%85%88%E8%A1%A5%E5%87%A0%E4%B8%AA%E8%AF%8D%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%90%91-2"><i class="fa fa-check"></i>先补几个词（零基础向）</a></li>
+<li class="chapter" data-level="" data-path="lecture-05.html"><a href="lecture-05.html#%E5%AD%A6%E5%AE%8C%E4%BD%A0%E8%83%BD-3"><i class="fa fa-check"></i>学完你能</a></li>
+<li class="chapter" data-level="" data-path="lecture-05.html"><a href="lecture-05.html#gpu-%E7%9A%84%E8%AE%BE%E8%AE%A1%E5%93%B2%E5%AD%A6%E4%B8%BA%E5%90%9E%E5%90%90%E8%80%8C%E7%94%9F"><i class="fa fa-check"></i>GPU 的设计哲学：为吞吐而生</a></li>
+<li class="chapter" data-level="" data-path="lecture-05.html"><a href="lecture-05.html#%E6%A0%B9%E6%9C%AC%E7%9F%9B%E7%9B%BE%E5%86%85%E5%AD%98%E5%A2%99-memory-wall"><i class="fa fa-check"></i>根本矛盾：内存墙 (memory wall)</a></li>
+<li class="chapter" data-level="" data-path="lecture-05.html"><a href="lecture-05.html#%E5%85%AD%E4%B8%AA%E5%8A%A0%E9%80%9F%E6%8A%80%E5%B7%A7"><i class="fa fa-check"></i>六个加速技巧</a></li>
+<li class="chapter" data-level="" data-path="lecture-05.html"><a href="lecture-05.html#%E7%BB%88%E7%82%B9flashattention-%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BF%AB"><i class="fa fa-check"></i>终点：FlashAttention 为什么快</a></li>
+<li class="chapter" data-level="" data-path="lecture-05.html"><a href="lecture-05.html#%E6%80%9D%E8%80%83%E7%BB%83%E4%B9%A0-2"><i class="fa fa-check"></i>思考练习</a></li>
+<li class="chapter" data-level="" data-path="lecture-05.html"><a href="lecture-05.html#%E5%92%8C%E5%90%8E%E7%BB%AD%E4%BD%9C%E4%B8%9A%E7%9A%84%E8%BF%9E%E6%8E%A5"><i class="fa fa-check"></i>和后续/作业的连接</a></li>
+<li class="chapter" data-level="" data-path="lecture-05.html"><a href="lecture-05.html#%E6%A3%80%E6%9F%A5%E6%B8%85%E5%8D%95-3"><i class="fa fa-check"></i>检查清单</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="lecture-06.html"><a href="lecture-06.html"><i class="fa fa-check"></i>第 6 讲 GPUs, Profiling &amp; Triton Kernels</a>
+<ul>
+<li class="chapter" data-level="" data-path="lecture-06.html"><a href="lecture-06.html#%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86%E8%BF%99%E4%B8%80%E8%AE%B2%E9%BB%98%E8%AE%A4%E4%BD%A0%E5%B7%B2%E7%BB%8F%E4%BC%9A%E6%88%91%E4%BB%8E-0-%E7%BB%99%E4%BD%A0%E8%A1%A5-5"><i class="fa fa-check"></i>前置知识：这一讲默认你已经会（我从 0 给你补）</a></li>
+<li class="chapter" data-level="" data-path="lecture-06.html"><a href="lecture-06.html#%E5%85%88%E8%A1%A5%E5%87%A0%E4%B8%AA%E8%AF%8D%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%90%91-3"><i class="fa fa-check"></i>先补几个词（零基础向）</a></li>
+<li class="chapter" data-level="" data-path="lecture-06.html"><a href="lecture-06.html#%E5%AD%A6%E5%AE%8C%E4%BD%A0%E8%83%BD-4"><i class="fa fa-check"></i>学完你能</a></li>
+<li class="chapter" data-level="" data-path="lecture-06.html"><a href="lecture-06.html#%E7%A1%AC%E4%BB%B6%E5%88%86%E5%B1%82%E4%B8%8E%E7%BC%96%E7%A8%8B%E6%A8%A1%E5%9E%8B"><i class="fa fa-check"></i>硬件分层与编程模型</a></li>
+<li class="chapter" data-level="" data-path="lecture-06.html"><a href="lecture-06.html#%E5%BD%B1%E5%93%8D%E6%80%A7%E8%83%BD%E7%9A%84%E7%A1%AC%E4%BB%B6%E7%BB%86%E8%8A%82%E7%90%86%E8%A7%A3%E5%8D%B3%E5%8F%AF%E4%B8%8D%E5%BF%85%E8%83%8C"><i class="fa fa-check"></i>影响性能的硬件细节（理解即可，不必背）</a></li>
+<li class="chapter" data-level="" data-path="lecture-06.html"><a href="lecture-06.html#%E6%B5%8Bbenchmark-%E4%B8%8E-profile"><i class="fa fa-check"></i>测：benchmark 与 profile</a></li>
+<li class="chapter" data-level="" data-path="lecture-06.html"><a href="lecture-06.html#%E5%85%B3%E9%94%AE%E5%AE%9E%E9%AA%8Cnaive-vs-builtin-vs-compiled-gelu"><i class="fa fa-check"></i>关键实验：naive vs builtin vs compiled GeLU</a></li>
+<li class="chapter" data-level="" data-path="lecture-06.html"><a href="lecture-06.html#%E5%86%99%E5%9B%9B%E7%B1%BB-triton-kernel%E4%BB%8E%E6%98%93%E5%88%B0%E9%9A%BE"><i class="fa fa-check"></i>写：四类 Triton kernel（从易到难）</a></li>
+<li class="chapter" data-level="" data-path="lecture-06.html"><a href="lecture-06.html#%E6%80%9D%E8%80%83%E7%BB%83%E4%B9%A0%E5%A4%9A%E6%95%B0%E9%9C%80-gpu-%E6%89%8D%E8%83%BD%E7%9C%9F%E8%B7%91%E5%85%88%E6%83%B3%E6%B8%85%E6%A5%9A"><i class="fa fa-check"></i>思考练习（多数需 GPU 才能真跑，先想清楚）</a></li>
+<li class="chapter" data-level="" data-path="lecture-06.html"><a href="lecture-06.html#%E5%92%8C-assignment-2-%E7%9A%84%E8%BF%9E%E6%8E%A5"><i class="fa fa-check"></i>和 Assignment 2 的连接</a></li>
+<li class="chapter" data-level="" data-path="lecture-06.html"><a href="lecture-06.html#%E6%A3%80%E6%9F%A5%E6%B8%85%E5%8D%95-4"><i class="fa fa-check"></i>检查清单</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="lecture-07.html"><a href="lecture-07.html"><i class="fa fa-check"></i>第 7 讲 Parallelism (多 GPU)</a>
+<ul>
+<li class="chapter" data-level="" data-path="lecture-07.html"><a href="lecture-07.html#%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86%E8%BF%99%E4%B8%80%E8%AE%B2%E9%BB%98%E8%AE%A4%E4%BD%A0%E5%B7%B2%E7%BB%8F%E4%BC%9A%E6%88%91%E4%BB%8E-0-%E7%BB%99%E4%BD%A0%E8%A1%A5-6"><i class="fa fa-check"></i>前置知识：这一讲默认你已经会（我从 0 给你补）</a></li>
+<li class="chapter" data-level="" data-path="lecture-07.html"><a href="lecture-07.html#%E5%85%88%E8%A1%A5%E5%87%A0%E4%B8%AA%E8%AF%8D%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%90%91-4"><i class="fa fa-check"></i>先补几个词（零基础向）</a></li>
+<li class="chapter" data-level="" data-path="lecture-07.html"><a href="lecture-07.html#%E5%AD%A6%E5%AE%8C%E4%BD%A0%E8%83%BD-5"><i class="fa fa-check"></i>学完你能</a></li>
+<li class="chapter" data-level="" data-path="lecture-07.html"><a href="lecture-07.html#%E9%9B%86%E5%90%88%E9%80%9A%E4%BF%A1%E5%8E%9F%E8%AF%AD%E5%85%88%E8%AE%A4%E8%AF%86%E8%BF%99%E5%87%A0%E4%B8%AA%E5%8A%A8%E4%BD%9C"><i class="fa fa-check"></i>集合通信原语（先认识这几个动作）</a></li>
+<li class="chapter" data-level="" data-path="lecture-07.html"><a href="lecture-07.html#%E7%A1%AC%E4%BB%B6%E4%BA%92%E8%81%94%E8%B6%8A%E5%BE%80%E5%A4%96%E8%B6%8A%E6%85%A2"><i class="fa fa-check"></i>硬件互联：越往外越慢</a></li>
+<li class="chapter" data-level="" data-path="lecture-07.html"><a href="lecture-07.html#%E4%B8%89%E7%A7%8D%E5%B9%B6%E8%A1%8C%E5%88%87%E7%9A%84%E7%BB%B4%E5%BA%A6%E4%B8%8D%E5%90%8C"><i class="fa fa-check"></i>三种并行：切的维度不同</a></li>
+<li class="chapter" data-level="" data-path="lecture-07.html"><a href="lecture-07.html#%E9%80%9A%E4%BF%A1%E5%B8%A6%E5%AE%BD%E6%80%8E%E4%B9%88%E6%B5%8B"><i class="fa fa-check"></i>通信带宽怎么测</a></li>
+<li class="chapter" data-level="" data-path="lecture-07.html"><a href="lecture-07.html#%E6%80%9D%E8%80%83%E7%BB%83%E4%B9%A0%E5%A4%9A%E6%95%B0%E9%9C%80%E5%A4%9A-gpu%E5%85%88%E7%90%86%E8%A7%A3"><i class="fa fa-check"></i>思考练习（多数需多 GPU，先理解）</a></li>
+<li class="chapter" data-level="" data-path="lecture-07.html"><a href="lecture-07.html#%E5%92%8C-assignment-2-%E7%9A%84%E8%BF%9E%E6%8E%A5-1"><i class="fa fa-check"></i>和 Assignment 2 的连接</a></li>
+<li class="chapter" data-level="" data-path="lecture-07.html"><a href="lecture-07.html#%E6%A3%80%E6%9F%A5%E6%B8%85%E5%8D%95-5"><i class="fa fa-check"></i>检查清单</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="lecture-08.html"><a href="lecture-08.html"><i class="fa fa-check"></i>第 8 讲 Parallelism Basics (进阶)</a>
+<ul>
+<li class="chapter" data-level="" data-path="lecture-08.html"><a href="lecture-08.html#%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86%E8%BF%99%E4%B8%80%E8%AE%B2%E9%BB%98%E8%AE%A4%E4%BD%A0%E5%B7%B2%E7%BB%8F%E4%BC%9A%E6%88%91%E4%BB%8E-0-%E7%BB%99%E4%BD%A0%E8%A1%A5-7"><i class="fa fa-check"></i>前置知识：这一讲默认你已经会（我从 0 给你补）</a></li>
+<li class="chapter" data-level="" data-path="lecture-08.html"><a href="lecture-08.html#%E5%85%88%E8%A1%A5%E5%87%A0%E4%B8%AA%E8%AF%8D%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%90%91%E5%85%B6%E4%BD%99%E8%A7%81-l07-%E7%AC%94%E8%AE%B0"><i class="fa fa-check"></i>先补几个词（零基础向，其余见 L07 笔记）</a></li>
+<li class="chapter" data-level="" data-path="lecture-08.html"><a href="lecture-08.html#%E5%AD%A6%E5%AE%8C%E4%BD%A0%E8%83%BD-6"><i class="fa fa-check"></i>学完你能</a></li>
+<li class="chapter" data-level="" data-path="lecture-08.html"><a href="lecture-08.html#%E6%9C%B4%E7%B4%A0%E6%95%B0%E6%8D%AE%E5%B9%B6%E8%A1%8C%E7%9A%84%E6%98%BE%E5%AD%98%E6%9C%89%E5%A4%9A%E6%B5%AA%E8%B4%B9"><i class="fa fa-check"></i>朴素数据并行的显存有多浪费</a></li>
+<li class="chapter" data-level="" data-path="lecture-08.html"><a href="lecture-08.html#zero%E6%8A%8A%E9%87%8D%E5%A4%8D%E7%9A%84%E4%B8%9C%E8%A5%BF%E5%88%86%E7%89%87%E5%9F%BA%E4%BA%8E%E9%82%A3%E6%9D%A1%E7%AD%89%E5%BC%8F"><i class="fa fa-check"></i>ZeRO：把重复的东西分片（基于那条等式）</a></li>
+<li class="chapter" data-level="" data-path="lecture-08.html"><a href="lecture-08.html#%E6%95%B0%E6%8D%AE%E5%B9%B6%E8%A1%8C%E7%9A%84%E5%A4%A9%E8%8A%B1%E6%9D%BF"><i class="fa fa-check"></i>数据并行的天花板</a></li>
+<li class="chapter" data-level="" data-path="lecture-08.html"><a href="lecture-08.html#%E6%A8%A1%E5%9E%8B%E5%B9%B6%E8%A1%8C%E5%88%87%E6%A8%A1%E5%9E%8B%E7%9A%84%E4%B8%89%E7%A7%8D%E5%88%80%E6%B3%95"><i class="fa fa-check"></i>模型并行：切模型的三种刀法</a></li>
+<li class="chapter" data-level="" data-path="lecture-08.html"><a href="lecture-08.html#d-%E5%B9%B6%E8%A1%8C%E6%8A%8A%E5%AE%83%E4%BB%AC%E5%8F%A0%E8%B5%B7%E6%9D%A5"><i class="fa fa-check"></i>3D 并行：把它们叠起来</a></li>
+<li class="chapter" data-level="" data-path="lecture-08.html"><a href="lecture-08.html#%E6%80%9D%E8%80%83%E7%BB%83%E4%B9%A0-3"><i class="fa fa-check"></i>思考练习</a></li>
+<li class="chapter" data-level="" data-path="lecture-08.html"><a href="lecture-08.html#%E5%92%8C-assignment-2-%E7%9A%84%E8%BF%9E%E6%8E%A5-2"><i class="fa fa-check"></i>和 Assignment 2 的连接</a></li>
+<li class="chapter" data-level="" data-path="lecture-08.html"><a href="lecture-08.html#%E6%A3%80%E6%9F%A5%E6%B8%85%E5%8D%95-6"><i class="fa fa-check"></i>检查清单</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="lecture-09.html"><a href="lecture-09.html"><i class="fa fa-check"></i>第 9 讲 Scaling Laws</a>
+<ul>
+<li class="chapter" data-level="" data-path="lecture-09.html"><a href="lecture-09.html#%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86%E8%BF%99%E4%B8%80%E8%AE%B2%E9%BB%98%E8%AE%A4%E4%BD%A0%E5%B7%B2%E7%BB%8F%E4%BC%9A%E6%88%91%E4%BB%8E-0-%E7%BB%99%E4%BD%A0%E8%A1%A5-8"><i class="fa fa-check"></i>前置知识：这一讲默认你已经会（我从 0 给你补）</a></li>
+<li class="chapter" data-level="" data-path="lecture-09.html"><a href="lecture-09.html#%E5%85%88%E8%A1%A5%E5%87%A0%E4%B8%AA%E8%AF%8D%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%90%91-5"><i class="fa fa-check"></i>先补几个词（零基础向）</a></li>
+<li class="chapter" data-level="" data-path="lecture-09.html"><a href="lecture-09.html#%E5%AD%A6%E5%AE%8C%E4%BD%A0%E8%83%BD-7"><i class="fa fa-check"></i>学完你能</a></li>
+<li class="chapter" data-level="" data-path="lecture-09.html"><a href="lecture-09.html#%E5%B9%82%E5%BE%8Bloss-%E9%9A%8F%E8%A7%84%E6%A8%A1%E7%9A%84%E7%9B%B4%E7%BA%BF%E4%B8%8B%E9%99%8D"><i class="fa fa-check"></i>幂律：loss 随规模的直线下降</a></li>
+<li class="chapter" data-level="" data-path="lecture-09.html"><a href="lecture-09.html#%E4%B8%89%E7%B1%BB%E7%BC%A9%E6%94%BE%E9%97%AE%E9%A2%98"><i class="fa fa-check"></i>三类缩放问题</a></li>
+<li class="chapter" data-level="" data-path="lecture-09.html"><a href="lecture-09.html#%E7%94%A8%E7%BC%A9%E6%94%BE%E5%AE%9A%E5%BE%8B%E9%80%89%E8%B6%85%E5%8F%82%E6%A0%B8%E5%BF%83%E6%B5%81%E7%A8%8B"><i class="fa fa-check"></i>用缩放定律选超参（核心流程）</a></li>
+<li class="chapter" data-level="" data-path="lecture-09.html"><a href="lecture-09.html#%E8%AE%A1%E7%AE%97%E6%9C%80%E4%BC%98chinchilla%E6%9C%AC%E8%AE%B2%E9%87%8D%E7%82%B9"><i class="fa fa-check"></i>计算最优：Chinchilla（本讲重点）</a></li>
+<li class="chapter" data-level="" data-path="lecture-09.html"><a href="lecture-09.html#%E6%80%9D%E8%80%83%E7%BB%83%E4%B9%A0-4"><i class="fa fa-check"></i>思考练习</a></li>
+<li class="chapter" data-level="" data-path="lecture-09.html"><a href="lecture-09.html#%E5%92%8C-assignment-3-%E7%9A%84%E8%BF%9E%E6%8E%A5"><i class="fa fa-check"></i>和 Assignment 3 的连接</a></li>
+<li class="chapter" data-level="" data-path="lecture-09.html"><a href="lecture-09.html#%E6%A3%80%E6%9F%A5%E6%B8%85%E5%8D%95-7"><i class="fa fa-check"></i>检查清单</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="lecture-10.html"><a href="lecture-10.html"><i class="fa fa-check"></i>第 10 讲 Inference (推理)</a>
+<ul>
+<li class="chapter" data-level="" data-path="lecture-10.html"><a href="lecture-10.html#%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86%E8%BF%99%E4%B8%80%E8%AE%B2%E9%BB%98%E8%AE%A4%E4%BD%A0%E5%B7%B2%E7%BB%8F%E4%BC%9A%E6%88%91%E4%BB%8E-0-%E7%BB%99%E4%BD%A0%E8%A1%A5-9"><i class="fa fa-check"></i>前置知识：这一讲默认你已经会（我从 0 给你补）</a></li>
+<li class="chapter" data-level="" data-path="lecture-10.html"><a href="lecture-10.html#%E5%85%88%E8%A1%A5%E5%87%A0%E4%B8%AA%E8%AF%8D%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%90%91-6"><i class="fa fa-check"></i>先补几个词（零基础向）</a></li>
+<li class="chapter" data-level="" data-path="lecture-10.html"><a href="lecture-10.html#%E5%AD%A6%E5%AE%8C%E4%BD%A0%E8%83%BD-8"><i class="fa fa-check"></i>学完你能</a></li>
+<li class="chapter" data-level="" data-path="lecture-10.html"><a href="lecture-10.html#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%8E%A8%E7%90%86%E5%92%8C%E8%AE%AD%E7%BB%83%E5%A6%82%E6%AD%A4%E4%B8%8D%E5%90%8C"><i class="fa fa-check"></i>为什么推理和训练如此不同</a></li>
+<li class="chapter" data-level="" data-path="lecture-10.html"><a href="lecture-10.html#kv-cache%E6%95%91%E6%98%9F%E4%B9%9F%E6%98%AF%E6%96%B0%E7%93%B6%E9%A2%88"><i class="fa fa-check"></i>KV cache：救星，也是新瓶颈</a></li>
+<li class="chapter" data-level="" data-path="lecture-10.html"><a href="lecture-10.html#%E7%AE%97%E6%9C%AF%E5%BC%BA%E5%BA%A6batch-%E4%B8%BA%E4%BB%80%E4%B9%88%E5%AF%B9-mlp-%E6%9C%89%E7%94%A8%E5%AF%B9-attention-%E6%B2%A1%E7%94%A8"><i class="fa fa-check"></i>算术强度：batch 为什么对 MLP 有用、对 attention 没用</a></li>
+<li class="chapter" data-level="" data-path="lecture-10.html"><a href="lecture-10.html#%E5%BB%B6%E8%BF%9F-vs-%E5%90%9E%E5%90%90%E7%9A%84%E6%9D%83%E8%A1%A1"><i class="fa fa-check"></i>延迟 vs 吞吐的权衡</a></li>
+<li class="chapter" data-level="" data-path="lecture-10.html"><a href="lecture-10.html#%E9%99%8D-kv-cache-%E7%9A%84%E6%9E%B6%E6%9E%84%E6%9C%89%E6%8D%9F%E4%BD%86%E9%80%9A%E5%B8%B8%E4%B8%8D%E6%8E%89%E7%82%B9"><i class="fa fa-check"></i>降 KV cache 的架构（有损但通常不掉点）</a></li>
+<li class="chapter" data-level="" data-path="lecture-10.html"><a href="lecture-10.html#%E5%85%B6%E5%AE%83%E5%8A%A0%E9%80%9F%E6%89%8B%E6%AE%B5%E4%BA%86%E8%A7%A3"><i class="fa fa-check"></i>其它加速手段（了解）</a></li>
+<li class="chapter" data-level="" data-path="lecture-10.html"><a href="lecture-10.html#%E5%BA%94%E5%AF%B9%E5%8A%A8%E6%80%81%E6%B5%81%E9%87%8F%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F"><i class="fa fa-check"></i>应对动态流量（服务系统）</a></li>
+<li class="chapter" data-level="" data-path="lecture-10.html"><a href="lecture-10.html#%E6%80%9D%E8%80%83%E7%BB%83%E4%B9%A0%E5%A4%9A%E6%95%B0%E5%8F%AF%E7%BA%AF%E6%8E%A8%E7%90%86%E4%B8%8D%E9%9C%80-gpu"><i class="fa fa-check"></i>思考练习（多数可纯推理，不需 GPU）</a></li>
+<li class="chapter" data-level="" data-path="lecture-10.html"><a href="lecture-10.html#%E5%92%8C%E5%90%8E%E7%BB%AD%E4%BD%9C%E4%B8%9A%E7%9A%84%E8%BF%9E%E6%8E%A5-1"><i class="fa fa-check"></i>和后续/作业的连接</a></li>
+<li class="chapter" data-level="" data-path="lecture-10.html"><a href="lecture-10.html#%E6%A3%80%E6%9F%A5%E6%B8%85%E5%8D%95-8"><i class="fa fa-check"></i>检查清单</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="lecture-11.html"><a href="lecture-11.html"><i class="fa fa-check"></i>第 11 讲 Scaling 案例与细节</a>
+<ul>
+<li class="chapter" data-level="" data-path="lecture-11.html"><a href="lecture-11.html#%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86%E8%BF%99%E4%B8%80%E8%AE%B2%E9%BB%98%E8%AE%A4%E4%BD%A0%E5%B7%B2%E7%BB%8F%E4%BC%9A%E6%88%91%E4%BB%8E-0-%E7%BB%99%E4%BD%A0%E8%A1%A5-10"><i class="fa fa-check"></i>前置知识：这一讲默认你已经会（我从 0 给你补）</a></li>
+<li class="chapter" data-level="" data-path="lecture-11.html"><a href="lecture-11.html#%E5%AE%9E%E6%88%98%E8%A6%81%E8%A7%A3%E5%86%B3%E7%9A%84%E4%B8%89%E4%B8%AA%E9%9A%BE%E9%A2%98"><i class="fa fa-check"></i>实战要解决的三个难题</a></li>
+<li class="chapter" data-level="" data-path="lecture-11.html"><a href="lecture-11.html#mup%E6%9C%80%E5%A4%A7%E6%9B%B4%E6%96%B0%E5%8F%82%E6%95%B0%E5%8C%96%E8%AE%A9%E6%9C%80%E4%BC%98%E5%AD%A6%E4%B9%A0%E7%8E%87%E4%B8%8D%E9%9A%8F%E8%A7%84%E6%A8%A1%E5%8F%98"><i class="fa fa-check"></i>muP（最大更新参数化）：让最优学习率”不随规模变”</a></li>
+<li class="chapter" data-level="" data-path="lecture-11.html"><a href="lecture-11.html#wsd-%E5%AD%A6%E4%B9%A0%E7%8E%87%E8%AE%A9%E6%8B%9F%E5%90%88%E7%BC%A9%E6%94%BE%E5%AE%9A%E5%BE%8B%E5%8F%98%E4%BE%BF%E5%AE%9C"><i class="fa fa-check"></i>WSD 学习率：让”拟合缩放定律”变便宜</a></li>
+<li class="chapter" data-level="" data-path="lecture-11.html"><a href="lecture-11.html#%E4%B8%A4%E5%A5%97%E5%85%AC%E5%BC%80%E7%9A%84%E7%BC%A9%E6%94%BE%E9%85%8D%E6%96%B9%E7%85%A7%E7%9D%80%E5%AD%A6"><i class="fa fa-check"></i>两套公开的缩放配方（照着学）</a></li>
+<li class="chapter" data-level="" data-path="lecture-11.html"><a href="lecture-11.html#batch-%E5%92%8C-lr-%E7%9A%84%E7%BC%A9%E6%94%BE%E8%B6%8B%E5%8A%BF"><i class="fa fa-check"></i>batch 和 LR 的缩放趋势</a></li>
+<li class="chapter" data-level="" data-path="lecture-11.html"><a href="lecture-11.html#%E4%BC%98%E5%8C%96%E5%99%A8%E5%89%8D%E6%B2%BFmuon%E4%BA%86%E8%A7%A3"><i class="fa fa-check"></i>优化器前沿：Muon（了解）</a></li>
+<li class="chapter" data-level="" data-path="lecture-11.html"><a href="lecture-11.html#%E6%80%9D%E8%80%83%E7%BB%83%E4%B9%A0-5"><i class="fa fa-check"></i>思考练习</a></li>
+<li class="chapter" data-level="" data-path="lecture-11.html"><a href="lecture-11.html#%E5%92%8C-assignment-3-%E7%9A%84%E8%BF%9E%E6%8E%A5-1"><i class="fa fa-check"></i>和 Assignment 3 的连接</a></li>
+<li class="chapter" data-level="" data-path="lecture-11.html"><a href="lecture-11.html#%E6%A3%80%E6%9F%A5%E6%B8%85%E5%8D%95-9"><i class="fa fa-check"></i>检查清单</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="lecture-12.html"><a href="lecture-12.html"><i class="fa fa-check"></i>第 12 讲 Evaluation (评测)</a>
+<ul>
+<li class="chapter" data-level="" data-path="lecture-12.html"><a href="lecture-12.html#%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86%E8%BF%99%E4%B8%80%E8%AE%B2%E9%BB%98%E8%AE%A4%E4%BD%A0%E5%B7%B2%E7%BB%8F%E4%BC%9A%E6%88%91%E4%BB%8E-0-%E7%BB%99%E4%BD%A0%E8%A1%A5-11"><i class="fa fa-check"></i>前置知识：这一讲默认你已经会（我从 0 给你补）</a></li>
+<li class="chapter" data-level="" data-path="lecture-12.html"><a href="lecture-12.html#perplexity%E6%9C%80%E8%80%81%E7%89%8C%E7%9A%84%E6%8C%87%E6%A0%87"><i class="fa fa-check"></i>Perplexity：最老牌的指标</a></li>
+<li class="chapter" data-level="" data-path="lecture-12.html"><a href="lecture-12.html#%E8%80%83%E8%AF%95%E9%A2%98-benchmark%E5%8F%AF%E6%8E%A7%E5%A5%BD%E6%89%93%E5%88%86"><i class="fa fa-check"></i>考试题 benchmark：可控、好打分</a></li>
+<li class="chapter" data-level="" data-path="lecture-12.html"><a href="lecture-12.html#%E8%81%8A%E5%A4%A9-benchmark%E6%80%8E%E4%B9%88%E8%AF%84%E5%BC%80%E6%94%BE%E5%BC%8F%E5%9B%9E%E7%AD%94"><i class="fa fa-check"></i>聊天 benchmark：怎么评开放式回答</a></li>
+<li class="chapter" data-level="" data-path="lecture-12.html"><a href="lecture-12.html#%E6%99%BA%E8%83%BD%E4%BD%93-benchmark%E8%AF%84%E6%A8%A1%E5%9E%8B%E5%81%9A%E4%BA%86%E4%BB%80%E4%B9%88%E8%80%8C%E9%9D%9E%E8%AF%B4%E4%BA%86%E4%BB%80%E4%B9%88"><i class="fa fa-check"></i>智能体 benchmark：评”模型做了什么”而非”说了什么”</a></li>
+<li class="chapter" data-level="" data-path="lecture-12.html"><a href="lecture-12.html#%E7%BA%AF%E6%8E%A8%E7%90%86%E8%83%BD%E4%B8%8D%E8%83%BD%E6%8A%8A%E6%8E%A8%E7%90%86%E5%92%8C%E7%9F%A5%E8%AF%86%E5%88%86%E5%BC%80"><i class="fa fa-check"></i>纯推理：能不能把”推理”和”知识”分开</a></li>
+<li class="chapter" data-level="" data-path="lecture-12.html"><a href="lecture-12.html#%E5%AE%89%E5%85%A8-benchmark"><i class="fa fa-check"></i>安全 benchmark</a></li>
+<li class="chapter" data-level="" data-path="lecture-12.html"><a href="lecture-12.html#%E4%B8%A4%E4%B8%AA%E8%AF%84%E6%B5%8B%E8%B4%A8%E9%87%8F%E9%97%AE%E9%A2%98%E5%BE%88%E9%87%8D%E8%A6%81"><i class="fa fa-check"></i>两个评测质量问题（很重要）</a></li>
+<li class="chapter" data-level="" data-path="lecture-12.html"><a href="lecture-12.html#%E6%80%9D%E8%80%83%E7%BB%83%E4%B9%A0-6"><i class="fa fa-check"></i>思考练习</a></li>
+<li class="chapter" data-level="" data-path="lecture-12.html"><a href="lecture-12.html#%E6%A3%80%E6%9F%A5%E6%B8%85%E5%8D%95-10"><i class="fa fa-check"></i>检查清单</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="lecture-13.html"><a href="lecture-13.html"><i class="fa fa-check"></i>第 13 讲 Data I (数据来源与版权)</a>
+<ul>
+<li class="chapter" data-level="" data-path="lecture-13.html"><a href="lecture-13.html#%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86%E8%BF%99%E4%B8%80%E8%AE%B2%E9%BB%98%E8%AE%A4%E4%BD%A0%E5%B7%B2%E7%BB%8F%E4%BC%9A%E6%88%91%E4%BB%8E-0-%E7%BB%99%E4%BD%A0%E8%A1%A5-12"><i class="fa fa-check"></i>前置知识：这一讲默认你已经会（我从 0 给你补）</a></li>
+<li class="chapter" data-level="" data-path="lecture-13.html"><a href="lecture-13.html#%E6%95%B0%E6%8D%AE%E4%B8%8D%E4%BC%9A%E4%BB%8E%E5%A4%A9%E4%B8%8A%E6%8E%89%E4%B8%8B%E6%9D%A5"><i class="fa fa-check"></i>数据不会从天上掉下来</a></li>
+<li class="chapter" data-level="" data-path="lecture-13.html"><a href="lecture-13.html#%E5%9C%A8%E6%95%B4%E4%B8%AA%E4%BA%92%E8%81%94%E7%BD%91%E4%B8%8A%E8%AE%AD%E7%BB%83%E5%85%B6%E5%AE%9E%E6%B2%A1%E9%82%A3%E4%B9%88%E7%AE%80%E5%8D%95"><i class="fa fa-check"></i>“在整个互联网上训练”其实没那么简单</a></li>
+<li class="chapter" data-level="" data-path="lecture-13.html"><a href="lecture-13.html#%E7%89%88%E6%9D%83%E4%B8%8E%E5%90%88%E7%90%86%E4%BD%BF%E7%94%A8%E8%BF%99%E4%B8%80%E8%AE%B2%E7%9A%84%E9%87%8D%E7%82%B9"><i class="fa fa-check"></i>版权与合理使用（这一讲的重点）</a></li>
+<li class="chapter" data-level="" data-path="lecture-13.html"><a href="lecture-13.html#%E4%B8%BB%E8%A6%81%E6%95%B0%E6%8D%AE%E6%9D%A5%E6%BA%90"><i class="fa fa-check"></i>主要数据来源</a></li>
+<li class="chapter" data-level="" data-path="lecture-13.html"><a href="lecture-13.html#%E6%95%B0%E6%8D%AE%E9%9B%86%E6%BC%94%E8%BF%9B%E5%8F%B2%E4%B8%80%E6%9D%A1%E4%B8%BB%E7%BA%BF%E8%B6%8A%E6%9D%A5%E8%B6%8A%E4%BC%9A%E8%BF%87%E6%BB%A4"><i class="fa fa-check"></i>数据集演进史（一条主线：越来越会”过滤”）</a></li>
+<li class="chapter" data-level="" data-path="lecture-13.html"><a href="lecture-13.html#%E6%80%9D%E8%80%83%E7%BB%83%E4%B9%A0-7"><i class="fa fa-check"></i>思考练习</a></li>
+<li class="chapter" data-level="" data-path="lecture-13.html"><a href="lecture-13.html#%E6%A3%80%E6%9F%A5%E6%B8%85%E5%8D%95-11"><i class="fa fa-check"></i>检查清单</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="lecture-14.html"><a href="lecture-14.html"><i class="fa fa-check"></i>第 14 讲 Data II (过滤/去重/混合)</a>
+<ul>
+<li class="chapter" data-level="" data-path="lecture-14.html"><a href="lecture-14.html#%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86%E8%BF%99%E4%B8%80%E8%AE%B2%E9%BB%98%E8%AE%A4%E4%BD%A0%E5%B7%B2%E7%BB%8F%E4%BC%9A%E6%88%91%E4%BB%8E-0-%E7%BB%99%E4%BD%A0%E8%A1%A5-13"><i class="fa fa-check"></i>前置知识：这一讲默认你已经会（我从 0 给你补）</a></li>
+<li class="chapter" data-level="" data-path="lecture-14.html"><a href="lecture-14.html#%E8%BD%AC%E6%8D%A2-transformation%E5%8E%9F%E5%A7%8B%E6%95%B0%E6%8D%AE%E4%B8%8D%E6%98%AF%E6%96%87%E6%9C%AC"><i class="fa fa-check"></i>转换 (transformation)：原始数据不是文本</a></li>
+<li class="chapter" data-level="" data-path="lecture-14.html"><a href="lecture-14.html#%E8%BF%87%E6%BB%A4-filtering%E4%BB%8E%E6%B5%B7%E9%87%8F%E5%8E%9F%E5%A7%8B%E6%95%B0%E6%8D%AE%E9%87%8C%E6%8C%91%E5%87%BA%E5%83%8F%E7%9B%AE%E6%A0%87%E7%9A%84"><i class="fa fa-check"></i>过滤 (filtering)：从海量原始数据里挑出”像目标的”</a></li>
+<li class="chapter" data-level="" data-path="lecture-14.html"><a href="lecture-14.html#%E5%8E%BB%E9%87%8D-deduplication%E9%87%8D%E5%A4%8D%E6%95%B0%E6%8D%AE%E8%A6%81%E5%88%A0"><i class="fa fa-check"></i>去重 (deduplication)：重复数据要删</a></li>
+<li class="chapter" data-level="" data-path="lecture-14.html"><a href="lecture-14.html#%E6%B7%B7%E5%90%88-data-mixing%E5%90%84%E6%9D%A5%E6%BA%90%E9%85%8D%E5%A4%9A%E5%B0%91%E6%AF%94%E4%BE%8B"><i class="fa fa-check"></i>混合 (data mixing)：各来源配多少比例</a></li>
+<li class="chapter" data-level="" data-path="lecture-14.html"><a href="lecture-14.html#%E5%90%8E%E8%AE%AD%E7%BB%83%E6%95%B0%E6%8D%AE%E5%90%88%E6%88%90%E6%95%B0%E6%8D%AE"><i class="fa fa-check"></i>后训练数据：合成数据</a></li>
+<li class="chapter" data-level="" data-path="lecture-14.html"><a href="lecture-14.html#%E6%80%9D%E8%80%83%E7%BB%83%E4%B9%A0%E9%83%A8%E5%88%86%E5%8F%AF%E8%BF%90%E8%A1%8C"><i class="fa fa-check"></i>思考练习（部分可运行）</a></li>
+<li class="chapter" data-level="" data-path="lecture-14.html"><a href="lecture-14.html#%E6%A3%80%E6%9F%A5%E6%B8%85%E5%8D%95-12"><i class="fa fa-check"></i>检查清单</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="lecture-15.html"><a href="lecture-15.html"><i class="fa fa-check"></i>第 15 讲 后训练 SFT + RLHF</a>
+<ul>
+<li class="chapter" data-level="" data-path="lecture-15.html"><a href="lecture-15.html#%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86%E8%BF%99%E4%B8%80%E8%AE%B2%E9%BB%98%E8%AE%A4%E4%BD%A0%E5%B7%B2%E7%BB%8F%E4%BC%9A%E6%88%91%E4%BB%8E-0-%E7%BB%99%E4%BD%A0%E8%A1%A5-14"><i class="fa fa-check"></i>前置知识：这一讲默认你已经会（我从 0 给你补）</a></li>
+<li class="chapter" data-level="" data-path="lecture-15.html"><a href="lecture-15.html#%E6%A0%87%E5%87%86%E6%B5%81%E7%A8%8B%E5%85%88%E6%A8%A1%E4%BB%BFsft%E5%86%8D%E4%BC%98%E5%8C%96rlhf"><i class="fa fa-check"></i>标准流程：先模仿(SFT)，再优化(RLHF)</a></li>
+<li class="chapter" data-level="" data-path="lecture-15.html"><a href="lecture-15.html#%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86sft%E7%9B%91%E7%9D%A3%E5%BE%AE%E8%B0%83"><i class="fa fa-check"></i>第一部分：SFT（监督微调）</a>
+<ul>
+<li class="chapter" data-level="" data-path="lecture-15.html"><a href="lecture-15.html#sft-%E6%95%B0%E6%8D%AE%E9%95%BF%E4%BB%80%E4%B9%88%E6%A0%B7"><i class="fa fa-check"></i>SFT 数据长什么样</a></li>
+<li class="chapter" data-level="" data-path="lecture-15.html"><a href="lecture-15.html#sft-%E6%9C%80%E5%85%B3%E9%94%AE%E7%9A%84%E5%87%A0%E4%B8%AA%E5%8F%91%E7%8E%B0%E9%87%8D%E8%A6%81"><i class="fa fa-check"></i>SFT 最关键的几个发现（重要）</a></li>
+<li class="chapter" data-level="" data-path="lecture-15.html"><a href="lecture-15.html#%E9%A3%8E%E6%A0%BC%E4%B8%8E%E8%AF%84%E6%B5%8B%E7%9A%84%E9%99%B7%E9%98%B1"><i class="fa fa-check"></i>风格与评测的陷阱</a></li>
+<li class="chapter" data-level="" data-path="lecture-15.html"><a href="lecture-15.html#%E4%B8%AD%E8%AE%AD%E7%BB%83-mid-training%E6%8A%8A%E6%8C%87%E4%BB%A4%E5%BE%AE%E8%B0%83%E5%81%9A%E5%A4%A7"><i class="fa fa-check"></i>中训练 (mid-training)：把指令微调”做大”</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="lecture-15.html"><a href="lecture-15.html#%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86rlhf%E4%BA%BA%E7%B1%BB%E5%8F%8D%E9%A6%88%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0"><i class="fa fa-check"></i>第二部分：RLHF（人类反馈强化学习）</a>
+<ul>
+<li class="chapter" data-level="" data-path="lecture-15.html"><a href="lecture-15.html#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%BF%98%E8%A6%81-rl%E4%B8%8D%E8%83%BD%E5%8F%AA-sft"><i class="fa fa-check"></i>为什么还要 RL，不能只 SFT？</a></li>
+<li class="chapter" data-level="" data-path="lecture-15.html"><a href="lecture-15.html#rlhf-%E6%95%B0%E6%8D%AE%E6%88%90%E5%AF%B9%E5%81%8F%E5%A5%BD"><i class="fa fa-check"></i>RLHF 数据：成对偏好</a></li>
+<li class="chapter" data-level="" data-path="lecture-15.html"><a href="lecture-15.html#%E6%80%8E%E4%B9%88%E5%81%9A-rlhfppo-vs-dpo"><i class="fa fa-check"></i>怎么做 RLHF：PPO vs DPO</a></li>
+<li class="chapter" data-level="" data-path="lecture-15.html"><a href="lecture-15.html#rlhf-%E7%9A%84%E5%89%AF%E4%BD%9C%E7%94%A8%E8%A6%81%E8%AD%A6%E6%83%95"><i class="fa fa-check"></i>RLHF 的副作用（要警惕）</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="lecture-15.html"><a href="lecture-15.html#%E6%80%9D%E8%80%83%E7%BB%83%E4%B9%A0-8"><i class="fa fa-check"></i>思考练习</a></li>
+<li class="chapter" data-level="" data-path="lecture-15.html"><a href="lecture-15.html#%E5%92%8C-assignment-5-%E7%9A%84%E8%BF%9E%E6%8E%A5"><i class="fa fa-check"></i>和 Assignment 5 的连接</a></li>
+<li class="chapter" data-level="" data-path="lecture-15.html"><a href="lecture-15.html#%E6%A3%80%E6%9F%A5%E6%B8%85%E5%8D%95-13"><i class="fa fa-check"></i>检查清单</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="lecture-16.html"><a href="lecture-16.html"><i class="fa fa-check"></i>第 16 讲 RLVR (推理模型)</a>
+<ul>
+<li class="chapter" data-level="" data-path="lecture-16.html"><a href="lecture-16.html#%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86%E8%BF%99%E4%B8%80%E8%AE%B2%E9%BB%98%E8%AE%A4%E4%BD%A0%E5%B7%B2%E7%BB%8F%E4%BC%9A%E6%88%91%E4%BB%8E-0-%E7%BB%99%E4%BD%A0%E8%A1%A5-15"><i class="fa fa-check"></i>前置知识：这一讲默认你已经会（我从 0 给你补）</a></li>
+<li class="chapter" data-level="" data-path="lecture-16.html"><a href="lecture-16.html#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81-rlvr"><i class="fa fa-check"></i>为什么要 RLVR</a></li>
+<li class="chapter" data-level="" data-path="lecture-16.html"><a href="lecture-16.html#%E4%BB%8E-ppo-%E5%88%B0-grpo%E6%A0%B8%E5%BF%83%E7%AE%97%E6%B3%95"><i class="fa fa-check"></i>从 PPO 到 GRPO（核心算法）</a></li>
+<li class="chapter" data-level="" data-path="lecture-16.html"><a href="lecture-16.html#%E6%A1%88%E4%BE%8B%E4%B8%80deepseek-r1%E5%BC%95%E7%88%86%E7%82%B9"><i class="fa fa-check"></i>案例一：DeepSeek R1（引爆点）</a></li>
+<li class="chapter" data-level="" data-path="lecture-16.html"><a href="lecture-16.html#%E6%A1%88%E4%BE%8B%E4%BA%8C-%E4%B8%89kimi-k1.5qwen-3"><i class="fa fa-check"></i>案例二 &amp; 三：Kimi K1.5、Qwen 3</a></li>
+<li class="chapter" data-level="" data-path="lecture-16.html"><a href="lecture-16.html#rl-%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9A%BE"><i class="fa fa-check"></i>RL 基础设施为什么难</a></li>
+<li class="chapter" data-level="" data-path="lecture-16.html"><a href="lecture-16.html#%E6%80%9D%E8%80%83%E7%BB%83%E4%B9%A0-9"><i class="fa fa-check"></i>思考练习</a></li>
+<li class="chapter" data-level="" data-path="lecture-16.html"><a href="lecture-16.html#%E6%A3%80%E6%9F%A5%E6%B8%85%E5%8D%95-14"><i class="fa fa-check"></i>检查清单</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="lecture-17.html"><a href="lecture-17.html"><i class="fa fa-check"></i>第 17 讲 Multimodal (多模态)</a>
+<ul>
+<li class="chapter" data-level="" data-path="lecture-17.html"><a href="lecture-17.html#%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86%E8%BF%99%E4%B8%80%E8%AE%B2%E9%BB%98%E8%AE%A4%E4%BD%A0%E5%B7%B2%E7%BB%8F%E4%BC%9A%E6%88%91%E4%BB%8E-0-%E7%BB%99%E4%BD%A0%E8%A1%A5-16"><i class="fa fa-check"></i>前置知识：这一讲默认你已经会（我从 0 给你补）</a></li>
+<li class="chapter" data-level="" data-path="lecture-17.html"><a href="lecture-17.html#%E5%85%A8%E8%AE%B2%E4%B8%A4%E4%B8%AA%E9%97%AE%E9%A2%98"><i class="fa fa-check"></i>全讲两个问题</a></li>
+<li class="chapter" data-level="" data-path="lecture-17.html"><a href="lecture-17.html#%E7%BC%96%E7%A0%81%E5%9B%BE%E5%83%8Fclip-%E4%B8%8E-siglip"><i class="fa fa-check"></i>编码图像：CLIP 与 SigLIP</a></li>
+<li class="chapter" data-level="" data-path="lecture-17.html"><a href="lecture-17.html#%E6%8A%8A%E5%9B%BE%E5%83%8F%E7%BC%96%E7%A0%81%E6%8E%A5%E8%BF%9B-llmllava-%E4%B8%8E-qwen-vl"><i class="fa fa-check"></i>把图像编码接进 LLM：LLaVA 与 Qwen-VL</a></li>
+<li class="chapter" data-level="" data-path="lecture-17.html"><a href="lecture-17.html#%E8%B5%B0%E5%90%91-omnichameleon%E7%BB%9F%E4%B8%80%E7%94%9F%E6%88%90"><i class="fa fa-check"></i>走向 Omni：Chameleon（统一生成）</a></li>
+<li class="chapter" data-level="" data-path="lecture-17.html"><a href="lecture-17.html#%E5%85%A8%E8%AF%BE%E6%94%B6%E5%B0%BE"><i class="fa fa-check"></i>全课收尾</a></li>
+<li class="chapter" data-level="" data-path="lecture-17.html"><a href="lecture-17.html#%E6%80%9D%E8%80%83%E7%BB%83%E4%B9%A0-10"><i class="fa fa-check"></i>思考练习</a></li>
+<li class="chapter" data-level="" data-path="lecture-17.html"><a href="lecture-17.html#%E6%A3%80%E6%9F%A5%E6%B8%85%E5%8D%95-15"><i class="fa fa-check"></i>检查清单</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="videos.html"><a href="videos.html"><i class="fa fa-check"></i>视频与转写</a>
+<ul>
+<li class="chapter" data-level="" data-path="videos.html"><a href="videos.html#%E5%AE%98%E6%96%B9%E8%A7%86%E9%A2%91"><i class="fa fa-check"></i>官方视频</a></li>
+<li class="chapter" data-level="" data-path="videos.html"><a href="videos.html#%E5%B7%B2%E7%A1%AE%E8%AE%A4%E8%A7%86%E9%A2%91%E6%A0%B7%E4%BE%8B"><i class="fa fa-check"></i>已确认视频样例</a></li>
+<li class="chapter" data-level="" data-path="videos.html"><a href="videos.html#%E7%AC%AC%E4%B8%89%E6%96%B9%E8%BD%AC%E5%86%99%E5%92%8C%E6%91%98%E8%A6%81"><i class="fa fa-check"></i>第三方转写和摘要</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">CS336 学习台</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="lecture-02" class="section level1 hasAnchor">
+<h1>第 2 讲 Resource Accounting<a href="lecture-02.html#lecture-02" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p><strong>预计用时：</strong> 120-180 分钟</p>
+<p><strong>一句话：</strong> 在固定的算力和显存下，要训出最好的模型，<strong>前提是你能准确算出一段计算花了多少 FLOPs、占了多少显存</strong>。这一讲不讲 ML 魔法，只教你像工程师一样”算账”。</p>
+<div id="前置知识这一讲默认你已经会我从-0-给你补-1" class="section level2 hasAnchor">
+<h2>前置知识：这一讲默认你已经会（我从 0 给你补）<a href="lecture-02.html#%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86%E8%BF%99%E4%B8%80%E8%AE%B2%E9%BB%98%E8%AE%A4%E4%BD%A0%E5%B7%B2%E7%BB%8F%E4%BC%9A%E6%88%91%E4%BB%8E-0-%E7%BB%99%E4%BD%A0%E8%A1%A5-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<blockquote>
+<p>CS336 默认你上过类似 <strong>CS224N</strong>（深度学习/NLP 入门）的课，所以它<strong>不会重新解释</strong>下面这些。但你基础偏弱，所以我先把这一讲真正依赖的几块从 0 补上。Python/字节这些更底层的，见 <a href="lecture-00.html">第 0 讲 · 基础搭建</a>。</p>
+</blockquote>
+<p><strong>① 矩阵乘法的”维度规则”（全课最常用）</strong>
+两个矩阵相乘 <code>A @ B</code>，要求 A 的列数 = B 的行数，结果形状是”A 的行 × B 的列”：</p>
+<pre class="text"><code>(B, D) @ (D, K) -&gt; (B, K)     # 中间的 D 必须相等，会被&quot;消掉&quot;</code></pre>
+<blockquote>
+<p>直觉：把 <code>(B, D)</code> 看成”B 条数据、每条 D 个特征”，乘一个 <code>(D, K)</code> 的权重，就把每条数据从 D 维变成 K 维。神经网络的每一层基本都是这种乘法。本讲数 FLOPs、算显存，全建立在”看得懂形状怎么变”上。</p>
+</blockquote>
+<p><strong>② “训练一个模型”到底在干嘛（机制，不是玄学）</strong>
+训练就是不停重复这 4 步的循环：</p>
+<pre class="text"><code>1. 前向(forward) ：把数据喂进模型，算出预测，和正确答案比，得到误差 loss
+2. 反向(backward)：反推每个参数&quot;该往哪个方向调&quot;才能让 loss 变小（这个方向叫梯度）
+3. 更新(step)    ：优化器(如 Adam)按梯度把每个参数挪一小步
+4. 清零→回到 1，换下一批数据</code></pre>
+<blockquote>
+<p>模型就是一大堆数字(参数)。训练 = 反复微调这些数字，让 loss 越来越小。本讲算的”显存四块去向(参数/梯度/优化器状态/激活)“就对应这 4 步里要存的东西。</p>
+</blockquote>
+<p><strong>③ 梯度/求导的直觉（不用会算，只要懂含义）</strong>
+“导数”就是<strong>斜率</strong>：参数往某方向动一点点，loss 会变大还是变小、变多快。“梯度”就是所有参数的斜率合在一起，指向”loss 上升最快的方向”——所以训练时朝<strong>反方向</strong>走，loss 就下降。你不需要会手算导数，PyTorch 的 <code>loss.backward()</code> 自动帮你算。</p>
+<p><strong>④ PyTorch 是什么</strong>
+一个 Python 库，专门高效地做”张量(tensor)运算 + 自动求梯度 + 用 GPU 加速”。本讲的代码片段都是 PyTorch。<code>tensor</code> 就是”成堆的数字”，详见下面的速查和 <a href="lecture-00.html">第 0 讲</a>。</p>
+</div>
+<div id="先补几个词零基础向看正文前先扫一遍" class="section level2 hasAnchor">
+<h2>先补几个词（零基础向，看正文前先扫一遍）<a href="lecture-02.html#%E5%85%88%E8%A1%A5%E5%87%A0%E4%B8%AA%E8%AF%8D%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%90%91%E7%9C%8B%E6%AD%A3%E6%96%87%E5%89%8D%E5%85%88%E6%89%AB%E4%B8%80%E9%81%8D" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>这一讲会反复用到下面这些词。先用大白话过一遍，正文就不卡了。</p>
+<ul>
+<li><strong>tensor（张量）</strong>：就是<strong>一堆排好格子的数字</strong>。一个数字是 0 维；一排数字（向量）是 1 维；一张表格（矩阵）是 2 维；再叠厚一点就是 3 维、4 维。深度学习里，数据、模型参数、中间结果<strong>全都是 tensor</strong>。“rank/维数”就是它有几层格子。</li>
+<li><strong>参数 (parameters)</strong>：模型里<strong>要学习的数字</strong>，就是那些权重。GPT 有几十亿个参数 = 几十亿个待定的数。</li>
+<li><strong>浮点数 (floating point)</strong>：计算机表示带小数的数的方式。它用固定的二进制位（bit）来存，位越多越精确但越占地方。后面 fp32/bf16 就是”用多少位存一个数”的不同方案。</li>
+<li><strong>FLOP</strong>：一次最基本的浮点运算，比如一次加法或一次乘法。<strong>数 FLOPs = 数这段计算一共做了多少次加减乘</strong>。</li>
+<li><strong>matmul（矩阵乘法）</strong>：两个表格相乘。它是神经网络里最耗算力的操作，记住这个词。</li>
+<li><strong>显存 (GPU memory)</strong>：显卡上的内存，单位字节(byte)。tensor 都要放在这里才能被 GPU 计算。<strong>显存不够 = 模型训不起来</strong>，这是自学者最常撞的墙。</li>
+<li><strong>带宽 (bandwidth)</strong>：数据在”显存”和”计算核心”之间搬运的速度，单位字节/秒。可以想成一条<strong>水管的粗细</strong>：核心算得再快，水管细也会被卡住。</li>
+<li><strong>前向 / 反向 (forward / backward)</strong>：前向 = 把输入喂进模型算出预测和误差(loss)；反向 = <strong>反着推一遍，算出”每个参数该往哪个方向调”</strong>（这个方向叫梯度 gradient）。反向传播是神经网络能”学习”的核心机制，这里只需知道它存在、比前向贵。</li>
+<li><strong>优化器 (optimizer)</strong>：拿着梯度去<strong>真正更新参数</strong>的算法（如 SGD、Adam）。有些优化器（Adam）还要额外记一些历史信息，叫”优化器状态”，也占显存。</li>
+<li><strong>激活 (activation)</strong>：前向过程中每一层算出来的<strong>中间结果</strong>。反向传播需要用到它们，所以训练时得把它们存着——这是训练比推理更吃显存的主要原因。</li>
+<li><strong>batch / sequence length</strong>：batch = 一次喂多少条样本；sequence length = 每条样本有多长（多少个 token）。这两个越大，激活越多，越吃显存。</li>
+</ul>
+<blockquote>
+<p>不用背。看正文时哪个词卡住了，回到这里瞄一眼即可。</p>
+</blockquote>
+</div>
+<div id="学完你能" class="section level2 hasAnchor">
+<h2>学完你能<a href="lecture-02.html#%E5%AD%A6%E5%AE%8C%E4%BD%A0%E8%83%BD" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li>学会用”餐巾纸估算”(napkin math) 快速判断一次训练要多久、最大能训多大的模型。</li>
+<li>掌握<strong>显存会计</strong>：tensor 占多少字节、不同精度格式的取舍。</li>
+<li>掌握<strong>计算会计</strong>：matmul 的 FLOPs 怎么数、什么是 MFU。</li>
+<li>理解 <strong>arithmetic intensity / roofline</strong>：一个操作是被算力卡住(compute-bound) 还是被带宽卡住(memory-bound)。</li>
+<li>把这些串到训练上：参数、梯度、激活、优化器状态各占多少；为什么一步训练约是 <code>6 × 数据量 × 参数量</code> FLOPs。</li>
+</ol>
+</div>
+<div id="开场两个算账例子先建立直觉" class="section level2 hasAnchor">
+<h2>开场两个”算账”例子（先建立直觉）<a href="lecture-02.html#%E5%BC%80%E5%9C%BA%E4%B8%A4%E4%B8%AA%E7%AE%97%E8%B4%A6%E4%BE%8B%E5%AD%90%E5%85%88%E5%BB%BA%E7%AB%8B%E7%9B%B4%E8%A7%89" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="例-170b-模型15t-tokens1024-张-h100要训多久" class="section level3 hasAnchor">
+<h3>例 1：70B 模型、15T tokens、1024 张 H100，要训多久？<a href="lecture-02.html#%E4%BE%8B-170b-%E6%A8%A1%E5%9E%8B15t-tokens1024-%E5%BC%A0-h100%E8%A6%81%E8%AE%AD%E5%A4%9A%E4%B9%85" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<blockquote>
+<p>先解释符号：<code>70B</code> = 700 亿参数（B=billion）；<code>15T tokens</code> = 15 万亿个 token（T=trillion）；H100 是一款常见的训练显卡。<code>e</code> 是科学计数法，<code>70e9</code> 就是 70×10⁹。</p>
+</blockquote>
+<pre class="text"><code>总 FLOPs = 6 × 70e9 (参数) × 15e12 (tokens)
+H100 算力 ≈ 1979e12 / 2  FLOP/s   (bf16 稠密，约每秒 1e15 次运算)
+MFU ≈ 0.5                         (实际利用率打个对折，见下文)
+每天 FLOPs = 算力 × MFU × 1024 张 × 86400 秒
+天数 = 总FLOPs / 每天FLOPs</code></pre>
+<p>记住 <code>6 × 参数量 × token数</code> 这个公式——它是整个 scaling 讨论的地基。<strong>直觉</strong>：训练总成本 ≈ 参数越多、看的数据越多，就越贵，且是简单的相乘关系。</p>
+</div>
+<div id="例-28-张-h100用-adamw最大能训多大模型" class="section level3 hasAnchor">
+<h3>例 2：8 张 H100、用 AdamW，最大能训多大模型？<a href="lecture-02.html#%E4%BE%8B-28-%E5%BC%A0-h100%E7%94%A8-adamw%E6%9C%80%E5%A4%A7%E8%83%BD%E8%AE%AD%E5%A4%9A%E5%A4%A7%E6%A8%A1%E5%9E%8B" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<pre class="text"><code>每张 H100 显存 ≈ 80e9 字节 (80 GB)
+每个参数占字节 = 2(参数本身) + 2(它的梯度) + (4+4)(Adam 的两个状态) = 12 字节
+最大参数量 = (80e9 × 8) / 12</code></pre>
+<blockquote>
+<p>为什么一个参数要占 12 字节？因为训练时，每个参数身上挂着一串东西：它自己(2B) + 反向算出的梯度(2B) + Adam 记的两份历史(各 4B)。下文”训练显存账”会展开。</p>
+</blockquote>
+<p>注意：这没算激活(activation)，所以是<strong>上界</strong>（实际能训的更小）。</p>
+<blockquote>
+<p>这两个估算不精确，但”信封背面”算一下，你就对资源消耗有了量级感。这就是本讲要培养的 mindset。</p>
+</blockquote>
+</div>
+</div>
+<div id="一切都是-tensor" class="section level2 hasAnchor">
+<h2>一切都是 tensor<a href="lecture-02.html#%E4%B8%80%E5%88%87%E9%83%BD%E6%98%AF-tensor" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>数据、参数、梯度、优化器状态、激活——全是 tensor（成堆的数字）。Transformer 里常见 4 维 tensor：<code>(batch, seq, heads, head_dim)</code>，可以读成”一批样本 × 每条多长 × 多少个注意力头 × 每个头多宽”。</p>
+</div>
+<div id="显存-元素个数-每个元素字节数" class="section level2 hasAnchor">
+<h2>显存 = 元素个数 × 每个元素字节数<a href="lecture-02.html#%E6%98%BE%E5%AD%98-%E5%85%83%E7%B4%A0%E4%B8%AA%E6%95%B0-%E6%AF%8F%E4%B8%AA%E5%85%83%E7%B4%A0%E5%AD%97%E8%8A%82%E6%95%B0" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>一个公式就够：<code>显存 = 数字个数 × 每个数字占几字节</code>，代码里是 <code>x.numel() × x.element_size()</code>。</p>
+<p>不同<strong>精度格式</strong>就是”一个数字用几个字节存”的取舍：</p>
+<table>
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>精度</th>
+<th>字节</th>
+<th>关键特点（大白话）</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>fp32</td>
+<td>4</td>
+<td>默认、最精确，但最费显存</td>
+</tr>
+<tr class="even">
+<td>fp16</td>
+<td>2</td>
+<td>省一半显存，但<strong>能表示的数范围窄</strong>：太小的数（如 <code>1e-8</code>）会被当成 0（叫”下溢”），训练容易崩</td>
+</tr>
+<tr class="odd">
+<td>bf16</td>
+<td>2</td>
+<td>同样省一半，但<strong>能表示的范围和 fp32 一样大</strong>，只是小数精度差点——而深度学习不在乎那点精度。所以 <strong>bf16 是训练首选</strong></td>
+</tr>
+<tr class="even">
+<td>fp8</td>
+<td>1</td>
+<td>更省，H100 才支持</td>
+</tr>
+<tr class="odd">
+<td>fp4</td>
+<td>0.5</td>
+<td>2025 年的极限玩法，每”块”配一个缩放系数来补救范围</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>为什么 bf16 比 fp16 好？</strong> 一个浮点数的位分两部分：一部分管”能多大多小”(指数/范围)，一部分管”小数有多准”(精度)。fp16 把位更多分给精度，结果范围太窄、小数会下溢到 0；bf16 反过来，保住范围、牺牲精度。训练里”别下溢崩掉”比”多几位小数”重要得多，所以选 bf16。</p>
+</blockquote>
+<p><strong>混合精度训练 (mixed precision)</strong> 是标准做法，也是为了兼顾”省显存”和”别崩”：
+- 参数 / 激活 / 梯度 用 bf16（省显存）
+- 优化器状态 用 fp32（要在成百上千步上累加平均，需要更稳）
+- PyTorch 的 AMP (<code>torch.amp.autocast</code>) 会自动判断：能安全用 bf16 的地方（如 matmul）就用，危险的地方（如 exp 指数运算）保留 fp32。</p>
+</div>
+<div id="tensor-默认在-cpu-内存要-.todevice-搬到-gpu-才能用上-gpu-的大规模并行" class="section level2 hasAnchor">
+<h2>tensor 默认在 CPU 内存，要 <code>.to(device)</code> 搬到 GPU 才能用上 GPU 的大规模并行。<a href="lecture-02.html#tensor-%E9%BB%98%E8%AE%A4%E5%9C%A8-cpu-%E5%86%85%E5%AD%98%E8%A6%81-.todevice-%E6%90%AC%E5%88%B0-gpu-%E6%89%8D%E8%83%BD%E7%94%A8%E4%B8%8A-gpu-%E7%9A%84%E5%A4%A7%E8%A7%84%E6%A8%A1%E5%B9%B6%E8%A1%8C" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<blockquote>
+<p>直觉：GPU 像一个有上千个小工人的车间，但原料(tensor)得先运进车间(显存)，工人才能开工。</p>
+</blockquote>
+</div>
+<div id="einops给维度起名字别再数--1-2" class="section level2 hasAnchor">
+<h2>einops：给维度起名字，别再数 -1/-2<a href="lecture-02.html#einops%E7%BB%99%E7%BB%B4%E5%BA%A6%E8%B5%B7%E5%90%8D%E5%AD%97%E5%88%AB%E5%86%8D%E6%95%B0--1-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>传统 PyTorch 写法 <code>x @ y.transpose(-2, -1)</code> 很容易搞错是哪两维在动。einops 让你用<strong>名字</strong>写，自解释：</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="lecture-02.html#cb16-1" tabindex="-1"></a>einsum(x, y, <span class="st">&quot;batch seq1 hidden, batch seq2 hidden -&gt; batch seq1 seq2&quot;</span>)</span>
+<span id="cb16-2"><a href="lecture-02.html#cb16-2" tabindex="-1"></a><span class="bu">reduce</span>(x, <span class="st">&quot;... hidden -&gt; ...&quot;</span>, <span class="st">&quot;sum&quot;</span>)          <span class="co"># 把 hidden 这一维加掉</span></span>
+<span id="cb16-3"><a href="lecture-02.html#cb16-3" tabindex="-1"></a>rearrange(x, <span class="st">&quot;... (heads d) -&gt; ... heads d&quot;</span>, heads<span class="op">=</span><span class="dv">2</span>)   <span class="co"># 把一个大维拆成两维</span></span></code></pre></div>
+<p>记一条规则就行：<strong>箭头右边没出现的维度，会被自动求和(sum)掉</strong>。现在看不懂没关系，A1 写 Transformer 时会反复用到。</p>
+</div>
+<div id="flops-怎么数" class="section level2 hasAnchor">
+<h2>FLOPs 怎么数<a href="lecture-02.html#flops-%E6%80%8E%E4%B9%88%E6%95%B0" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><strong>FLOPs</strong>（小写 s）= 做了多少次浮点运算 = <strong>工作量</strong>。</li>
+<li><strong>FLOP/s</strong>（带斜杠）= 硬件每秒能做多少 = <strong>速度</strong>。两者读音一样，务必分清。</li>
+<li>一次矩阵乘 <code>(B,D) @ (D,K)</code> 的 FLOPs = <strong><code>2 × B × D × K</code></strong>。</li>
+</ul>
+<blockquote>
+<p><strong>这个 2BDK 怎么来的？</strong> 矩阵乘的结果是个 <code>B×K</code> 的表格，共 <code>B×K</code> 个格子。每个格子要把长度为 <code>D</code> 的两行做点积：<code>D</code> 次乘法 + <code>D</code> 次加法 ≈ <code>2D</code> 次运算。所以总共 <code>B×K×2D = 2BDK</code>。记住”每个输出格子 ≈ 2D 次运算”就能自己推。</p>
+</blockquote>
+<ul>
+<li><strong>MFU (Model FLOPs Utilization)</strong> = 实际跑出的 FLOP/s ÷ 硬件理论峰值 FLOP/s，相当于<strong>“显卡的实际利用率”</strong>。<strong>≥ 0.5 就算很好</strong>。为什么到不了 100%？因为常被”搬数据”拖后腿——下一节解释。</li>
+</ul>
+</div>
+<div id="arithmetic-intensity-与-roofline本讲最重要的洞见" class="section level2 hasAnchor">
+<h2>Arithmetic Intensity 与 Roofline（本讲最重要的洞见）<a href="lecture-02.html#arithmetic-intensity-%E4%B8%8E-roofline%E6%9C%AC%E8%AE%B2%E6%9C%80%E9%87%8D%E8%A6%81%E7%9A%84%E6%B4%9E%E8%A7%81" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>做一次计算其实分三步：① 从显存把输入搬到计算核心 → ② 算 → ③ 把结果搬回显存。所以耗时取决于两件事：<strong>算力</strong>(FLOP/s) 和 <strong>带宽</strong>(bytes/s，搬运速度)。</p>
+<ul>
+<li><strong>算术强度 (arithmetic intensity) = FLOPs ÷ 搬运的字节数</strong>：这个操作<strong>每搬 1 字节，能顺带干多少活</strong>。强度高 = 搬一次数据能算很久（划算）；强度低 = 搬半天只算一下（核心在空等）。</li>
+<li><strong>硬件强度 (accelerator intensity) = 峰值FLOP/s ÷ 带宽</strong>：这块显卡”算力与水管”的固定比值，是个分界线。</li>
+<li>判断瓶颈：
+<ul>
+<li>算术强度 <strong>&lt;</strong> 硬件强度 → <strong>memory-bound</strong>（被带宽/搬运卡住，核心在等数据）</li>
+<li>算术强度 <strong>&gt;</strong> 硬件强度 → <strong>compute-bound</strong>（被算力卡住，核心满负荷，理想状态）</li>
+</ul></li>
+</ul>
+<p>实例（H100，bf16）：</p>
+<table>
+<thead>
+<tr class="header">
+<th>操作</th>
+<th>算术强度</th>
+<th>瓶颈</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ReLU（逐元素）</td>
+<td>~1/4</td>
+<td>memory-bound</td>
+</tr>
+<tr class="even">
+<td>GeLU（逐元素，算得多点）</td>
+<td>略高</td>
+<td>仍 memory-bound</td>
+</tr>
+<tr class="odd">
+<td>点积</td>
+<td>~1/2</td>
+<td>memory-bound</td>
+</tr>
+<tr class="even">
+<td>矩阵 × 向量</td>
+<td>~1</td>
+<td>memory-bound</td>
+</tr>
+<tr class="odd">
+<td><strong>矩阵 × 矩阵（大矩阵）</strong></td>
+<td>~n/3</td>
+<td><strong>compute-bound ✓</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>结论（很重要）</strong>：
+- 逐元素操作几乎都是 memory-bound（所以 ReLU 并不比 GeLU 快——两者都卡在搬数据上，不在算上）。
+- <strong>只有大矩阵乘法才能喂饱算力</strong>。训练 Transformer 全是大 matmul → compute-bound（好事，钱花在刀刃上）。
+- <strong>推理 (inference) 主要是矩阵 × 向量 → memory-bound</strong>。这解释了一个常见现象：推理慢，往往不是算力不够，而是带宽不够。
+- 一句话总结：<code>MFU = min(1, 算术强度 / 硬件强度)</code>。</p>
+</div>
+<div id="训练时的显存与计算账把上面都串起来" class="section level2 hasAnchor">
+<h2>训练时的显存与计算账（把上面都串起来）<a href="lecture-02.html#%E8%AE%AD%E7%BB%83%E6%97%B6%E7%9A%84%E6%98%BE%E5%AD%98%E4%B8%8E%E8%AE%A1%E7%AE%97%E8%B4%A6%E6%8A%8A%E4%B8%8A%E9%9D%A2%E9%83%BD%E4%B8%B2%E8%B5%B7%E6%9D%A5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>对一个网络（参数量 N、batch B），训练时显存花在<strong>四个地方</strong>：</p>
+<table>
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>占用</th>
+<th>大小</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>参数</td>
+<td>2N</td>
+<td>模型本身（bf16，每个 2 字节）</td>
+</tr>
+<tr class="even">
+<td>梯度</td>
+<td>2N</td>
+<td>反向算出的”每个参数该怎么调”</td>
+</tr>
+<tr class="odd">
+<td>优化器状态</td>
+<td>AdaGrad 4N / <strong>Adam 8N</strong></td>
+<td>Adam 给每个参数记两份历史（一阶+二阶矩，fp32 各 4 字节）</td>
+</tr>
+<tr class="even">
+<td>激活</td>
+<td>2 × (B × D × L)</td>
+<td>前向每层的中间结果，随 batch 和层数 L 上涨</td>
+</tr>
+</tbody>
+</table>
+<p><strong>计算账（每步训练）</strong>：
+- 前向：<code>2 × 数据量 × 参数量</code>
+- 反向：<code>4 × 数据量 × 参数量</code>
+- <strong>合计：<code>6 × 数据量 × 参数量</code></strong></p>
+<blockquote>
+<p><strong>为什么反向是前向的 2 倍？</strong> 反向时，每一层要算两个东西：一是”误差怎么传给上一层”(<code>d_loss/d_输入</code>)，二是”这层参数该怎么调”(<code>d_loss/d_权重</code>)。两个都各是一次和前向同量级的 matmul，所以 2 倍。前向 1 份 + 反向 2 份 = 3 份，每份的常数是 2BDK 里的 2 → 合起来就是著名的 <strong><code>6ND</code></strong>。</p>
+</blockquote>
+<p>这对简单网络(MLP)精确，对短上下文的 Transformer 也是好近似。</p>
+</div>
+<div id="两个省显存的技巧" class="section level2 hasAnchor">
+<h2>两个省显存的技巧<a href="lecture-02.html#%E4%B8%A4%E4%B8%AA%E7%9C%81%E6%98%BE%E5%AD%98%E7%9A%84%E6%8A%80%E5%B7%A7" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><strong>梯度累积 (gradient accumulation)</strong>：想用大 batch（更稳）但激活放不下 → 把大 batch 拆成几个小 micro-batch，<strong>逐个算梯度、累加但先不清零</strong>，攒够一个完整 batch 再统一更新参数。效果等同大 batch，但激活显存只按 micro-batch 算，省一大截。</li>
+<li><strong>激活检查点 (activation checkpointing / 重计算)</strong>：前向时<strong>只存少数几层</strong>的激活，反向需要用到中间激活时，<strong>从最近的存档点临时重新算一遍</strong>。本质是”用多花点算力，换省下的显存”。常用折中：每隔 √L 层存一次，激活显存降到 O(√L)，多付 O(L) 的重算。</li>
+</ul>
+</div>
+<div id="优化器谱系顺手记知道它们的区别即可" class="section level2 hasAnchor">
+<h2>优化器谱系（顺手记，知道它们的区别即可）<a href="lecture-02.html#%E4%BC%98%E5%8C%96%E5%99%A8%E8%B0%B1%E7%B3%BB%E9%A1%BA%E6%89%8B%E8%AE%B0%E7%9F%A5%E9%81%93%E5%AE%83%E4%BB%AC%E7%9A%84%E5%8C%BA%E5%88%AB%E5%8D%B3%E5%8F%AF" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<blockquote>
+<p>momentum = SGD + 对梯度做”指数平均”（让更新更平滑）
+AdaGrad = SGD + 对 梯度² 做累加（给不同参数自适应的步长）
+RMSProp = AdaGrad，但 梯度² 用指数平均（更适合长训练）
+Adam = RMSProp + momentum（最常用，所以它要存两份状态 → 8N）</p>
+</blockquote>
+</div>
+<div id="手工练习" class="section level2 hasAnchor">
+<h2>手工练习<a href="lecture-02.html#%E6%89%8B%E5%B7%A5%E7%BB%83%E4%B9%A0" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="练习-1算一次训练要多久" class="section level3 hasAnchor">
+<h3>练习 1：算一次训练要多久<a href="lecture-02.html#%E7%BB%83%E4%B9%A0-1%E7%AE%97%E4%B8%80%E6%AC%A1%E8%AE%AD%E7%BB%83%E8%A6%81%E5%A4%9A%E4%B9%85" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>用例 1 的公式，把数字代进去，算出”70B / 15T / 1024 H100”大概几天。再改成 7B、1T、单卡，感受量级怎么变（应该能体会到”参数和数据一缩，成本断崖式下降”）。</p>
+</div>
+<div id="练习-2判断瓶颈" class="section level3 hasAnchor">
+<h3>练习 2：判断瓶颈<a href="lecture-02.html#%E7%BB%83%E4%B9%A0-2%E5%88%A4%E6%96%AD%E7%93%B6%E9%A2%88" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>已知 H100：峰值 <code>1979e12/2</code> FLOP/s，带宽 <code>3.35e12</code> bytes/s。
+1. 算出硬件强度（分界线）≈ 多少 FLOPs/byte。
+2. 对一个 <code>1024×1024 @ 1024×1024</code> 的 bf16 matmul，估算它的算术强度，判断是 compute-bound 还是 memory-bound。</p>
+</div>
+<div id="练习-3显存账" class="section level3 hasAnchor">
+<h3>练习 3：显存账<a href="lecture-02.html#%E7%BB%83%E4%B9%A0-3%E6%98%BE%E5%AD%98%E8%B4%A6" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>一个 1.3B 参数模型，用 Adam + bf16 训练。只算参数+梯度+优化器状态（先忽略激活），需要多少显存？一张 80GB 的 H100 放得下吗？（提示：每参数 2+2+8 字节）</p>
+</div>
+</div>
+<div id="和-assignment-1-的连接" class="section level2 hasAnchor">
+<h2>和 Assignment 1 的连接<a href="lecture-02.html#%E5%92%8C-assignment-1-%E7%9A%84%E8%BF%9E%E6%8E%A5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>A1 的后半部分要求你为<strong>真实的 Transformer</strong> 做完整资源会计：
+- 数出一个 Transformer 前向/反向的 FLOPs（不能只用 <code>6ND</code> 近似，要拆到 attention、FFN、embedding 各部分）。
+- 算出训练显存随 batch、序列长度、层数怎么变。
+- 本讲的 MLP 例子是脚手架，A1 让你把同一套方法套到真实结构上。</p>
+</div>
+<div id="今天结束前的检查能答上来就算过关" class="section level2 hasAnchor">
+<h2>今天结束前的检查（能答上来就算过关）<a href="lecture-02.html#%E4%BB%8A%E5%A4%A9%E7%BB%93%E6%9D%9F%E5%89%8D%E7%9A%84%E6%A3%80%E6%9F%A5%E8%83%BD%E7%AD%94%E4%B8%8A%E6%9D%A5%E5%B0%B1%E7%AE%97%E8%BF%87%E5%85%B3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>能默写 <code>6 × 数据量 × 参数量</code>，并解释 6 = 2(前向) + 4(反向) 的来历。</li>
+<li>能用一句话说清 bf16 为什么比 fp16 更适合训练。</li>
+<li>能用”算术强度 vs 硬件强度”判断一个操作是 compute- 还是 memory-bound。</li>
+<li>能解释为什么训练是 compute-bound、推理是 memory-bound。</li>
+<li>能列出训练显存的四块去向，并说出梯度累积和激活检查点各自省的是哪一块。</li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="lecture-01.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="lecture-03.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": false,
+    "twitter": false,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": {}
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": {},
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section",
+    "scroll_highlight": true
+  }
+});
+});
+</script>
+
+</body>
+
+</html>

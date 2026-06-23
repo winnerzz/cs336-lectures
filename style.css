@@ -1,0 +1,143 @@
+body {
+  color: #333;
+}
+
+.book.font-family-1 {
+  font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft YaHei", "SimSun", sans-serif;
+}
+
+.book .book-summary {
+  width: 300px;
+  background: #fafafa;
+  border-right: 1px solid rgba(0, 0, 0, .07);
+}
+
+.book.with-summary .book-body {
+  left: 300px;
+}
+
+.book .book-summary ul.summary li a {
+  color: #364149;
+  padding: 6px 15px;
+}
+
+.book .book-summary ul.summary li.active > a {
+  color: #008cff;
+  background: transparent;
+  font-weight: 600;
+}
+
+.book .book-summary ul.summary li.divider {
+  height: 1px;
+  margin: 7px 0;
+  overflow: hidden;
+  background: rgba(0, 0, 0, .07);
+}
+
+.book .book-body .page-wrapper .page-inner {
+  max-width: 800px;
+  padding: 20px 0 40px;
+}
+
+.book .book-body .page-wrapper .page-inner section.normal {
+  color: #333;
+  font-size: 1.6rem;
+  line-height: 1.7;
+}
+
+/* ---- 标题层级：章(第N讲) → 节 → 小节，CSS 自动编号（贴近 PKU R book） ---- */
+.book .book-body .page-inner section.normal .section.level1 { counter-reset: sec2; }
+.book .book-body .page-inner section.normal .section.level2 { counter-reset: sec3; }
+.book .book-body .page-inner section.normal .section.level3 { counter-reset: sec4; }
+
+.book .book-body .page-inner section.normal h1 {
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: #2a2620;
+  margin-top: .2em;
+  padding-bottom: .35em;
+  border-bottom: 2px solid #2f6253;
+}
+
+.book .book-body .page-inner section.normal h2 {
+  font-size: 1.95rem;
+  font-weight: 700;
+  color: #23201b;
+  margin-top: 2.4em;
+  padding-bottom: .3em;
+  border-bottom: 1px solid #e3ddd0;
+}
+
+.book .book-body .page-inner section.normal h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #23201b;
+  margin-top: 1.8em;
+}
+
+.book .book-body .page-inner section.normal h4 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #3a352d;
+  margin-top: 1.4em;
+}
+
+.book .book-body .page-inner section.normal .section.level2 > h2::before {
+  counter-increment: sec2;
+  content: counter(sec2);
+  margin-right: .55em;
+  color: #2f6253;
+  font-weight: 700;
+}
+
+.book .book-body .page-inner section.normal .section.level3 > h3::before {
+  counter-increment: sec3;
+  content: counter(sec2) "." counter(sec3);
+  margin-right: .45em;
+  color: #2f6253;
+  font-weight: 700;
+}
+
+.book .book-body .page-inner section.normal .section.level4 > h4::before {
+  counter-increment: sec4;
+  content: counter(sec2) "." counter(sec3) "." counter(sec4);
+  margin-right: .4em;
+  color: #2f6253;
+  font-weight: 700;
+}
+
+.book .book-body .page-inner section.normal a {
+  color: #2f6253;
+  text-decoration: none;
+}
+.book .book-body .page-inner section.normal a:hover { text-decoration: underline; }
+
+/* ---- 引用块做成安静的 callout（前置知识/直觉提示常用） ---- */
+.book .book-body .page-inner section.normal blockquote {
+  margin: 1.1em 0;
+  padding: .6em 1.1em;
+  color: #4a443a;
+  background: #f6f3ea;
+  border-left: 3px solid #2f6253;
+  border-radius: 0 4px 4px 0;
+}
+.book .book-body .page-inner section.normal blockquote > :first-child { margin-top: 0; }
+.book .book-body .page-inner section.normal blockquote > :last-child { margin-bottom: 0; }
+
+.book .book-body .page-inner section.normal table {
+  font-size: 1.4rem;
+}
+
+.book .book-body .page-inner section.normal pre {
+  border-radius: 3px;
+}
+
+@media (max-width: 600px) {
+  .book.with-summary .book-body {
+    left: 0;
+  }
+
+  .book .book-body .page-wrapper .page-inner {
+    padding: 12px 15px 32px;
+  }
+}
