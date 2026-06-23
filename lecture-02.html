@@ -200,7 +200,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#%E5%AD%97%E7%AC%A6-%E5%AD%97%E8%8A%82%E4%B8%80%E4%B8%AA%E5%BF%85%E9%A1%BB%E4%BA%B2%E7%9C%BC%E7%9C%8B%E5%88%B0%E7%9A%84%E4%BE%8B%E5%AD%90"><i class="fa fa-check"></i>字符 ≠ 字节（一个必须亲眼看到的例子）</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#bpe%E8%AE%A9%E6%95%B0%E6%8D%AE%E8%87%AA%E5%B7%B1%E5%86%B3%E5%AE%9A%E8%AF%8D%E8%A1%A8"><i class="fa fa-check"></i>BPE：让数据自己决定词表</a></li>
+<li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#bpe%E8%AE%A9%E6%95%B0%E6%8D%AE%E8%87%AA%E5%B7%B1%E5%86%B3%E5%AE%9A%E8%AF%8D%E8%A1%A8"><i class="fa fa-check"></i>BPE：让数据自己决定词表</a>
+<ul>
+<li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#%E8%AE%AD%E7%BB%83%E6%89%8B%E7%AE%97%E4%B8%80%E9%81%8D-the-cat-in-the-hat"><i class="fa fa-check"></i>训练：手算一遍 <code>the cat in the hat</code></a></li>
+<li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#%E7%BC%96%E7%A0%81%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BF%85%E9%A1%BB%E6%8C%89%E5%AD%A6%E4%B9%A0%E9%A1%BA%E5%BA%8F%E5%A5%97%E5%90%88%E5%B9%B6"><i class="fa fa-check"></i>编码：为什么必须”按学习顺序”套合并</a></li>
+<li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#%E6%9C%80%E7%BB%88%E8%AF%8D%E8%A1%A8%E6%80%8E%E4%B9%88%E6%9E%84%E6%88%90"><i class="fa fa-check"></i>最终词表怎么构成</a></li>
+<li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E5%A4%8D%E6%9D%82%E5%BA%A6%E6%8E%A5-l02-%E7%9A%84%E5%B7%A5%E7%A8%8B%E8%84%91"><i class="fa fa-check"></i>数据结构与复杂度（接 L02 的工程脑）</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#%E4%B8%A4%E4%B8%AA%E7%BB%95%E4%B8%8D%E5%BC%80%E7%9A%84%E5%B7%A5%E7%A8%8B%E7%BB%86%E8%8A%82"><i class="fa fa-check"></i>两个绕不开的工程细节</a>
+<ul>
+<li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#pre-tokenization%E5%85%88%E7%B2%97%E5%88%87%E5%86%8D%E8%AE%A9-bpe-%E5%9C%A8%E8%AF%8D%E5%86%85%E9%83%A8%E5%90%88%E5%B9%B6"><i class="fa fa-check"></i>pre-tokenization：先粗切，再让 BPE 在词内部合并</a></li>
+<li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#special-tokens%E5%BF%85%E9%A1%BB%E6%95%B4%E4%BD%93%E4%BF%9D%E7%95%99%E4%B8%8D%E8%83%BD%E8%A2%AB%E6%8B%86"><i class="fa fa-check"></i>special tokens：必须整体保留，不能被拆</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#%E6%8E%A5%E5%88%B0-assignment-1"><i class="fa fa-check"></i>接到 Assignment 1</a></li>
 <li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#%E5%8A%A8%E6%89%8B%E7%BB%83%E4%B9%A0"><i class="fa fa-check"></i>动手练习</a></li>
 <li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#%E8%BF%87%E5%85%B3%E6%A3%80%E6%9F%A5-1"><i class="fa fa-check"></i>过关检查</a></li>
@@ -223,6 +234,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="lecture-02.html"><a href="lecture-02.html#flops-%E6%80%8E%E4%B9%88%E6%95%B0"><i class="fa fa-check"></i>FLOPs 怎么数</a></li>
 <li class="chapter" data-level="" data-path="lecture-02.html"><a href="lecture-02.html#arithmetic-intensity-%E4%B8%8E-roofline%E6%9C%AC%E8%AE%B2%E6%9C%80%E9%87%8D%E8%A6%81%E7%9A%84%E6%B4%9E%E8%A7%81"><i class="fa fa-check"></i>Arithmetic Intensity 与 Roofline（本讲最重要的洞见）</a></li>
 <li class="chapter" data-level="" data-path="lecture-02.html"><a href="lecture-02.html#%E8%AE%AD%E7%BB%83%E6%97%B6%E7%9A%84%E6%98%BE%E5%AD%98%E4%B8%8E%E8%AE%A1%E7%AE%97%E8%B4%A6%E6%8A%8A%E4%B8%8A%E9%9D%A2%E9%83%BD%E4%B8%B2%E8%B5%B7%E6%9D%A5"><i class="fa fa-check"></i>训练时的显存与计算账（把上面都串起来）</a></li>
+<li class="chapter" data-level="" data-path="lecture-02.html"><a href="lecture-02.html#nd-%E7%9A%84%E7%9B%B2%E5%8C%BA%E6%B3%A8%E6%84%8F%E5%8A%9B%E7%9A%84-seq%C2%B2-%E9%A1%B9"><i class="fa fa-check"></i>6ND 的盲区：注意力的 seq² 项</a></li>
 <li class="chapter" data-level="" data-path="lecture-02.html"><a href="lecture-02.html#%E4%B8%A4%E4%B8%AA%E7%9C%81%E6%98%BE%E5%AD%98%E7%9A%84%E6%8A%80%E5%B7%A7"><i class="fa fa-check"></i>两个省显存的技巧</a></li>
 <li class="chapter" data-level="" data-path="lecture-02.html"><a href="lecture-02.html#%E4%BC%98%E5%8C%96%E5%99%A8%E8%B0%B1%E7%B3%BB%E9%A1%BA%E6%89%8B%E8%AE%B0%E7%9F%A5%E9%81%93%E5%AE%83%E4%BB%AC%E7%9A%84%E5%8C%BA%E5%88%AB%E5%8D%B3%E5%8F%AF"><i class="fa fa-check"></i>优化器谱系（顺手记，知道它们的区别即可）</a></li>
 <li class="chapter" data-level="" data-path="lecture-02.html"><a href="lecture-02.html#%E6%89%8B%E5%B7%A5%E7%BB%83%E4%B9%A0"><i class="fa fa-check"></i>手工练习</a>
@@ -245,6 +257,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="lecture-03.html"><a href="lecture-03.html#%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E4%B8%8E%E9%97%A8%E6%8E%A7swiglu"><i class="fa fa-check"></i>激活函数与门控（SwiGLU）</a></li>
 <li class="chapter" data-level="" data-path="lecture-03.html"><a href="lecture-03.html#%E4%B8%B2%E8%A1%8C-vs-%E5%B9%B6%E8%A1%8C%E5%B1%82"><i class="fa fa-check"></i>串行 vs 并行层</a></li>
 <li class="chapter" data-level="" data-path="lecture-03.html"><a href="lecture-03.html#%E4%BD%8D%E7%BD%AE%E7%BC%96%E7%A0%81%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF-rope"><i class="fa fa-check"></i>位置编码：为什么是 RoPE</a></li>
+<li class="chapter" data-level="" data-path="lecture-03.html"><a href="lecture-03.html#%E4%B8%80%E4%B8%AA%E7%8E%B0%E4%BB%A3-block-%E9%95%BF%E4%BB%80%E4%B9%88%E6%A0%B7%E6%95%B0%E6%8D%AE%E6%B5%81-%E5%8F%82%E6%95%B0%E9%87%8F"><i class="fa fa-check"></i>一个现代 block 长什么样：数据流 + 参数量</a></li>
 <li class="chapter" data-level="" data-path="lecture-03.html"><a href="lecture-03.html#%E5%85%B1%E8%AF%86%E8%B6%85%E5%8F%82%E5%A4%A7%E5%AE%B6%E5%85%B6%E5%AE%9E%E9%83%BD%E7%94%A8%E5%90%8C%E4%B8%80%E4%B8%AA%E5%80%BC"><i class="fa fa-check"></i>共识超参（“大家其实都用同一个值”）</a></li>
 <li class="chapter" data-level="" data-path="lecture-03.html"><a href="lecture-03.html#%E6%AD%A3%E5%88%99%E5%8C%96%E8%BF%98%E9%9C%80%E8%A6%81%E5%90%97"><i class="fa fa-check"></i>正则化：还需要吗？</a></li>
 <li class="chapter" data-level="" data-path="lecture-03.html"><a href="lecture-03.html#%E7%A8%B3%E5%AE%9A%E6%80%A7%E6%8A%80%E5%B7%A7%E5%88%AB%E8%AE%AD%E5%87%BA%E4%BC%9A%E5%8F%91%E6%95%A3%E7%9A%84%E6%A8%A1%E5%9E%8B"><i class="fa fa-check"></i>稳定性技巧（别训出会发散的模型）</a></li>
@@ -391,6 +404,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="lecture-13.html"><a href="lecture-13.html#%E7%89%88%E6%9D%83%E4%B8%8E%E5%90%88%E7%90%86%E4%BD%BF%E7%94%A8%E8%BF%99%E4%B8%80%E8%AE%B2%E7%9A%84%E9%87%8D%E7%82%B9"><i class="fa fa-check"></i>版权与合理使用（这一讲的重点）</a></li>
 <li class="chapter" data-level="" data-path="lecture-13.html"><a href="lecture-13.html#%E4%B8%BB%E8%A6%81%E6%95%B0%E6%8D%AE%E6%9D%A5%E6%BA%90"><i class="fa fa-check"></i>主要数据来源</a></li>
 <li class="chapter" data-level="" data-path="lecture-13.html"><a href="lecture-13.html#%E6%95%B0%E6%8D%AE%E9%9B%86%E6%BC%94%E8%BF%9B%E5%8F%B2%E4%B8%80%E6%9D%A1%E4%B8%BB%E7%BA%BF%E8%B6%8A%E6%9D%A5%E8%B6%8A%E4%BC%9A%E8%BF%87%E6%BB%A4"><i class="fa fa-check"></i>数据集演进史（一条主线：越来越会”过滤”）</a></li>
+<li class="chapter" data-level="" data-path="lecture-13.html"><a href="lecture-13.html#%E8%B4%A8%E9%87%8F%E5%88%86%E7%B1%BB%E5%99%A8%E5%88%B0%E5%BA%95%E6%80%8E%E4%B9%88%E5%B7%A5%E4%BD%9Cdclm-%E9%82%A3%E4%B8%80%E6%8B%9B%E7%9A%84%E5%BA%95%E5%B1%82"><i class="fa fa-check"></i>质量分类器到底怎么工作（DCLM 那一招的底层）</a></li>
 <li class="chapter" data-level="" data-path="lecture-13.html"><a href="lecture-13.html#%E6%80%9D%E8%80%83%E7%BB%83%E4%B9%A0-7"><i class="fa fa-check"></i>思考练习</a></li>
 <li class="chapter" data-level="" data-path="lecture-13.html"><a href="lecture-13.html#%E6%A3%80%E6%9F%A5%E6%B8%85%E5%8D%95-10"><i class="fa fa-check"></i>检查清单</a></li>
 </ul></li>
@@ -442,6 +456,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="lecture-17.html"><a href="lecture-17.html#%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86%E8%BF%99%E4%B8%80%E8%AE%B2%E9%BB%98%E8%AE%A4%E4%BD%A0%E5%B7%B2%E7%BB%8F%E4%BC%9A%E6%88%91%E4%BB%8E-0-%E7%BB%99%E4%BD%A0%E8%A1%A5-16"><i class="fa fa-check"></i>前置知识：这一讲默认你已经会（我从 0 给你补）</a></li>
 <li class="chapter" data-level="" data-path="lecture-17.html"><a href="lecture-17.html#%E5%85%A8%E8%AE%B2%E4%B8%A4%E4%B8%AA%E9%97%AE%E9%A2%98"><i class="fa fa-check"></i>全讲两个问题</a></li>
+<li class="chapter" data-level="" data-path="lecture-17.html"><a href="lecture-17.html#%E4%B8%80%E5%BC%A0%E5%9B%BE%E5%88%B0%E5%BA%95%E5%8F%98%E5%A4%9A%E5%B0%91-token%E6%8E%A5-l02l10-%E7%9A%84%E5%BA%8F%E5%88%97%E8%B4%A6"><i class="fa fa-check"></i>一张图到底变多少 token（接 L02/L10 的序列账）</a></li>
 <li class="chapter" data-level="" data-path="lecture-17.html"><a href="lecture-17.html#%E7%BC%96%E7%A0%81%E5%9B%BE%E5%83%8Fclip-%E4%B8%8E-siglip"><i class="fa fa-check"></i>编码图像：CLIP 与 SigLIP</a></li>
 <li class="chapter" data-level="" data-path="lecture-17.html"><a href="lecture-17.html#%E6%8A%8A%E5%9B%BE%E5%83%8F%E7%BC%96%E7%A0%81%E6%8E%A5%E8%BF%9B-llmllava-%E4%B8%8E-qwen-vl"><i class="fa fa-check"></i>把图像编码接进 LLM：LLaVA 与 Qwen-VL</a></li>
 <li class="chapter" data-level="" data-path="lecture-17.html"><a href="lecture-17.html#%E8%B5%B0%E5%90%91-omnichameleon%E7%BB%9F%E4%B8%80%E7%94%9F%E6%88%90"><i class="fa fa-check"></i>走向 Omni：Chameleon（统一生成）</a></li>
@@ -543,15 +558,23 @@ H100 算力 ≈ 1979e12 / 2  FLOP/s   (bf16 稠密，约每秒 1e15 次运算)
 MFU ≈ 0.5                         (实际利用率打个对折，见下文)
 每天 FLOPs = 算力 × MFU × 1024 张 × 86400 秒
 天数 = 总FLOPs / 每天FLOPs</code></pre>
-<p>记住 <code>6 × 参数量 × token数</code> 这个公式——它是整个 scaling 讨论的地基。<strong>直觉</strong>：训练总成本 ≈ 参数越多、看的数据越多，就越贵，且是简单的相乘关系。</p>
+<p><strong>把数字真算出来（跟着按一遍计算器）</strong>：</p>
+<pre class="text"><code>总 FLOPs   = 6 × 70e9 × 15e12          ≈ 6.3e24
+单卡有效   = 989e12 × 0.5              ≈ 4.9e14 FLOP/s   (峰值打对折)
+1024 卡    = 4.9e14 × 1024            ≈ 5.0e17 FLOP/s
+每天       = 5.0e17 × 86400           ≈ 4.4e22 FLOPs
+天数       = 6.3e24 / 4.4e22          ≈ 143 天 (约 4-5 个月)</code></pre>
+<blockquote>
+<p>量级对得上现实：这就是为什么前沿大模型一训就是几个月、几百万 GPU 小时、几千万美元。记住 <code>6 × 参数量 × token数</code> ——它是整个 scaling 讨论的地基。<strong>直觉</strong>：参数越多、看的数据越多，成本就越贵，且是简单的相乘关系。</p>
+</blockquote>
 </div>
 <div id="例-28-张-h100用-adamw最大能训多大模型" class="section level3 hasAnchor">
 <h3>例 2：8 张 H100、用 AdamW，最大能训多大模型？<a href="lecture-02.html#%E4%BE%8B-28-%E5%BC%A0-h100%E7%94%A8-adamw%E6%9C%80%E5%A4%A7%E8%83%BD%E8%AE%AD%E5%A4%9A%E5%A4%A7%E6%A8%A1%E5%9E%8B" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <pre class="text"><code>每张 H100 显存 ≈ 80e9 字节 (80 GB)
 每个参数占字节 = 2(参数本身) + 2(它的梯度) + (4+4)(Adam 的两个状态) = 12 字节
-最大参数量 = (80e9 × 8) / 12</code></pre>
+最大参数量 = (80e9 × 8) / 12 = 640e9 / 12 ≈ 53e9 ≈ 53B</code></pre>
 <blockquote>
-<p>为什么一个参数要占 12 字节？因为训练时，每个参数身上挂着一串东西：它自己(2B) + 反向算出的梯度(2B) + Adam 记的两份历史(各 4B)。下文”训练显存账”会展开。</p>
+<p>为什么一个参数要占 12 字节？因为训练时，每个参数身上挂着一串东西：它自己(2B) + 反向算出的梯度(2B) + Adam 记的两份历史(各 4B)。下文”训练显存账”会展开。算出来 <strong>≈ 53B</strong>——但这还没算激活，所以是<strong>上界</strong>，真能训的远小于此。</p>
 </blockquote>
 <p>注意：这没算激活(activation)，所以是<strong>上界</strong>（实际能训的更小）。</p>
 <blockquote>
@@ -625,9 +648,9 @@ MFU ≈ 0.5                         (实际利用率打个对折，见下文)
 <div id="einops给维度起名字别再数--1-2" class="section level2 hasAnchor">
 <h2>einops：给维度起名字，别再数 -1/-2<a href="lecture-02.html#einops%E7%BB%99%E7%BB%B4%E5%BA%A6%E8%B5%B7%E5%90%8D%E5%AD%97%E5%88%AB%E5%86%8D%E6%95%B0--1-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>传统 PyTorch 写法 <code>x @ y.transpose(-2, -1)</code> 很容易搞错是哪两维在动。einops 让你用<strong>名字</strong>写，自解释：</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="lecture-02.html#cb16-1" tabindex="-1"></a>einsum(x, y, <span class="st">&quot;batch seq1 hidden, batch seq2 hidden -&gt; batch seq1 seq2&quot;</span>)</span>
-<span id="cb16-2"><a href="lecture-02.html#cb16-2" tabindex="-1"></a><span class="bu">reduce</span>(x, <span class="st">&quot;... hidden -&gt; ...&quot;</span>, <span class="st">&quot;sum&quot;</span>)          <span class="co"># 把 hidden 这一维加掉</span></span>
-<span id="cb16-3"><a href="lecture-02.html#cb16-3" tabindex="-1"></a>rearrange(x, <span class="st">&quot;... (heads d) -&gt; ... heads d&quot;</span>, heads<span class="op">=</span><span class="dv">2</span>)   <span class="co"># 把一个大维拆成两维</span></span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb24-1"><a href="lecture-02.html#cb24-1" tabindex="-1"></a>einsum(x, y, <span class="st">&quot;batch seq1 hidden, batch seq2 hidden -&gt; batch seq1 seq2&quot;</span>)</span>
+<span id="cb24-2"><a href="lecture-02.html#cb24-2" tabindex="-1"></a><span class="bu">reduce</span>(x, <span class="st">&quot;... hidden -&gt; ...&quot;</span>, <span class="st">&quot;sum&quot;</span>)          <span class="co"># 把 hidden 这一维加掉</span></span>
+<span id="cb24-3"><a href="lecture-02.html#cb24-3" tabindex="-1"></a>rearrange(x, <span class="st">&quot;... (heads d) -&gt; ... heads d&quot;</span>, heads<span class="op">=</span><span class="dv">2</span>)   <span class="co"># 把一个大维拆成两维</span></span></code></pre></div>
 <p>记一条规则就行：<strong>箭头右边没出现的维度，会被自动求和(sum)掉</strong>。现在看不懂没关系，A1 写 Transformer 时会反复用到。</p>
 </div>
 <div id="flops-怎么数" class="section level2 hasAnchor">
@@ -656,6 +679,15 @@ MFU ≈ 0.5                         (实际利用率打个对折，见下文)
 <li>算术强度 <strong>&gt;</strong> 硬件强度 → <strong>compute-bound</strong>（被算力卡住，核心满负荷，理想状态）</li>
 </ul></li>
 </ul>
+<p><strong>先把 H100 的”分界线”算出来</strong>（bf16）：</p>
+<pre class="text"><code>硬件强度 = 峰值FLOP/s ÷ 带宽 = 989e12 / 3.35e12 ≈ 295 FLOPs/byte</code></pre>
+<p>意思是：<strong>一个操作每从显存搬 1 字节，至少要顺带做 ~295 次浮点运算，才喂得饱 H100</strong>；达不到就在等数据。拿一个 <code>1024×1024 @ 1024×1024</code> 的 bf16 matmul 验证：</p>
+<pre class="text"><code>FLOPs  = 2 × 1024³                    ≈ 2.1e9
+搬运   = 读两个输入+写一个输出 = 3 × 1024² × 2字节 ≈ 6.3e6
+算术强度 = 2.1e9 / 6.3e6              ≈ 333 FLOPs/byte  &gt; 295 → compute-bound ✓</code></pre>
+<blockquote>
+<p>这就是为什么”<strong>大</strong> matmul 才划算”：把 1024 换成 128，算术强度掉到 ~42 &lt; 295，立刻变 memory-bound。矩阵越大，每搬一份数据能复用的计算越多。</p>
+</blockquote>
 <p>实例（H100，bf16）：</p>
 <table>
 <thead>
@@ -747,6 +779,20 @@ MFU ≈ 0.5                         (实际利用率打个对折，见下文)
 </blockquote>
 <p>这对简单网络(MLP)精确，对短上下文的 Transformer 也是好近似。</p>
 </div>
+<div id="nd-的盲区注意力的-seq²-项" class="section level2 hasAnchor">
+<h2>6ND 的盲区：注意力的 seq² 项<a href="lecture-02.html#nd-%E7%9A%84%E7%9B%B2%E5%8C%BA%E6%B3%A8%E6%84%8F%E5%8A%9B%E7%9A%84-seq%C2%B2-%E9%A1%B9" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><code>6ND</code> 只数了”<strong>带参数的</strong> matmul”（各个线性层）。但注意力里有<strong>两个不带参数、却随序列长度平方增长</strong>的 matmul，它们不在 <code>6ND</code> 里：</p>
+<pre class="text"><code>注意力分数  scores = Q @ Kᵀ   形状 (seq, d) @ (d, seq) → (seq, seq)
+加权求和    out    = scores @ V          (seq, seq) @ (seq, d)
+两者每层每序列 ≈ 4 × seq² × d_model FLOPs（与参数量无关）</code></pre>
+<ul>
+<li><strong>短上下文</strong>：<code>seq</code> 不大，这项远小于 <code>6ND</code> 的线性层部分，所以 <code>6ND</code> 够用。</li>
+<li><strong>长上下文</strong>：<code>seq</code> 一大，<code>seq²</code> 项会反超，<code>6ND</code> 就会<strong>低估</strong>真实 FLOPs。</li>
+</ul>
+<blockquote>
+<p>这正是专业人士看 <code>6ND</code> 时心里那根弦：它是好用的”信封背面”近似，但<strong>知道它在哪失效</strong>。长上下文的平方开销，就是后面 <a href="lecture-04.html">L04</a>（稀疏/线性注意力）和 <a href="lecture-06.html">L06</a>（FlashAttention）要对付的东西。A1 要求你<strong>不用 6ND 近似、拆到 attention/FFN/embedding 逐项数</strong>，原因就在这。</p>
+</blockquote>
+</div>
 <div id="两个省显存的技巧" class="section level2 hasAnchor">
 <h2>两个省显存的技巧<a href="lecture-02.html#%E4%B8%A4%E4%B8%AA%E7%9C%81%E6%98%BE%E5%AD%98%E7%9A%84%E6%8A%80%E5%B7%A7" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
@@ -792,9 +838,11 @@ Adam = RMSProp + momentum（最常用，所以它要存两份状态 → 8N）</p
 <ul>
 <li>能默写 <code>6 × 数据量 × 参数量</code>，并解释 6 = 2(前向) + 4(反向) 的来历。</li>
 <li>能用一句话说清 bf16 为什么比 fp16 更适合训练。</li>
-<li>能用”算术强度 vs 硬件强度”判断一个操作是 compute- 还是 memory-bound。</li>
+<li>能用”算术强度 vs 硬件强度”判断一个操作是 compute- 还是 memory-bound，并知道 H100 的分界 ≈295 FLOPs/byte 怎么来的。</li>
 <li>能解释为什么训练是 compute-bound、推理是 memory-bound。</li>
 <li>能列出训练显存的四块去向，并说出梯度累积和激活检查点各自省的是哪一块。</li>
+<li>能说出 <code>6ND</code> 的盲区——注意力的 <code>seq²</code> 项不在里面，长上下文会低估，并知道这接到 L04/L06。</li>
+<li>能把开场两个例子的数字真算出来（≈143 天 / ≈53B），不只是写公式。</li>
 </ul>
 
 </div>

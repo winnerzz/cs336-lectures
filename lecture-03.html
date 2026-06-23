@@ -200,7 +200,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#%E5%AD%97%E7%AC%A6-%E5%AD%97%E8%8A%82%E4%B8%80%E4%B8%AA%E5%BF%85%E9%A1%BB%E4%BA%B2%E7%9C%BC%E7%9C%8B%E5%88%B0%E7%9A%84%E4%BE%8B%E5%AD%90"><i class="fa fa-check"></i>字符 ≠ 字节（一个必须亲眼看到的例子）</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#bpe%E8%AE%A9%E6%95%B0%E6%8D%AE%E8%87%AA%E5%B7%B1%E5%86%B3%E5%AE%9A%E8%AF%8D%E8%A1%A8"><i class="fa fa-check"></i>BPE：让数据自己决定词表</a></li>
+<li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#bpe%E8%AE%A9%E6%95%B0%E6%8D%AE%E8%87%AA%E5%B7%B1%E5%86%B3%E5%AE%9A%E8%AF%8D%E8%A1%A8"><i class="fa fa-check"></i>BPE：让数据自己决定词表</a>
+<ul>
+<li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#%E8%AE%AD%E7%BB%83%E6%89%8B%E7%AE%97%E4%B8%80%E9%81%8D-the-cat-in-the-hat"><i class="fa fa-check"></i>训练：手算一遍 <code>the cat in the hat</code></a></li>
+<li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#%E7%BC%96%E7%A0%81%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BF%85%E9%A1%BB%E6%8C%89%E5%AD%A6%E4%B9%A0%E9%A1%BA%E5%BA%8F%E5%A5%97%E5%90%88%E5%B9%B6"><i class="fa fa-check"></i>编码：为什么必须”按学习顺序”套合并</a></li>
+<li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#%E6%9C%80%E7%BB%88%E8%AF%8D%E8%A1%A8%E6%80%8E%E4%B9%88%E6%9E%84%E6%88%90"><i class="fa fa-check"></i>最终词表怎么构成</a></li>
+<li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E5%A4%8D%E6%9D%82%E5%BA%A6%E6%8E%A5-l02-%E7%9A%84%E5%B7%A5%E7%A8%8B%E8%84%91"><i class="fa fa-check"></i>数据结构与复杂度（接 L02 的工程脑）</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#%E4%B8%A4%E4%B8%AA%E7%BB%95%E4%B8%8D%E5%BC%80%E7%9A%84%E5%B7%A5%E7%A8%8B%E7%BB%86%E8%8A%82"><i class="fa fa-check"></i>两个绕不开的工程细节</a>
+<ul>
+<li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#pre-tokenization%E5%85%88%E7%B2%97%E5%88%87%E5%86%8D%E8%AE%A9-bpe-%E5%9C%A8%E8%AF%8D%E5%86%85%E9%83%A8%E5%90%88%E5%B9%B6"><i class="fa fa-check"></i>pre-tokenization：先粗切，再让 BPE 在词内部合并</a></li>
+<li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#special-tokens%E5%BF%85%E9%A1%BB%E6%95%B4%E4%BD%93%E4%BF%9D%E7%95%99%E4%B8%8D%E8%83%BD%E8%A2%AB%E6%8B%86"><i class="fa fa-check"></i>special tokens：必须整体保留，不能被拆</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#%E6%8E%A5%E5%88%B0-assignment-1"><i class="fa fa-check"></i>接到 Assignment 1</a></li>
 <li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#%E5%8A%A8%E6%89%8B%E7%BB%83%E4%B9%A0"><i class="fa fa-check"></i>动手练习</a></li>
 <li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#%E8%BF%87%E5%85%B3%E6%A3%80%E6%9F%A5-1"><i class="fa fa-check"></i>过关检查</a></li>
@@ -223,6 +234,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="lecture-02.html"><a href="lecture-02.html#flops-%E6%80%8E%E4%B9%88%E6%95%B0"><i class="fa fa-check"></i>FLOPs 怎么数</a></li>
 <li class="chapter" data-level="" data-path="lecture-02.html"><a href="lecture-02.html#arithmetic-intensity-%E4%B8%8E-roofline%E6%9C%AC%E8%AE%B2%E6%9C%80%E9%87%8D%E8%A6%81%E7%9A%84%E6%B4%9E%E8%A7%81"><i class="fa fa-check"></i>Arithmetic Intensity 与 Roofline（本讲最重要的洞见）</a></li>
 <li class="chapter" data-level="" data-path="lecture-02.html"><a href="lecture-02.html#%E8%AE%AD%E7%BB%83%E6%97%B6%E7%9A%84%E6%98%BE%E5%AD%98%E4%B8%8E%E8%AE%A1%E7%AE%97%E8%B4%A6%E6%8A%8A%E4%B8%8A%E9%9D%A2%E9%83%BD%E4%B8%B2%E8%B5%B7%E6%9D%A5"><i class="fa fa-check"></i>训练时的显存与计算账（把上面都串起来）</a></li>
+<li class="chapter" data-level="" data-path="lecture-02.html"><a href="lecture-02.html#nd-%E7%9A%84%E7%9B%B2%E5%8C%BA%E6%B3%A8%E6%84%8F%E5%8A%9B%E7%9A%84-seq%C2%B2-%E9%A1%B9"><i class="fa fa-check"></i>6ND 的盲区：注意力的 seq² 项</a></li>
 <li class="chapter" data-level="" data-path="lecture-02.html"><a href="lecture-02.html#%E4%B8%A4%E4%B8%AA%E7%9C%81%E6%98%BE%E5%AD%98%E7%9A%84%E6%8A%80%E5%B7%A7"><i class="fa fa-check"></i>两个省显存的技巧</a></li>
 <li class="chapter" data-level="" data-path="lecture-02.html"><a href="lecture-02.html#%E4%BC%98%E5%8C%96%E5%99%A8%E8%B0%B1%E7%B3%BB%E9%A1%BA%E6%89%8B%E8%AE%B0%E7%9F%A5%E9%81%93%E5%AE%83%E4%BB%AC%E7%9A%84%E5%8C%BA%E5%88%AB%E5%8D%B3%E5%8F%AF"><i class="fa fa-check"></i>优化器谱系（顺手记，知道它们的区别即可）</a></li>
 <li class="chapter" data-level="" data-path="lecture-02.html"><a href="lecture-02.html#%E6%89%8B%E5%B7%A5%E7%BB%83%E4%B9%A0"><i class="fa fa-check"></i>手工练习</a>
@@ -245,6 +257,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="lecture-03.html"><a href="lecture-03.html#%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E4%B8%8E%E9%97%A8%E6%8E%A7swiglu"><i class="fa fa-check"></i>激活函数与门控（SwiGLU）</a></li>
 <li class="chapter" data-level="" data-path="lecture-03.html"><a href="lecture-03.html#%E4%B8%B2%E8%A1%8C-vs-%E5%B9%B6%E8%A1%8C%E5%B1%82"><i class="fa fa-check"></i>串行 vs 并行层</a></li>
 <li class="chapter" data-level="" data-path="lecture-03.html"><a href="lecture-03.html#%E4%BD%8D%E7%BD%AE%E7%BC%96%E7%A0%81%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF-rope"><i class="fa fa-check"></i>位置编码：为什么是 RoPE</a></li>
+<li class="chapter" data-level="" data-path="lecture-03.html"><a href="lecture-03.html#%E4%B8%80%E4%B8%AA%E7%8E%B0%E4%BB%A3-block-%E9%95%BF%E4%BB%80%E4%B9%88%E6%A0%B7%E6%95%B0%E6%8D%AE%E6%B5%81-%E5%8F%82%E6%95%B0%E9%87%8F"><i class="fa fa-check"></i>一个现代 block 长什么样：数据流 + 参数量</a></li>
 <li class="chapter" data-level="" data-path="lecture-03.html"><a href="lecture-03.html#%E5%85%B1%E8%AF%86%E8%B6%85%E5%8F%82%E5%A4%A7%E5%AE%B6%E5%85%B6%E5%AE%9E%E9%83%BD%E7%94%A8%E5%90%8C%E4%B8%80%E4%B8%AA%E5%80%BC"><i class="fa fa-check"></i>共识超参（“大家其实都用同一个值”）</a></li>
 <li class="chapter" data-level="" data-path="lecture-03.html"><a href="lecture-03.html#%E6%AD%A3%E5%88%99%E5%8C%96%E8%BF%98%E9%9C%80%E8%A6%81%E5%90%97"><i class="fa fa-check"></i>正则化：还需要吗？</a></li>
 <li class="chapter" data-level="" data-path="lecture-03.html"><a href="lecture-03.html#%E7%A8%B3%E5%AE%9A%E6%80%A7%E6%8A%80%E5%B7%A7%E5%88%AB%E8%AE%AD%E5%87%BA%E4%BC%9A%E5%8F%91%E6%95%A3%E7%9A%84%E6%A8%A1%E5%9E%8B"><i class="fa fa-check"></i>稳定性技巧（别训出会发散的模型）</a></li>
@@ -391,6 +404,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="lecture-13.html"><a href="lecture-13.html#%E7%89%88%E6%9D%83%E4%B8%8E%E5%90%88%E7%90%86%E4%BD%BF%E7%94%A8%E8%BF%99%E4%B8%80%E8%AE%B2%E7%9A%84%E9%87%8D%E7%82%B9"><i class="fa fa-check"></i>版权与合理使用（这一讲的重点）</a></li>
 <li class="chapter" data-level="" data-path="lecture-13.html"><a href="lecture-13.html#%E4%B8%BB%E8%A6%81%E6%95%B0%E6%8D%AE%E6%9D%A5%E6%BA%90"><i class="fa fa-check"></i>主要数据来源</a></li>
 <li class="chapter" data-level="" data-path="lecture-13.html"><a href="lecture-13.html#%E6%95%B0%E6%8D%AE%E9%9B%86%E6%BC%94%E8%BF%9B%E5%8F%B2%E4%B8%80%E6%9D%A1%E4%B8%BB%E7%BA%BF%E8%B6%8A%E6%9D%A5%E8%B6%8A%E4%BC%9A%E8%BF%87%E6%BB%A4"><i class="fa fa-check"></i>数据集演进史（一条主线：越来越会”过滤”）</a></li>
+<li class="chapter" data-level="" data-path="lecture-13.html"><a href="lecture-13.html#%E8%B4%A8%E9%87%8F%E5%88%86%E7%B1%BB%E5%99%A8%E5%88%B0%E5%BA%95%E6%80%8E%E4%B9%88%E5%B7%A5%E4%BD%9Cdclm-%E9%82%A3%E4%B8%80%E6%8B%9B%E7%9A%84%E5%BA%95%E5%B1%82"><i class="fa fa-check"></i>质量分类器到底怎么工作（DCLM 那一招的底层）</a></li>
 <li class="chapter" data-level="" data-path="lecture-13.html"><a href="lecture-13.html#%E6%80%9D%E8%80%83%E7%BB%83%E4%B9%A0-7"><i class="fa fa-check"></i>思考练习</a></li>
 <li class="chapter" data-level="" data-path="lecture-13.html"><a href="lecture-13.html#%E6%A3%80%E6%9F%A5%E6%B8%85%E5%8D%95-10"><i class="fa fa-check"></i>检查清单</a></li>
 </ul></li>
@@ -442,6 +456,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="lecture-17.html"><a href="lecture-17.html#%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86%E8%BF%99%E4%B8%80%E8%AE%B2%E9%BB%98%E8%AE%A4%E4%BD%A0%E5%B7%B2%E7%BB%8F%E4%BC%9A%E6%88%91%E4%BB%8E-0-%E7%BB%99%E4%BD%A0%E8%A1%A5-16"><i class="fa fa-check"></i>前置知识：这一讲默认你已经会（我从 0 给你补）</a></li>
 <li class="chapter" data-level="" data-path="lecture-17.html"><a href="lecture-17.html#%E5%85%A8%E8%AE%B2%E4%B8%A4%E4%B8%AA%E9%97%AE%E9%A2%98"><i class="fa fa-check"></i>全讲两个问题</a></li>
+<li class="chapter" data-level="" data-path="lecture-17.html"><a href="lecture-17.html#%E4%B8%80%E5%BC%A0%E5%9B%BE%E5%88%B0%E5%BA%95%E5%8F%98%E5%A4%9A%E5%B0%91-token%E6%8E%A5-l02l10-%E7%9A%84%E5%BA%8F%E5%88%97%E8%B4%A6"><i class="fa fa-check"></i>一张图到底变多少 token（接 L02/L10 的序列账）</a></li>
 <li class="chapter" data-level="" data-path="lecture-17.html"><a href="lecture-17.html#%E7%BC%96%E7%A0%81%E5%9B%BE%E5%83%8Fclip-%E4%B8%8E-siglip"><i class="fa fa-check"></i>编码图像：CLIP 与 SigLIP</a></li>
 <li class="chapter" data-level="" data-path="lecture-17.html"><a href="lecture-17.html#%E6%8A%8A%E5%9B%BE%E5%83%8F%E7%BC%96%E7%A0%81%E6%8E%A5%E8%BF%9B-llmllava-%E4%B8%8E-qwen-vl"><i class="fa fa-check"></i>把图像编码接进 LLM：LLaVA 与 Qwen-VL</a></li>
 <li class="chapter" data-level="" data-path="lecture-17.html"><a href="lecture-17.html#%E8%B5%B0%E5%90%91-omnichameleon%E7%BB%9F%E4%B8%80%E7%94%9F%E6%88%90"><i class="fa fa-check"></i>走向 Omni：Chameleon（统一生成）</a></li>
@@ -567,7 +582,12 @@ Transformer 的灵魂。直觉：理解一个词要看上下文（“它”指�
 <li><strong>LayerNorm</strong>：减均值、除标准差、再缩放（原版用）。</li>
 <li><strong>RMSNorm</strong>：<strong>不减均值、不加 bias</strong>，只用均方根归一化：<code>y = x / sqrt(mean(x²) + ε) · γ</code>（现代主流：LLaMA 系、PaLM、Chinchilla）。</li>
 </ul>
+<p><strong>手算一遍</strong>（取 <code>x = [3, 0, 4]</code>，γ 暂取全 1、ε 忽略）：</p>
+<pre class="text"><code>mean(x²) = (3² + 0² + 4²) / 3 = 25/3 ≈ 8.33
+sqrt(8.33) ≈ 2.89
+y = [3, 0, 4] / 2.89 ≈ [1.04, 0, 1.39]    # 把这一行向量缩放到“均方根=1”的尺度</code></pre>
 <blockquote>
+<p>直觉：RMSNorm 只做一件事——<strong>把每个向量的整体“音量”归一到固定大小</strong>（除以它的均方根），再用可学的 γ 逐维微调。LayerNorm 比它多一步“先减均值”，RMSNorm 省掉了。</p>
 <p><strong>为什么换 RMSNorm？</strong> 它更省：少了求均值的运算、少了 bias 参数，效果却和 LayerNorm 一样好。</p>
 <p><strong>一个重要教训（贯穿全课）</strong>：FLOPs 不等于运行时间！RMSNorm 的 FLOPs 占比很小，但它的提速主要来自<strong>少搬数据(data movement)</strong>——又回到了 L02 的 memory-bound。所以”省参数 = 省搬运 = 省时间”。</p>
 </blockquote>
@@ -591,6 +611,60 @@ Transformer 的灵魂。直觉：理解一个词要看上下文（“它”指�
 <blockquote>
 <p><strong>RoPE 的核心想法</strong>：理想的位置编码应该让注意力<strong>只依赖两个 token 的相对距离 (i−j)</strong>，与它们的绝对位置无关。怎么做到？利用一个数学事实：<strong>内积对旋转不变</strong>。于是把 query/key 向量的坐标两两配对，按”它在第几个位置”旋转相应角度。两个向量做注意力(内积)时，绝对旋转抵消，只剩相对角度差 → 自动只依赖相对位置。</p>
 <p>实现上：在<strong>每次</strong>注意力计算时，对 query 和 key 乘一组 cos/sin 旋转矩阵。和正弦编码的区别是——RoPE 是<strong>乘性</strong>的、没有 cross term。A1 会让你实现这个。</p>
+</blockquote>
+<p><strong>具体怎么转（落到坐标）</strong>：把向量的坐标<strong>两两配成一对</strong>，第 <code>i</code> 对配一个固定频率 <code>θ_i</code>；某 token 在位置 <code>m</code>，就把它的第 <code>i</code> 对坐标<strong>旋转角度 <code>m·θ_i</code></strong>：</p>
+<pre class="text"><code>一对坐标 (a, b) 在位置 m 旋转 φ = m·θ_i：
+  a&#39; = a·cos φ − b·sin φ
+  b&#39; = a·sin φ + b·cos φ          # 就是平面上转一个角度</code></pre>
+<p>为什么这样就”只看相对位置”：位置 <code>m</code> 的 query 和位置 <code>n</code> 的 key 做内积时，两边各自转了 <code>m·θ_i</code> 和 <code>n·θ_i</code>，<strong>内积只跟差 <code>(m−n)·θ_i</code> 有关</strong>（平面旋转的内积只依赖夹角差）——绝对位置自动抵消。小例子：把同一对 query/key 整体平移（m,n 同时 +5），它们的注意力分数<strong>不变</strong>，因为 <code>m−n</code> 没变。这正是”长文本里同样的相对结构，模型反应一致”的根。</p>
+</div>
+<div id="一个现代-block-长什么样数据流-参数量" class="section level2 hasAnchor">
+<h2>一个现代 block 长什么样：数据流 + 参数量<a href="lecture-03.html#%E4%B8%80%E4%B8%AA%E7%8E%B0%E4%BB%A3-block-%E9%95%BF%E4%BB%80%E4%B9%88%E6%A0%B7%E6%95%B0%E6%8D%AE%E6%B5%81-%E5%8F%82%E6%95%B0%E9%87%8F" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>把上面的零件装起来，一个 <strong>pre-norm</strong> block 的数据流就是（<code>x</code> 形状 <code>(seq, d)</code>）：</p>
+<pre class="text"><code>x = x + Attention(RMSNorm(x))     # 子层1：norm 在支路上，残差是主路
+x = x + SwiGLU_FFN(RMSNorm(x))    # 子层2：同样的 norm→子层→加回主路</code></pre>
+<blockquote>
+<p>看清两件事：① <strong>norm 永远在支路里</strong>（pre-norm 的精髓），主路那条 <code>x + …</code> 高速公路从不被打断；② attention 负责”词间交流”，FFN 负责”逐位置加工”，一进一出就是一层。整个模型 = 把这个 block 堆 <code>L</code> 次，前面接 embedding、最后接一个线性头输出 token 概率。</p>
+</blockquote>
+<p><strong>参数量怎么数</strong>（记号 <code>d = d_model</code>，FFN 用 SwiGLU 故 <code>d_ff ≈ 8/3·d</code>）：</p>
+<table>
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>部件</th>
+<th>权重</th>
+<th>参数量</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>注意力</td>
+<td>Q,K,V,O 四个 <code>d×d</code></td>
+<td><code>4d²</code></td>
+</tr>
+<tr class="even">
+<td>FFN(SwiGLU)</td>
+<td>三个 <code>d×d_ff</code>（W1,V,W2）</td>
+<td><code>3·d·d_ff ≈ 3·d·(8/3 d) = 8d²</code></td>
+</tr>
+<tr class="odd">
+<td>一个 block</td>
+<td>注意力 + FFN</td>
+<td><strong>≈ 12d²</strong>（RMSNorm 的 γ 等可忽略）</td>
+</tr>
+<tr class="even">
+<td>整个模型</td>
+<td><code>L</code> 个 block + embedding</td>
+<td><code>≈ 12·L·d² + V·d</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>这把 L03 和 <a href="lecture-02.html">L02</a> 接上了：L02 里那个 <code>N</code>（参数量）就是这么来的。拿 LLaMA-7B 验一下：<code>d=4096, L=32</code> → <code>12×32×4096² ≈ 6.4e9</code> ≈ 6.4B，再加词表嵌入 <code>32000×4096 ≈ 0.13B</code>，合计约 6.5–7B ✓。<strong>你现在能自己估任何 Transformer 的参数量了。</strong></p>
 </blockquote>
 </div>
 <div id="共识超参大家其实都用同一个值" class="section level2 hasAnchor">
@@ -663,6 +737,8 @@ Transformer 的灵魂。直觉：理解一个词要看上下文（“它”指�
 <li>用一句话解释：为什么 RMSNorm 明明 FLOPs 占比很小，却能提速？（答案要出现”搬数据”）</li>
 <li>一个 GLU 模型 <code>d_model=4096</code>，它的 <code>d_ff</code> 大约该设多少？（提示：8/3）</li>
 <li>用自己的话说清 RoPE 为什么能做到”注意力只依赖相对位置”。</li>
+<li>用 <code>≈12·L·d²</code> 估一个 <code>d=2048, L=24</code> 模型的参数量（≈?B），再和 <code>d=4096, L=32</code> 比，体会”宽度 d 是平方项、影响最大”。</li>
+<li>对 <code>x=[1, 2, 2]</code> 手算一次 RMSNorm（γ=1，忽略 ε），写出 mean(x²)、除数、结果。</li>
 </ol>
 </div>
 <div id="和-assignment-1-的连接-1" class="section level2 hasAnchor">
@@ -676,7 +752,9 @@ Transformer 的灵魂。直觉：理解一个词要看上下文（“它”指�
 <li>能解释 pre-norm 为什么优于 post-norm（残差主路）。</li>
 <li>能解释 RMSNorm 的提速来自少搬数据，而非少算。</li>
 <li>知道 SwiGLU 是门控激活，且 <code>d_ff</code> 要乘 8/3。</li>
-<li>能用一句话讲清 RoPE 的”内积对旋转不变”思想。</li>
+<li>能用一句话讲清 RoPE 的”内积对旋转不变”思想，并知道它落到坐标是”每对坐标按位置转 <code>m·θ_i</code>“。</li>
+<li>能写出 pre-norm block 的两行数据流（norm 在支路、残差是主路）。</li>
+<li>能用 <code>≈12d²/block</code>、<code>≈12·L·d²+V·d</code> 估一个 Transformer 的参数量，并知道这就是 L02 里的 <code>N</code>。</li>
 <li>记得三个共识超参的标准值。</li>
 </ul>
 

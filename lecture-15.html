@@ -200,7 +200,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#%E5%AD%97%E7%AC%A6-%E5%AD%97%E8%8A%82%E4%B8%80%E4%B8%AA%E5%BF%85%E9%A1%BB%E4%BA%B2%E7%9C%BC%E7%9C%8B%E5%88%B0%E7%9A%84%E4%BE%8B%E5%AD%90"><i class="fa fa-check"></i>字符 ≠ 字节（一个必须亲眼看到的例子）</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#bpe%E8%AE%A9%E6%95%B0%E6%8D%AE%E8%87%AA%E5%B7%B1%E5%86%B3%E5%AE%9A%E8%AF%8D%E8%A1%A8"><i class="fa fa-check"></i>BPE：让数据自己决定词表</a></li>
+<li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#bpe%E8%AE%A9%E6%95%B0%E6%8D%AE%E8%87%AA%E5%B7%B1%E5%86%B3%E5%AE%9A%E8%AF%8D%E8%A1%A8"><i class="fa fa-check"></i>BPE：让数据自己决定词表</a>
+<ul>
+<li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#%E8%AE%AD%E7%BB%83%E6%89%8B%E7%AE%97%E4%B8%80%E9%81%8D-the-cat-in-the-hat"><i class="fa fa-check"></i>训练：手算一遍 <code>the cat in the hat</code></a></li>
+<li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#%E7%BC%96%E7%A0%81%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BF%85%E9%A1%BB%E6%8C%89%E5%AD%A6%E4%B9%A0%E9%A1%BA%E5%BA%8F%E5%A5%97%E5%90%88%E5%B9%B6"><i class="fa fa-check"></i>编码：为什么必须”按学习顺序”套合并</a></li>
+<li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#%E6%9C%80%E7%BB%88%E8%AF%8D%E8%A1%A8%E6%80%8E%E4%B9%88%E6%9E%84%E6%88%90"><i class="fa fa-check"></i>最终词表怎么构成</a></li>
+<li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E5%A4%8D%E6%9D%82%E5%BA%A6%E6%8E%A5-l02-%E7%9A%84%E5%B7%A5%E7%A8%8B%E8%84%91"><i class="fa fa-check"></i>数据结构与复杂度（接 L02 的工程脑）</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#%E4%B8%A4%E4%B8%AA%E7%BB%95%E4%B8%8D%E5%BC%80%E7%9A%84%E5%B7%A5%E7%A8%8B%E7%BB%86%E8%8A%82"><i class="fa fa-check"></i>两个绕不开的工程细节</a>
+<ul>
+<li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#pre-tokenization%E5%85%88%E7%B2%97%E5%88%87%E5%86%8D%E8%AE%A9-bpe-%E5%9C%A8%E8%AF%8D%E5%86%85%E9%83%A8%E5%90%88%E5%B9%B6"><i class="fa fa-check"></i>pre-tokenization：先粗切，再让 BPE 在词内部合并</a></li>
+<li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#special-tokens%E5%BF%85%E9%A1%BB%E6%95%B4%E4%BD%93%E4%BF%9D%E7%95%99%E4%B8%8D%E8%83%BD%E8%A2%AB%E6%8B%86"><i class="fa fa-check"></i>special tokens：必须整体保留，不能被拆</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#%E6%8E%A5%E5%88%B0-assignment-1"><i class="fa fa-check"></i>接到 Assignment 1</a></li>
 <li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#%E5%8A%A8%E6%89%8B%E7%BB%83%E4%B9%A0"><i class="fa fa-check"></i>动手练习</a></li>
 <li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#%E8%BF%87%E5%85%B3%E6%A3%80%E6%9F%A5-1"><i class="fa fa-check"></i>过关检查</a></li>
@@ -223,6 +234,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="lecture-02.html"><a href="lecture-02.html#flops-%E6%80%8E%E4%B9%88%E6%95%B0"><i class="fa fa-check"></i>FLOPs 怎么数</a></li>
 <li class="chapter" data-level="" data-path="lecture-02.html"><a href="lecture-02.html#arithmetic-intensity-%E4%B8%8E-roofline%E6%9C%AC%E8%AE%B2%E6%9C%80%E9%87%8D%E8%A6%81%E7%9A%84%E6%B4%9E%E8%A7%81"><i class="fa fa-check"></i>Arithmetic Intensity 与 Roofline（本讲最重要的洞见）</a></li>
 <li class="chapter" data-level="" data-path="lecture-02.html"><a href="lecture-02.html#%E8%AE%AD%E7%BB%83%E6%97%B6%E7%9A%84%E6%98%BE%E5%AD%98%E4%B8%8E%E8%AE%A1%E7%AE%97%E8%B4%A6%E6%8A%8A%E4%B8%8A%E9%9D%A2%E9%83%BD%E4%B8%B2%E8%B5%B7%E6%9D%A5"><i class="fa fa-check"></i>训练时的显存与计算账（把上面都串起来）</a></li>
+<li class="chapter" data-level="" data-path="lecture-02.html"><a href="lecture-02.html#nd-%E7%9A%84%E7%9B%B2%E5%8C%BA%E6%B3%A8%E6%84%8F%E5%8A%9B%E7%9A%84-seq%C2%B2-%E9%A1%B9"><i class="fa fa-check"></i>6ND 的盲区：注意力的 seq² 项</a></li>
 <li class="chapter" data-level="" data-path="lecture-02.html"><a href="lecture-02.html#%E4%B8%A4%E4%B8%AA%E7%9C%81%E6%98%BE%E5%AD%98%E7%9A%84%E6%8A%80%E5%B7%A7"><i class="fa fa-check"></i>两个省显存的技巧</a></li>
 <li class="chapter" data-level="" data-path="lecture-02.html"><a href="lecture-02.html#%E4%BC%98%E5%8C%96%E5%99%A8%E8%B0%B1%E7%B3%BB%E9%A1%BA%E6%89%8B%E8%AE%B0%E7%9F%A5%E9%81%93%E5%AE%83%E4%BB%AC%E7%9A%84%E5%8C%BA%E5%88%AB%E5%8D%B3%E5%8F%AF"><i class="fa fa-check"></i>优化器谱系（顺手记，知道它们的区别即可）</a></li>
 <li class="chapter" data-level="" data-path="lecture-02.html"><a href="lecture-02.html#%E6%89%8B%E5%B7%A5%E7%BB%83%E4%B9%A0"><i class="fa fa-check"></i>手工练习</a>
@@ -245,6 +257,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="lecture-03.html"><a href="lecture-03.html#%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E4%B8%8E%E9%97%A8%E6%8E%A7swiglu"><i class="fa fa-check"></i>激活函数与门控（SwiGLU）</a></li>
 <li class="chapter" data-level="" data-path="lecture-03.html"><a href="lecture-03.html#%E4%B8%B2%E8%A1%8C-vs-%E5%B9%B6%E8%A1%8C%E5%B1%82"><i class="fa fa-check"></i>串行 vs 并行层</a></li>
 <li class="chapter" data-level="" data-path="lecture-03.html"><a href="lecture-03.html#%E4%BD%8D%E7%BD%AE%E7%BC%96%E7%A0%81%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF-rope"><i class="fa fa-check"></i>位置编码：为什么是 RoPE</a></li>
+<li class="chapter" data-level="" data-path="lecture-03.html"><a href="lecture-03.html#%E4%B8%80%E4%B8%AA%E7%8E%B0%E4%BB%A3-block-%E9%95%BF%E4%BB%80%E4%B9%88%E6%A0%B7%E6%95%B0%E6%8D%AE%E6%B5%81-%E5%8F%82%E6%95%B0%E9%87%8F"><i class="fa fa-check"></i>一个现代 block 长什么样：数据流 + 参数量</a></li>
 <li class="chapter" data-level="" data-path="lecture-03.html"><a href="lecture-03.html#%E5%85%B1%E8%AF%86%E8%B6%85%E5%8F%82%E5%A4%A7%E5%AE%B6%E5%85%B6%E5%AE%9E%E9%83%BD%E7%94%A8%E5%90%8C%E4%B8%80%E4%B8%AA%E5%80%BC"><i class="fa fa-check"></i>共识超参（“大家其实都用同一个值”）</a></li>
 <li class="chapter" data-level="" data-path="lecture-03.html"><a href="lecture-03.html#%E6%AD%A3%E5%88%99%E5%8C%96%E8%BF%98%E9%9C%80%E8%A6%81%E5%90%97"><i class="fa fa-check"></i>正则化：还需要吗？</a></li>
 <li class="chapter" data-level="" data-path="lecture-03.html"><a href="lecture-03.html#%E7%A8%B3%E5%AE%9A%E6%80%A7%E6%8A%80%E5%B7%A7%E5%88%AB%E8%AE%AD%E5%87%BA%E4%BC%9A%E5%8F%91%E6%95%A3%E7%9A%84%E6%A8%A1%E5%9E%8B"><i class="fa fa-check"></i>稳定性技巧（别训出会发散的模型）</a></li>
@@ -391,6 +404,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="lecture-13.html"><a href="lecture-13.html#%E7%89%88%E6%9D%83%E4%B8%8E%E5%90%88%E7%90%86%E4%BD%BF%E7%94%A8%E8%BF%99%E4%B8%80%E8%AE%B2%E7%9A%84%E9%87%8D%E7%82%B9"><i class="fa fa-check"></i>版权与合理使用（这一讲的重点）</a></li>
 <li class="chapter" data-level="" data-path="lecture-13.html"><a href="lecture-13.html#%E4%B8%BB%E8%A6%81%E6%95%B0%E6%8D%AE%E6%9D%A5%E6%BA%90"><i class="fa fa-check"></i>主要数据来源</a></li>
 <li class="chapter" data-level="" data-path="lecture-13.html"><a href="lecture-13.html#%E6%95%B0%E6%8D%AE%E9%9B%86%E6%BC%94%E8%BF%9B%E5%8F%B2%E4%B8%80%E6%9D%A1%E4%B8%BB%E7%BA%BF%E8%B6%8A%E6%9D%A5%E8%B6%8A%E4%BC%9A%E8%BF%87%E6%BB%A4"><i class="fa fa-check"></i>数据集演进史（一条主线：越来越会”过滤”）</a></li>
+<li class="chapter" data-level="" data-path="lecture-13.html"><a href="lecture-13.html#%E8%B4%A8%E9%87%8F%E5%88%86%E7%B1%BB%E5%99%A8%E5%88%B0%E5%BA%95%E6%80%8E%E4%B9%88%E5%B7%A5%E4%BD%9Cdclm-%E9%82%A3%E4%B8%80%E6%8B%9B%E7%9A%84%E5%BA%95%E5%B1%82"><i class="fa fa-check"></i>质量分类器到底怎么工作（DCLM 那一招的底层）</a></li>
 <li class="chapter" data-level="" data-path="lecture-13.html"><a href="lecture-13.html#%E6%80%9D%E8%80%83%E7%BB%83%E4%B9%A0-7"><i class="fa fa-check"></i>思考练习</a></li>
 <li class="chapter" data-level="" data-path="lecture-13.html"><a href="lecture-13.html#%E6%A3%80%E6%9F%A5%E6%B8%85%E5%8D%95-10"><i class="fa fa-check"></i>检查清单</a></li>
 </ul></li>
@@ -442,6 +456,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="lecture-17.html"><a href="lecture-17.html#%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86%E8%BF%99%E4%B8%80%E8%AE%B2%E9%BB%98%E8%AE%A4%E4%BD%A0%E5%B7%B2%E7%BB%8F%E4%BC%9A%E6%88%91%E4%BB%8E-0-%E7%BB%99%E4%BD%A0%E8%A1%A5-16"><i class="fa fa-check"></i>前置知识：这一讲默认你已经会（我从 0 给你补）</a></li>
 <li class="chapter" data-level="" data-path="lecture-17.html"><a href="lecture-17.html#%E5%85%A8%E8%AE%B2%E4%B8%A4%E4%B8%AA%E9%97%AE%E9%A2%98"><i class="fa fa-check"></i>全讲两个问题</a></li>
+<li class="chapter" data-level="" data-path="lecture-17.html"><a href="lecture-17.html#%E4%B8%80%E5%BC%A0%E5%9B%BE%E5%88%B0%E5%BA%95%E5%8F%98%E5%A4%9A%E5%B0%91-token%E6%8E%A5-l02l10-%E7%9A%84%E5%BA%8F%E5%88%97%E8%B4%A6"><i class="fa fa-check"></i>一张图到底变多少 token（接 L02/L10 的序列账）</a></li>
 <li class="chapter" data-level="" data-path="lecture-17.html"><a href="lecture-17.html#%E7%BC%96%E7%A0%81%E5%9B%BE%E5%83%8Fclip-%E4%B8%8E-siglip"><i class="fa fa-check"></i>编码图像：CLIP 与 SigLIP</a></li>
 <li class="chapter" data-level="" data-path="lecture-17.html"><a href="lecture-17.html#%E6%8A%8A%E5%9B%BE%E5%83%8F%E7%BC%96%E7%A0%81%E6%8E%A5%E8%BF%9B-llmllava-%E4%B8%8E-qwen-vl"><i class="fa fa-check"></i>把图像编码接进 LLM：LLaVA 与 Qwen-VL</a></li>
 <li class="chapter" data-level="" data-path="lecture-17.html"><a href="lecture-17.html#%E8%B5%B0%E5%90%91-omnichameleon%E7%BB%9F%E4%B8%80%E7%94%9F%E6%88%90"><i class="fa fa-check"></i>走向 Omni：Chameleon（统一生成）</a></li>
@@ -549,9 +564,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="怎么做-rlhfppo-vs-dpo" class="section level3 hasAnchor">
 <h3>怎么做 RLHF：PPO vs DPO<a href="lecture-15.html#%E6%80%8E%E4%B9%88%E5%81%9A-rlhfppo-vs-dpo" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><strong>PPO</strong>（原版，很难调）：
-&gt; 标准 RL 策略梯度方法。直觉的三步演进：① 朴素策略梯度（方差太大）→ ② TRPO（在当前策略附近线性化）→ ③ <strong>PPO（把新旧策略的概率比裁剪在 ε 内，防止一步走太远）</strong>。缺点：实现复杂、要额外的 value 模型（吃显存、难调）。</p>
+&gt; 标准 RL 策略梯度方法。直觉的三步演进：① 朴素策略梯度（方差太大）→ ② TRPO（在当前策略附近线性化）→ ③ <strong>PPO（把新旧策略的概率比裁剪在 ε 内，防止一步走太远）</strong>。缺点：实现复杂、要额外的 value 模型（吃显存、难调）。
+&gt;
+&gt; <strong>“裁剪概率比”是什么（公式）</strong>：记概率比 <code>ratio = π_new(a) / π_old(a)</code>、优势 <code>A</code>（这个动作比平均好多少）：
+&gt;
+&gt; <code>text &gt; L = min( ratio · A ,  clip(ratio, 1−ε, 1+ε) · A )    # ε 常取 0.2 &gt;</code>
+&gt;
+&gt; 直觉：A&gt;0（好动作）想推高 ratio，但一旦超过 <code>1.2</code> 就被 clip 住、梯度归零——<strong>不让一步把概率拉得离 π_old 太远</strong>（怕在不准的优势估计上走太猛而崩）。这就是 “Proximal”(就近) 的含义。对比 DPO：PPO 要在线 rollout + 一个 value 模型估 <code>A</code>，DPO 把这些全省了。</p>
 <p><strong>DPO</strong>（新，简单很多，A5 大概率让你实现）：
-&gt; <strong>DPO = “RLHF 但不流泪”</strong>。它的洞见：在”所有策略”的非参数假设下，最优策略和奖励之间有<strong>闭式关系</strong>，于是可以<strong>把奖励用策略本身参数化</strong>，把整个 RLHF 变成一个<strong>监督式的损失</strong>——直接”在好回答上做正梯度、在差回答上做负梯度”（按隐含奖励的预测误差加权）。<strong>不需要 reward 模型、不需要在线 rollout</strong>。本质是”在成对偏好上做最大似然”。</p>
+&gt; <strong>DPO = “RLHF 但不流泪”</strong>。它的洞见：在”所有策略”的非参数假设下，最优策略和奖励之间有<strong>闭式关系</strong>，于是可以<strong>把奖励用策略本身参数化</strong>，把整个 RLHF 变成一个<strong>监督式的损失</strong>——直接”在好回答上做正梯度、在差回答上做负梯度”（按隐含奖励的预测误差加权）。<strong>不需要 reward 模型、不需要在线 rollout</strong>。本质是”在成对偏好上做最大似然”。
+&gt;
+&gt; <strong>损失到底长什么样（看懂这一行就懂 DPO）</strong>：对一条偏好数据 <code>(x, y_win, y_lose)</code>：
+&gt;
+&gt; <code>text &gt; 隐含奖励：r(x,y) = β · log[ π_θ(y|x) / π_ref(y|x) ]     # 当前模型 vs 冻结的参考(SFT)模型 &gt; DPO 损失： L = −log σ( r(x, y_win) − r(x, y_lose) ) &gt;          = −log σ( β·log[π_θ(y_win)/π_ref(y_win)] − β·log[π_θ(y_lose)/π_ref(y_lose)] ) &gt;</code>
+&gt;
+&gt; 逐块读：① <code>π_θ/π_ref</code> = “现在模型比 SFT 基线<strong>更/更不</strong>爱这个回答”，取 log 当隐含奖励；② 让 <code>r(win) − r(lose)</code> 越大越好（赢的比输的更受偏爱）；③ 外面套 <code>−log σ(·)</code> 就是一个<strong>逻辑回归/二分类损失</strong>——这正是”监督式”的由来。<code>β</code> 控制”能偏离参考模型多远”，防止跑飞。<strong>梯度直觉</strong>：推高 <code>π_θ(y_win)</code>、压低 <code>π_θ(y_lose)</code>，但都以 <code>π_ref</code> 为锚。整个 RLHF 缩成这一个能反向传播的式子，所以不再需要 reward 模型和 rollout。</p>
 <p>实践：DPO + 专家迭代被 LLaMA 等用于后训练；变体很多（SimPO 去掉参考模型、长度归一化 DPO）。但 PPO 有时仍更好——RL 实验结论高度依赖具体设置。</p>
 </div>
 <div id="rlhf-的副作用要警惕" class="section level3 hasAnchor">
@@ -581,7 +608,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>能说清 SFT 和 RLHF 的区别（模仿 vs 优化）。</li>
 <li>能复述 SFT 的关键发现（提取已有行为、别教冷门新知、少量对的数据很有效）。</li>
 <li>能解释生成-验证差距和为什么需要 RLHF。</li>
-<li>能说出 DPO 相比 PPO 的简化，以及 RLHF 的过度优化/模式坍缩副作用。</li>
+<li>能写出 DPO 损失 <code>−log σ(r_win − r_lose)</code>、<code>r=β·log(π_θ/π_ref)</code>，并解释它为何是个”二分类/监督”损失、β 和 π_ref 起什么作用。</li>
+<li>能写出 PPO 的裁剪目标 <code>min(ratio·A, clip(ratio,1±ε)·A)</code> 并说清”裁剪”防的是什么。</li>
+<li>能说出 DPO 相比 PPO 砍掉了 reward 模型和在线 rollout，以及 RLHF 的过度优化/模式坍缩副作用。</li>
 </ul>
 
 </div>

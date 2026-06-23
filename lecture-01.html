@@ -200,7 +200,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#%E5%AD%97%E7%AC%A6-%E5%AD%97%E8%8A%82%E4%B8%80%E4%B8%AA%E5%BF%85%E9%A1%BB%E4%BA%B2%E7%9C%BC%E7%9C%8B%E5%88%B0%E7%9A%84%E4%BE%8B%E5%AD%90"><i class="fa fa-check"></i>字符 ≠ 字节（一个必须亲眼看到的例子）</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#bpe%E8%AE%A9%E6%95%B0%E6%8D%AE%E8%87%AA%E5%B7%B1%E5%86%B3%E5%AE%9A%E8%AF%8D%E8%A1%A8"><i class="fa fa-check"></i>BPE：让数据自己决定词表</a></li>
+<li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#bpe%E8%AE%A9%E6%95%B0%E6%8D%AE%E8%87%AA%E5%B7%B1%E5%86%B3%E5%AE%9A%E8%AF%8D%E8%A1%A8"><i class="fa fa-check"></i>BPE：让数据自己决定词表</a>
+<ul>
+<li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#%E8%AE%AD%E7%BB%83%E6%89%8B%E7%AE%97%E4%B8%80%E9%81%8D-the-cat-in-the-hat"><i class="fa fa-check"></i>训练：手算一遍 <code>the cat in the hat</code></a></li>
+<li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#%E7%BC%96%E7%A0%81%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BF%85%E9%A1%BB%E6%8C%89%E5%AD%A6%E4%B9%A0%E9%A1%BA%E5%BA%8F%E5%A5%97%E5%90%88%E5%B9%B6"><i class="fa fa-check"></i>编码：为什么必须”按学习顺序”套合并</a></li>
+<li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#%E6%9C%80%E7%BB%88%E8%AF%8D%E8%A1%A8%E6%80%8E%E4%B9%88%E6%9E%84%E6%88%90"><i class="fa fa-check"></i>最终词表怎么构成</a></li>
+<li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E5%A4%8D%E6%9D%82%E5%BA%A6%E6%8E%A5-l02-%E7%9A%84%E5%B7%A5%E7%A8%8B%E8%84%91"><i class="fa fa-check"></i>数据结构与复杂度（接 L02 的工程脑）</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#%E4%B8%A4%E4%B8%AA%E7%BB%95%E4%B8%8D%E5%BC%80%E7%9A%84%E5%B7%A5%E7%A8%8B%E7%BB%86%E8%8A%82"><i class="fa fa-check"></i>两个绕不开的工程细节</a>
+<ul>
+<li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#pre-tokenization%E5%85%88%E7%B2%97%E5%88%87%E5%86%8D%E8%AE%A9-bpe-%E5%9C%A8%E8%AF%8D%E5%86%85%E9%83%A8%E5%90%88%E5%B9%B6"><i class="fa fa-check"></i>pre-tokenization：先粗切，再让 BPE 在词内部合并</a></li>
+<li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#special-tokens%E5%BF%85%E9%A1%BB%E6%95%B4%E4%BD%93%E4%BF%9D%E7%95%99%E4%B8%8D%E8%83%BD%E8%A2%AB%E6%8B%86"><i class="fa fa-check"></i>special tokens：必须整体保留，不能被拆</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#%E6%8E%A5%E5%88%B0-assignment-1"><i class="fa fa-check"></i>接到 Assignment 1</a></li>
 <li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#%E5%8A%A8%E6%89%8B%E7%BB%83%E4%B9%A0"><i class="fa fa-check"></i>动手练习</a></li>
 <li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#%E8%BF%87%E5%85%B3%E6%A3%80%E6%9F%A5-1"><i class="fa fa-check"></i>过关检查</a></li>
@@ -223,6 +234,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="lecture-02.html"><a href="lecture-02.html#flops-%E6%80%8E%E4%B9%88%E6%95%B0"><i class="fa fa-check"></i>FLOPs 怎么数</a></li>
 <li class="chapter" data-level="" data-path="lecture-02.html"><a href="lecture-02.html#arithmetic-intensity-%E4%B8%8E-roofline%E6%9C%AC%E8%AE%B2%E6%9C%80%E9%87%8D%E8%A6%81%E7%9A%84%E6%B4%9E%E8%A7%81"><i class="fa fa-check"></i>Arithmetic Intensity 与 Roofline（本讲最重要的洞见）</a></li>
 <li class="chapter" data-level="" data-path="lecture-02.html"><a href="lecture-02.html#%E8%AE%AD%E7%BB%83%E6%97%B6%E7%9A%84%E6%98%BE%E5%AD%98%E4%B8%8E%E8%AE%A1%E7%AE%97%E8%B4%A6%E6%8A%8A%E4%B8%8A%E9%9D%A2%E9%83%BD%E4%B8%B2%E8%B5%B7%E6%9D%A5"><i class="fa fa-check"></i>训练时的显存与计算账（把上面都串起来）</a></li>
+<li class="chapter" data-level="" data-path="lecture-02.html"><a href="lecture-02.html#nd-%E7%9A%84%E7%9B%B2%E5%8C%BA%E6%B3%A8%E6%84%8F%E5%8A%9B%E7%9A%84-seq%C2%B2-%E9%A1%B9"><i class="fa fa-check"></i>6ND 的盲区：注意力的 seq² 项</a></li>
 <li class="chapter" data-level="" data-path="lecture-02.html"><a href="lecture-02.html#%E4%B8%A4%E4%B8%AA%E7%9C%81%E6%98%BE%E5%AD%98%E7%9A%84%E6%8A%80%E5%B7%A7"><i class="fa fa-check"></i>两个省显存的技巧</a></li>
 <li class="chapter" data-level="" data-path="lecture-02.html"><a href="lecture-02.html#%E4%BC%98%E5%8C%96%E5%99%A8%E8%B0%B1%E7%B3%BB%E9%A1%BA%E6%89%8B%E8%AE%B0%E7%9F%A5%E9%81%93%E5%AE%83%E4%BB%AC%E7%9A%84%E5%8C%BA%E5%88%AB%E5%8D%B3%E5%8F%AF"><i class="fa fa-check"></i>优化器谱系（顺手记，知道它们的区别即可）</a></li>
 <li class="chapter" data-level="" data-path="lecture-02.html"><a href="lecture-02.html#%E6%89%8B%E5%B7%A5%E7%BB%83%E4%B9%A0"><i class="fa fa-check"></i>手工练习</a>
@@ -245,6 +257,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="lecture-03.html"><a href="lecture-03.html#%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E4%B8%8E%E9%97%A8%E6%8E%A7swiglu"><i class="fa fa-check"></i>激活函数与门控（SwiGLU）</a></li>
 <li class="chapter" data-level="" data-path="lecture-03.html"><a href="lecture-03.html#%E4%B8%B2%E8%A1%8C-vs-%E5%B9%B6%E8%A1%8C%E5%B1%82"><i class="fa fa-check"></i>串行 vs 并行层</a></li>
 <li class="chapter" data-level="" data-path="lecture-03.html"><a href="lecture-03.html#%E4%BD%8D%E7%BD%AE%E7%BC%96%E7%A0%81%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF-rope"><i class="fa fa-check"></i>位置编码：为什么是 RoPE</a></li>
+<li class="chapter" data-level="" data-path="lecture-03.html"><a href="lecture-03.html#%E4%B8%80%E4%B8%AA%E7%8E%B0%E4%BB%A3-block-%E9%95%BF%E4%BB%80%E4%B9%88%E6%A0%B7%E6%95%B0%E6%8D%AE%E6%B5%81-%E5%8F%82%E6%95%B0%E9%87%8F"><i class="fa fa-check"></i>一个现代 block 长什么样：数据流 + 参数量</a></li>
 <li class="chapter" data-level="" data-path="lecture-03.html"><a href="lecture-03.html#%E5%85%B1%E8%AF%86%E8%B6%85%E5%8F%82%E5%A4%A7%E5%AE%B6%E5%85%B6%E5%AE%9E%E9%83%BD%E7%94%A8%E5%90%8C%E4%B8%80%E4%B8%AA%E5%80%BC"><i class="fa fa-check"></i>共识超参（“大家其实都用同一个值”）</a></li>
 <li class="chapter" data-level="" data-path="lecture-03.html"><a href="lecture-03.html#%E6%AD%A3%E5%88%99%E5%8C%96%E8%BF%98%E9%9C%80%E8%A6%81%E5%90%97"><i class="fa fa-check"></i>正则化：还需要吗？</a></li>
 <li class="chapter" data-level="" data-path="lecture-03.html"><a href="lecture-03.html#%E7%A8%B3%E5%AE%9A%E6%80%A7%E6%8A%80%E5%B7%A7%E5%88%AB%E8%AE%AD%E5%87%BA%E4%BC%9A%E5%8F%91%E6%95%A3%E7%9A%84%E6%A8%A1%E5%9E%8B"><i class="fa fa-check"></i>稳定性技巧（别训出会发散的模型）</a></li>
@@ -391,6 +404,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="lecture-13.html"><a href="lecture-13.html#%E7%89%88%E6%9D%83%E4%B8%8E%E5%90%88%E7%90%86%E4%BD%BF%E7%94%A8%E8%BF%99%E4%B8%80%E8%AE%B2%E7%9A%84%E9%87%8D%E7%82%B9"><i class="fa fa-check"></i>版权与合理使用（这一讲的重点）</a></li>
 <li class="chapter" data-level="" data-path="lecture-13.html"><a href="lecture-13.html#%E4%B8%BB%E8%A6%81%E6%95%B0%E6%8D%AE%E6%9D%A5%E6%BA%90"><i class="fa fa-check"></i>主要数据来源</a></li>
 <li class="chapter" data-level="" data-path="lecture-13.html"><a href="lecture-13.html#%E6%95%B0%E6%8D%AE%E9%9B%86%E6%BC%94%E8%BF%9B%E5%8F%B2%E4%B8%80%E6%9D%A1%E4%B8%BB%E7%BA%BF%E8%B6%8A%E6%9D%A5%E8%B6%8A%E4%BC%9A%E8%BF%87%E6%BB%A4"><i class="fa fa-check"></i>数据集演进史（一条主线：越来越会”过滤”）</a></li>
+<li class="chapter" data-level="" data-path="lecture-13.html"><a href="lecture-13.html#%E8%B4%A8%E9%87%8F%E5%88%86%E7%B1%BB%E5%99%A8%E5%88%B0%E5%BA%95%E6%80%8E%E4%B9%88%E5%B7%A5%E4%BD%9Cdclm-%E9%82%A3%E4%B8%80%E6%8B%9B%E7%9A%84%E5%BA%95%E5%B1%82"><i class="fa fa-check"></i>质量分类器到底怎么工作（DCLM 那一招的底层）</a></li>
 <li class="chapter" data-level="" data-path="lecture-13.html"><a href="lecture-13.html#%E6%80%9D%E8%80%83%E7%BB%83%E4%B9%A0-7"><i class="fa fa-check"></i>思考练习</a></li>
 <li class="chapter" data-level="" data-path="lecture-13.html"><a href="lecture-13.html#%E6%A3%80%E6%9F%A5%E6%B8%85%E5%8D%95-10"><i class="fa fa-check"></i>检查清单</a></li>
 </ul></li>
@@ -442,6 +456,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="lecture-17.html"><a href="lecture-17.html#%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86%E8%BF%99%E4%B8%80%E8%AE%B2%E9%BB%98%E8%AE%A4%E4%BD%A0%E5%B7%B2%E7%BB%8F%E4%BC%9A%E6%88%91%E4%BB%8E-0-%E7%BB%99%E4%BD%A0%E8%A1%A5-16"><i class="fa fa-check"></i>前置知识：这一讲默认你已经会（我从 0 给你补）</a></li>
 <li class="chapter" data-level="" data-path="lecture-17.html"><a href="lecture-17.html#%E5%85%A8%E8%AE%B2%E4%B8%A4%E4%B8%AA%E9%97%AE%E9%A2%98"><i class="fa fa-check"></i>全讲两个问题</a></li>
+<li class="chapter" data-level="" data-path="lecture-17.html"><a href="lecture-17.html#%E4%B8%80%E5%BC%A0%E5%9B%BE%E5%88%B0%E5%BA%95%E5%8F%98%E5%A4%9A%E5%B0%91-token%E6%8E%A5-l02l10-%E7%9A%84%E5%BA%8F%E5%88%97%E8%B4%A6"><i class="fa fa-check"></i>一张图到底变多少 token（接 L02/L10 的序列账）</a></li>
 <li class="chapter" data-level="" data-path="lecture-17.html"><a href="lecture-17.html#%E7%BC%96%E7%A0%81%E5%9B%BE%E5%83%8Fclip-%E4%B8%8E-siglip"><i class="fa fa-check"></i>编码图像：CLIP 与 SigLIP</a></li>
 <li class="chapter" data-level="" data-path="lecture-17.html"><a href="lecture-17.html#%E6%8A%8A%E5%9B%BE%E5%83%8F%E7%BC%96%E7%A0%81%E6%8E%A5%E8%BF%9B-llmllava-%E4%B8%8E-qwen-vl"><i class="fa fa-check"></i>把图像编码接进 LLM：LLaVA 与 Qwen-VL</a></li>
 <li class="chapter" data-level="" data-path="lecture-17.html"><a href="lecture-17.html#%E8%B5%B0%E5%90%91-omnichameleon%E7%BB%9F%E4%B8%80%E7%94%9F%E6%88%90"><i class="fa fa-check"></i>走向 Omni：Chameleon（统一生成）</a></li>
@@ -563,19 +578,68 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="bpe让数据自己决定词表" class="section level2 hasAnchor">
 <h2>BPE：让数据自己决定词表<a href="lecture-01.html#bpe%E8%AE%A9%E6%95%B0%E6%8D%AE%E8%87%AA%E5%B7%B1%E5%86%B3%E5%AE%9A%E8%AF%8D%E8%A1%A8" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p><strong>核心思想：从字节开始，反复把”语料里出现最多的相邻一对”合并成一个新符号。</strong> 常见组合被压成单个 token，序列自然变短，而词表不是人工规定的，是<strong>从数据里学出来的</strong>。</p>
-<p>训练过程：</p>
-<ol style="list-style-type: decimal">
-<li>把文本表示成字节序列。</li>
-<li>统计所有相邻 pair 的出现次数。</li>
-<li>找出频数最高的那一对。</li>
-<li>给这一对分配一个新 token id（从 256 开始，因为 0–255 被原始字节占了）。</li>
-<li>在整个语料里把这一对合并掉。</li>
-<li>重复 2–5，直到达到目标 merge 次数或目标词表大小。</li>
-</ol>
-<p>用一句小语料体会：</p>
-<pre class="text"><code>the cat in the hat</code></pre>
-<p>做 3 次 merge，就能看到 <code>th</code>、<code>the</code>、<code>at</code> 这类高频组合被逐步压成单个 token，序列一步步缩短。这就是 BPE 兼顾”可逆”和”紧凑”的办法：底层是字节（保证任何文本都能编码、可逆），上层学出的合并规则（把常见片段压短）。</p>
+<p><strong>核心思想（骨）：从字节开始，反复把”语料里出现最多的相邻一对”合并成一个新符号。</strong> 常见组合被压成单个 token，序列自然变短；而词表不是人工规定的，是<strong>从数据里学出来的</strong>。它兼顾两条硬要求：底层是字节（任何文本都能编码、可逆），上层学出的合并规则（把常见片段压短）。</p>
+<p>下面把它拆到”能亲手复现”的程度。</p>
+<div id="训练手算一遍-the-cat-in-the-hat" class="section level3 hasAnchor">
+<h3>训练：手算一遍 <code>the cat in the hat</code><a href="lecture-01.html#%E8%AE%AD%E7%BB%83%E6%89%8B%E7%AE%97%E4%B8%80%E9%81%8D-the-cat-in-the-hat" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>为看得清，下面在<strong>字符</strong>层面演示（ASCII 字符就等于它的字节，逻辑和字节级完全一样；<code>␣</code> 表示空格）。初始序列：</p>
+<pre class="text"><code>t h e ␣ c a t ␣ i n ␣ t h e ␣ h a t</code></pre>
+<p><strong>第 1 轮</strong>——数所有相邻对的出现次数（只列 ≥2 的）：</p>
+<pre class="text"><code>(t,h)=2   (h,e)=2   (e,␣)=2   (a,t)=2     其余都是 1</code></pre>
+<p>出现 2 次的有好几对，<strong>平手时按一个固定规则定胜负</strong>（实现里通常按 pair 的字典序，保证结果可复现）。取 <code>(t,h)</code>，分配新 id <strong>256</strong>，把序列里所有 <code>t h</code> 替换掉：</p>
+<pre class="text"><code>[256] e ␣ c a t ␣ i n ␣ [256] e ␣ h a t      # 256 = &quot;th&quot;</code></pre>
+<p><strong>第 2 轮</strong>——在新序列上重新数：<code>(256,e)=2</code>、<code>(a,t)=2</code>…取 <code>(256,e)</code> → id <strong>257</strong> = <code>"the"</code>：</p>
+<pre class="text"><code>[257] ␣ c a t ␣ i n ␣ [257] ␣ h a t          # 257 = &quot;the&quot;</code></pre>
+<p><strong>第 3 轮</strong>——<code>(a,t)=2</code>（来自 cat、hat）最高 → id <strong>258</strong> = <code>"at"</code>：</p>
+<pre class="text"><code>[257] ␣ c [258] ␣ i n ␣ [257] ␣ h [258]      # 258 = &quot;at&quot;</code></pre>
+<p>3 次合并后，序列从 18 个 token 缩到 13 个，并且学到了一张<strong>合并表（merges）</strong>，按学习顺序排好：</p>
+<pre class="text"><code>rank 0:  (t, h)   -&gt; 256
+rank 1:  (256, e) -&gt; 257
+rank 2:  (a, t)   -&gt; 258</code></pre>
+<blockquote>
+<p><strong>关键直觉</strong>：合并是有<strong>先后顺序</strong>的，257 是建立在 256 之上的（“the” = “th”+“e”）。这个顺序在编码时至关重要——见下。</p>
+</blockquote>
+</div>
+<div id="编码为什么必须按学习顺序套合并" class="section level3 hasAnchor">
+<h3>编码：为什么必须”按学习顺序”套合并<a href="lecture-01.html#%E7%BC%96%E7%A0%81%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BF%85%E9%A1%BB%E6%8C%89%E5%AD%A6%E4%B9%A0%E9%A1%BA%E5%BA%8F%E5%A5%97%E5%90%88%E5%B9%B6" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>训练得到 merges 后，给一段<strong>新文本</strong>编码，不是随便合并，而是<strong>严格按 rank 从小到大、反复套用</strong>。例：编码 <code>that</code>：</p>
+<pre class="text"><code>t h a t
+→ 套 rank0 (t,h)-&gt;256 :  [256] a t
+→ 套 rank1 (256,e)-&gt;257:  无 (256,e)，跳过
+→ 套 rank2 (a,t)-&gt;258 :  [256] [258]
+结果: [256, 258]</code></pre>
+<blockquote>
+<p>为什么必须按顺序？因为高阶 token 依赖低阶（257 需要先有 256）。<strong>乱序合并会得到和训练时不一致的切分</strong>，破坏可逆性与压缩率。这是 BPE 实现最容易写错的地方。</p>
+</blockquote>
+</div>
+<div id="最终词表怎么构成" class="section level3 hasAnchor">
+<h3>最终词表怎么构成<a href="lecture-01.html#%E6%9C%80%E7%BB%88%E8%AF%8D%E8%A1%A8%E6%80%8E%E4%B9%88%E6%9E%84%E6%88%90" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>一个字节级 BPE tokenizer 的词表 = 三部分拼起来：</p>
+<pre class="text"><code>[0 .. 255]            256 个原始字节（保证任何文本都能表示、可逆）
+[256 .. 256+M-1]      M 个学到的 merge（高频片段）
+[再往后]              special tokens（如 &lt;|endoftext|&gt;，见下）</code></pre>
+<p>目标词表大小（如 GPT-2 的 50257）减去 256 和 special token 数，就是要学的 merge 次数 M。</p>
+</div>
+<div id="数据结构与复杂度接-l02-的工程脑" class="section level3 hasAnchor">
+<h3>数据结构与复杂度（接 L02 的工程脑）<a href="lecture-01.html#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E5%A4%8D%E6%9D%82%E5%BA%A6%E6%8E%A5-l02-%E7%9A%84%E5%B7%A5%E7%A8%8B%E8%84%91" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><strong>数 pair 用 dict</strong>：<code>{(a,b): 次数}</code>，查一对几乎一步到位；用 list 从头找会慢死。</li>
+<li><strong>朴素训练的代价</strong>：每合并一次就把整个语料重扫一遍来重新计数 → 约 <code>O(N × M)</code>（N 语料长度、M 合并次数）。语料上万亿时这是天文数字，所以真实实现会<strong>增量更新</strong>计数（一次合并只影响被合并位置附近的几对），而不是每轮全扫。</li>
+<li>这正是第 0 讲”估执行次数”的实战，也是 <a href="lecture-02.html">L02</a> 资源会计 mindset 的起点。</li>
+</ul>
+</div>
+</div>
+<div id="两个绕不开的工程细节" class="section level2 hasAnchor">
+<h2>两个绕不开的工程细节<a href="lecture-01.html#%E4%B8%A4%E4%B8%AA%E7%BB%95%E4%B8%8D%E5%BC%80%E7%9A%84%E5%B7%A5%E7%A8%8B%E7%BB%86%E8%8A%82" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="pre-tokenization先粗切再让-bpe-在词内部合并" class="section level3 hasAnchor">
+<h3>pre-tokenization：先粗切，再让 BPE 在词内部合并<a href="lecture-01.html#pre-tokenization%E5%85%88%E7%B2%97%E5%88%87%E5%86%8D%E8%AE%A9-bpe-%E5%9C%A8%E8%AF%8D%E5%86%85%E9%83%A8%E5%90%88%E5%B9%B6" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>如果直接对整段文本跑 BPE，它会把空格、标点也卷进合并，学出 <code>"the."</code>、<code>"in the"</code> 这种<strong>跨词的垃圾 token</strong>，还让不同上下文里的同一个词被切得不一样。</p>
+<p>做法：<strong>先用一个正则把文本粗切成”词 / 空格 / 标点”小块（chunk），BPE 只在每个 chunk 内部合并、绝不跨 chunk。</strong> GPT-2 的那条正则就是干这个的（把 <code>'s</code>、前导空格、连续字母、连续数字、标点各自分开）。好处有二：① 切分更规整、语义更稳；② 各 chunk 独立 → 计数可并行、可去重加速。A1 要求你实现它。</p>
+</div>
+<div id="special-tokens必须整体保留不能被拆" class="section level3 hasAnchor">
+<h3>special tokens：必须整体保留，不能被拆<a href="lecture-01.html#special-tokens%E5%BF%85%E9%A1%BB%E6%95%B4%E4%BD%93%E4%BF%9D%E7%95%99%E4%B8%8D%E8%83%BD%E8%A2%AB%E6%8B%86" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>像 <code>&lt;|endoftext|&gt;</code> 这种标记，含义是”文档边界”，<strong>绝不能被 BPE 当普通文本拆开</strong>。做法：给它们保留专门的 id，编码前<strong>先按 special token 把文本切开</strong>，特殊段直接映射到它的 id，其余段才走正常 BPE。这样它永远是一个完整 token。</p>
+</div>
 </div>
 <div id="接到-assignment-1" class="section level2 hasAnchor">
 <h2>接到 Assignment 1<a href="lecture-01.html#%E6%8E%A5%E5%88%B0-assignment-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -621,16 +685,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2>动手练习<a href="lecture-01.html#%E5%8A%A8%E6%89%8B%E7%BB%83%E4%B9%A0" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><strong>练习 1：写出接口。</strong> 默写 <code>encode</code> / <code>decode</code> 两个函数签名，并用自己的话说出各自的输入、输出是什么。</p>
 <p><strong>练习 2：解释字节长度。</strong> 解释为什么 <code>len("世界")=2</code> 而 <code>len("世界".encode("utf-8"))=6</code>，要点出”字符个数”和”字节个数”的区别。</p>
-<p><strong>练习 3：手工跑 BPE。</strong> 对 <code>the cat in the hat</code> 做 3 次 merge，每次写出：最高频 pair、分配的新 token id、合并后的序列。</p>
+<p><strong>练习 3：手工训练 BPE。</strong> 对 <code>the cat in the hat</code> 做 3 次 merge，每次写出：最高频 pair、分配的新 id、合并后的序列，并最终列出 merges 表（带 rank）。对照正文的 trace 自查。</p>
+<p><strong>练习 4：手工编码（考合并顺序）。</strong> 用练习 3 得到的 merges 表，把新词 <code>theft</code> 编码成 id 序列——按 rank 从小到大套合并，写出每一步。（提示：先 <code>th</code>→256，再看有没有 <code>(256,e)</code>……）</p>
+<p><strong>练习 5：想复杂度。</strong> 朴素训练每合并一次就全语料重扫计数，约 <code>O(N×M)</code>。说说为什么语料一大就不可行，以及”只更新被合并位置附近的计数”为什么能省。</p>
 </div>
 <div id="过关检查-1" class="section level2 hasAnchor">
 <h2>过关检查<a href="lecture-01.html#%E8%BF%87%E5%85%B3%E6%A3%80%E6%9F%A5-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>能用一句话说清 tokenizer 是干嘛的，以及它为什么牵动序列长度、显存、速度。</li>
 <li>能写出 <code>encode</code> / <code>decode</code> 的输入输出类型，并说出 tokenizer 的两条硬要求。</li>
-<li>能解释字节级 tokenizer 为什么词表固定为 256。</li>
-<li>能复述 BPE 的 6 步，并说明新 id 为什么从 256 开始、它凭什么能压短序列。</li>
-<li>知道 A1 第一块任务对应 tokenizer，以及作业比玩具版多出的工程细节。</li>
+<li>能解释字节级 tokenizer 为什么词表固定为 256，以及最终词表 = 字节 + merges + special tokens。</li>
+<li>能<strong>手算</strong>一遍 BPE 训练（数 pair→取最高→分配新 id→替换→重复），并写出带 rank 的 merges 表。</li>
+<li>能解释<strong>编码为什么必须按 rank 顺序套合并</strong>，乱序会坏在哪。</li>
+<li>能说出 pre-tokenization 解决什么问题（防跨词垃圾 token + 可并行）、special token 为什么要先切开。</li>
+<li>能估 BPE 朴素训练的复杂度 <code>O(N×M)</code>，并说出真实实现靠增量计数加速。</li>
 </ul>
 </div>
 <div id="下一步-2" class="section level2 hasAnchor">

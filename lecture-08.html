@@ -200,7 +200,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#%E5%AD%97%E7%AC%A6-%E5%AD%97%E8%8A%82%E4%B8%80%E4%B8%AA%E5%BF%85%E9%A1%BB%E4%BA%B2%E7%9C%BC%E7%9C%8B%E5%88%B0%E7%9A%84%E4%BE%8B%E5%AD%90"><i class="fa fa-check"></i>字符 ≠ 字节（一个必须亲眼看到的例子）</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#bpe%E8%AE%A9%E6%95%B0%E6%8D%AE%E8%87%AA%E5%B7%B1%E5%86%B3%E5%AE%9A%E8%AF%8D%E8%A1%A8"><i class="fa fa-check"></i>BPE：让数据自己决定词表</a></li>
+<li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#bpe%E8%AE%A9%E6%95%B0%E6%8D%AE%E8%87%AA%E5%B7%B1%E5%86%B3%E5%AE%9A%E8%AF%8D%E8%A1%A8"><i class="fa fa-check"></i>BPE：让数据自己决定词表</a>
+<ul>
+<li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#%E8%AE%AD%E7%BB%83%E6%89%8B%E7%AE%97%E4%B8%80%E9%81%8D-the-cat-in-the-hat"><i class="fa fa-check"></i>训练：手算一遍 <code>the cat in the hat</code></a></li>
+<li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#%E7%BC%96%E7%A0%81%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BF%85%E9%A1%BB%E6%8C%89%E5%AD%A6%E4%B9%A0%E9%A1%BA%E5%BA%8F%E5%A5%97%E5%90%88%E5%B9%B6"><i class="fa fa-check"></i>编码：为什么必须”按学习顺序”套合并</a></li>
+<li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#%E6%9C%80%E7%BB%88%E8%AF%8D%E8%A1%A8%E6%80%8E%E4%B9%88%E6%9E%84%E6%88%90"><i class="fa fa-check"></i>最终词表怎么构成</a></li>
+<li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E5%A4%8D%E6%9D%82%E5%BA%A6%E6%8E%A5-l02-%E7%9A%84%E5%B7%A5%E7%A8%8B%E8%84%91"><i class="fa fa-check"></i>数据结构与复杂度（接 L02 的工程脑）</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#%E4%B8%A4%E4%B8%AA%E7%BB%95%E4%B8%8D%E5%BC%80%E7%9A%84%E5%B7%A5%E7%A8%8B%E7%BB%86%E8%8A%82"><i class="fa fa-check"></i>两个绕不开的工程细节</a>
+<ul>
+<li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#pre-tokenization%E5%85%88%E7%B2%97%E5%88%87%E5%86%8D%E8%AE%A9-bpe-%E5%9C%A8%E8%AF%8D%E5%86%85%E9%83%A8%E5%90%88%E5%B9%B6"><i class="fa fa-check"></i>pre-tokenization：先粗切，再让 BPE 在词内部合并</a></li>
+<li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#special-tokens%E5%BF%85%E9%A1%BB%E6%95%B4%E4%BD%93%E4%BF%9D%E7%95%99%E4%B8%8D%E8%83%BD%E8%A2%AB%E6%8B%86"><i class="fa fa-check"></i>special tokens：必须整体保留，不能被拆</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#%E6%8E%A5%E5%88%B0-assignment-1"><i class="fa fa-check"></i>接到 Assignment 1</a></li>
 <li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#%E5%8A%A8%E6%89%8B%E7%BB%83%E4%B9%A0"><i class="fa fa-check"></i>动手练习</a></li>
 <li class="chapter" data-level="" data-path="lecture-01.html"><a href="lecture-01.html#%E8%BF%87%E5%85%B3%E6%A3%80%E6%9F%A5-1"><i class="fa fa-check"></i>过关检查</a></li>
@@ -223,6 +234,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="lecture-02.html"><a href="lecture-02.html#flops-%E6%80%8E%E4%B9%88%E6%95%B0"><i class="fa fa-check"></i>FLOPs 怎么数</a></li>
 <li class="chapter" data-level="" data-path="lecture-02.html"><a href="lecture-02.html#arithmetic-intensity-%E4%B8%8E-roofline%E6%9C%AC%E8%AE%B2%E6%9C%80%E9%87%8D%E8%A6%81%E7%9A%84%E6%B4%9E%E8%A7%81"><i class="fa fa-check"></i>Arithmetic Intensity 与 Roofline（本讲最重要的洞见）</a></li>
 <li class="chapter" data-level="" data-path="lecture-02.html"><a href="lecture-02.html#%E8%AE%AD%E7%BB%83%E6%97%B6%E7%9A%84%E6%98%BE%E5%AD%98%E4%B8%8E%E8%AE%A1%E7%AE%97%E8%B4%A6%E6%8A%8A%E4%B8%8A%E9%9D%A2%E9%83%BD%E4%B8%B2%E8%B5%B7%E6%9D%A5"><i class="fa fa-check"></i>训练时的显存与计算账（把上面都串起来）</a></li>
+<li class="chapter" data-level="" data-path="lecture-02.html"><a href="lecture-02.html#nd-%E7%9A%84%E7%9B%B2%E5%8C%BA%E6%B3%A8%E6%84%8F%E5%8A%9B%E7%9A%84-seq%C2%B2-%E9%A1%B9"><i class="fa fa-check"></i>6ND 的盲区：注意力的 seq² 项</a></li>
 <li class="chapter" data-level="" data-path="lecture-02.html"><a href="lecture-02.html#%E4%B8%A4%E4%B8%AA%E7%9C%81%E6%98%BE%E5%AD%98%E7%9A%84%E6%8A%80%E5%B7%A7"><i class="fa fa-check"></i>两个省显存的技巧</a></li>
 <li class="chapter" data-level="" data-path="lecture-02.html"><a href="lecture-02.html#%E4%BC%98%E5%8C%96%E5%99%A8%E8%B0%B1%E7%B3%BB%E9%A1%BA%E6%89%8B%E8%AE%B0%E7%9F%A5%E9%81%93%E5%AE%83%E4%BB%AC%E7%9A%84%E5%8C%BA%E5%88%AB%E5%8D%B3%E5%8F%AF"><i class="fa fa-check"></i>优化器谱系（顺手记，知道它们的区别即可）</a></li>
 <li class="chapter" data-level="" data-path="lecture-02.html"><a href="lecture-02.html#%E6%89%8B%E5%B7%A5%E7%BB%83%E4%B9%A0"><i class="fa fa-check"></i>手工练习</a>
@@ -245,6 +257,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="lecture-03.html"><a href="lecture-03.html#%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E4%B8%8E%E9%97%A8%E6%8E%A7swiglu"><i class="fa fa-check"></i>激活函数与门控（SwiGLU）</a></li>
 <li class="chapter" data-level="" data-path="lecture-03.html"><a href="lecture-03.html#%E4%B8%B2%E8%A1%8C-vs-%E5%B9%B6%E8%A1%8C%E5%B1%82"><i class="fa fa-check"></i>串行 vs 并行层</a></li>
 <li class="chapter" data-level="" data-path="lecture-03.html"><a href="lecture-03.html#%E4%BD%8D%E7%BD%AE%E7%BC%96%E7%A0%81%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF-rope"><i class="fa fa-check"></i>位置编码：为什么是 RoPE</a></li>
+<li class="chapter" data-level="" data-path="lecture-03.html"><a href="lecture-03.html#%E4%B8%80%E4%B8%AA%E7%8E%B0%E4%BB%A3-block-%E9%95%BF%E4%BB%80%E4%B9%88%E6%A0%B7%E6%95%B0%E6%8D%AE%E6%B5%81-%E5%8F%82%E6%95%B0%E9%87%8F"><i class="fa fa-check"></i>一个现代 block 长什么样：数据流 + 参数量</a></li>
 <li class="chapter" data-level="" data-path="lecture-03.html"><a href="lecture-03.html#%E5%85%B1%E8%AF%86%E8%B6%85%E5%8F%82%E5%A4%A7%E5%AE%B6%E5%85%B6%E5%AE%9E%E9%83%BD%E7%94%A8%E5%90%8C%E4%B8%80%E4%B8%AA%E5%80%BC"><i class="fa fa-check"></i>共识超参（“大家其实都用同一个值”）</a></li>
 <li class="chapter" data-level="" data-path="lecture-03.html"><a href="lecture-03.html#%E6%AD%A3%E5%88%99%E5%8C%96%E8%BF%98%E9%9C%80%E8%A6%81%E5%90%97"><i class="fa fa-check"></i>正则化：还需要吗？</a></li>
 <li class="chapter" data-level="" data-path="lecture-03.html"><a href="lecture-03.html#%E7%A8%B3%E5%AE%9A%E6%80%A7%E6%8A%80%E5%B7%A7%E5%88%AB%E8%AE%AD%E5%87%BA%E4%BC%9A%E5%8F%91%E6%95%A3%E7%9A%84%E6%A8%A1%E5%9E%8B"><i class="fa fa-check"></i>稳定性技巧（别训出会发散的模型）</a></li>
@@ -391,6 +404,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="lecture-13.html"><a href="lecture-13.html#%E7%89%88%E6%9D%83%E4%B8%8E%E5%90%88%E7%90%86%E4%BD%BF%E7%94%A8%E8%BF%99%E4%B8%80%E8%AE%B2%E7%9A%84%E9%87%8D%E7%82%B9"><i class="fa fa-check"></i>版权与合理使用（这一讲的重点）</a></li>
 <li class="chapter" data-level="" data-path="lecture-13.html"><a href="lecture-13.html#%E4%B8%BB%E8%A6%81%E6%95%B0%E6%8D%AE%E6%9D%A5%E6%BA%90"><i class="fa fa-check"></i>主要数据来源</a></li>
 <li class="chapter" data-level="" data-path="lecture-13.html"><a href="lecture-13.html#%E6%95%B0%E6%8D%AE%E9%9B%86%E6%BC%94%E8%BF%9B%E5%8F%B2%E4%B8%80%E6%9D%A1%E4%B8%BB%E7%BA%BF%E8%B6%8A%E6%9D%A5%E8%B6%8A%E4%BC%9A%E8%BF%87%E6%BB%A4"><i class="fa fa-check"></i>数据集演进史（一条主线：越来越会”过滤”）</a></li>
+<li class="chapter" data-level="" data-path="lecture-13.html"><a href="lecture-13.html#%E8%B4%A8%E9%87%8F%E5%88%86%E7%B1%BB%E5%99%A8%E5%88%B0%E5%BA%95%E6%80%8E%E4%B9%88%E5%B7%A5%E4%BD%9Cdclm-%E9%82%A3%E4%B8%80%E6%8B%9B%E7%9A%84%E5%BA%95%E5%B1%82"><i class="fa fa-check"></i>质量分类器到底怎么工作（DCLM 那一招的底层）</a></li>
 <li class="chapter" data-level="" data-path="lecture-13.html"><a href="lecture-13.html#%E6%80%9D%E8%80%83%E7%BB%83%E4%B9%A0-7"><i class="fa fa-check"></i>思考练习</a></li>
 <li class="chapter" data-level="" data-path="lecture-13.html"><a href="lecture-13.html#%E6%A3%80%E6%9F%A5%E6%B8%85%E5%8D%95-10"><i class="fa fa-check"></i>检查清单</a></li>
 </ul></li>
@@ -442,6 +456,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="lecture-17.html"><a href="lecture-17.html#%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86%E8%BF%99%E4%B8%80%E8%AE%B2%E9%BB%98%E8%AE%A4%E4%BD%A0%E5%B7%B2%E7%BB%8F%E4%BC%9A%E6%88%91%E4%BB%8E-0-%E7%BB%99%E4%BD%A0%E8%A1%A5-16"><i class="fa fa-check"></i>前置知识：这一讲默认你已经会（我从 0 给你补）</a></li>
 <li class="chapter" data-level="" data-path="lecture-17.html"><a href="lecture-17.html#%E5%85%A8%E8%AE%B2%E4%B8%A4%E4%B8%AA%E9%97%AE%E9%A2%98"><i class="fa fa-check"></i>全讲两个问题</a></li>
+<li class="chapter" data-level="" data-path="lecture-17.html"><a href="lecture-17.html#%E4%B8%80%E5%BC%A0%E5%9B%BE%E5%88%B0%E5%BA%95%E5%8F%98%E5%A4%9A%E5%B0%91-token%E6%8E%A5-l02l10-%E7%9A%84%E5%BA%8F%E5%88%97%E8%B4%A6"><i class="fa fa-check"></i>一张图到底变多少 token（接 L02/L10 的序列账）</a></li>
 <li class="chapter" data-level="" data-path="lecture-17.html"><a href="lecture-17.html#%E7%BC%96%E7%A0%81%E5%9B%BE%E5%83%8Fclip-%E4%B8%8E-siglip"><i class="fa fa-check"></i>编码图像：CLIP 与 SigLIP</a></li>
 <li class="chapter" data-level="" data-path="lecture-17.html"><a href="lecture-17.html#%E6%8A%8A%E5%9B%BE%E5%83%8F%E7%BC%96%E7%A0%81%E6%8E%A5%E8%BF%9B-llmllava-%E4%B8%8E-qwen-vl"><i class="fa fa-check"></i>把图像编码接进 LLM：LLaVA 与 Qwen-VL</a></li>
 <li class="chapter" data-level="" data-path="lecture-17.html"><a href="lecture-17.html#%E8%B5%B0%E5%90%91-omnichameleon%E7%BB%9F%E4%B8%80%E7%94%9F%E6%88%90"><i class="fa fa-check"></i>走向 Omni：Chameleon（统一生成）</a></li>
@@ -594,8 +609,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <blockquote>
 <p><strong>ZeRO-3 (FSDP) 怎么工作？</strong> 参数也分片存。前向走到某层时，临时 <strong>all-gather</strong> 把这层的完整参数凑齐、算完<strong>立刻丢掉</strong>；反向同理，梯度算完 <strong>reduce-scatter</strong> 发回负责的 GPU。关键优化：<strong>让 all-gather 和计算重叠</strong>（一边算这层、一边偷偷把下层参数拉过来），把通信开销藏起来。代价只有 1.5 倍通信，换来显存近乎线性下降。</p>
 </blockquote>
+<p><strong>per-GPU 显存怎么随 GPU 数 <code>G</code> 缩（手算）</strong>：把”复制存”的部分除以 <code>G</code>（<code>N</code>=参数量，单位字节，Adam 混合精度共 16N）：</p>
+<pre class="text"><code>DDP    每卡 = 16N                         （全复制）
+ZeRO-1 每卡 = 2N(参) + 2N(梯) + 12N/G     （只分片 12N 的优化器状态）
+ZeRO-2 每卡 = 2N      + (2N+12N)/G
+ZeRO-3 每卡 = 16N/G                       （参/梯/状态全分片）
+
+代入 N=7B、G=8：
+  DDP    = 112 GB/卡   → 放不进 80GB！
+  ZeRO-1 = 28 + 10.5  = 38.5 GB/卡
+  ZeRO-3 = 112/8      = 14 GB/卡   ← 几乎线性下降</code></pre>
 <blockquote>
-<p>实测（8×A100-80G，每参数约 12 字节）：朴素 ~6.6B，ZeRO-1 16B，ZeRO-2 24B，ZeRO-3 53B。分片越多，能训的模型越大。</p>
+<p>看公式就懂三级的本质：<strong>分片的项都带 <code>/G</code>，<code>G</code> 越大越趋近 0</strong>。ZeRO-1 还剩 <code>4N</code> 的固定底（参+梯不分片），ZeRO-3 连这个底都除掉了 → 卡越多能训的模型越大。实测（8×A100-80G）：朴素 ~6.6B，ZeRO-1 16B，ZeRO-2 24B，ZeRO-3 53B，正好对上这套公式的趋势。</p>
 </blockquote>
 </div>
 <div id="数据并行的天花板" class="section level2 hasAnchor">
@@ -669,6 +694,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>batch 小的话，用<strong>梯度累积</strong>换更大的有效 batch、提高通信效率。</li>
 </ol>
 </blockquote>
+<p><strong>关键：各维度数相乘 = 总 GPU 数。</strong> 3D 并行就是把所有 GPU 想成一个 <code>DP × TP × PP</code> 的立方网格，每块卡有一个三维坐标：</p>
+<pre class="text"><code>Llama3-405B：DP=128 × TP=8 × PP=16 = 16384 块 GPU（真的用了 ~1.6 万张 H100）✓</code></pre>
+<p><strong>自己排一遍（64 卡 = 8 机 ×8 卡）</strong>：</p>
+<pre class="text"><code>TP=8  → 放进单机内（吃 NVLink），把一层切给机内 8 卡
+PP=2  → 跨 2 组机器分层
+DP=4  → 剩下的并行度用数据并行兜底
+检查：8 × 2 × 4 = 64 ✓</code></pre>
+<blockquote>
+<p>排布顺序就是经验法则的顺序：<strong>通信最频繁的 TP 放最里层（机内 NVLink）→ PP 跨机（点对点、能忍慢网）→ DP 放最外层（一步一次、最能藏）</strong>。维度的”远近”对应网络的”快慢”，这就是 3D 并行的全部直觉。</p>
+</blockquote>
 <p>实例：Llama3-405B 用 DP=128 / TP=8 / PP=16；DeepSeek v3 用 EP=64 / PP=16 / ZeRO-1。<strong>规律：TP 一般 ≤8，EP 可以很大（但难），长上下文阶段用大 CP（上下文并行）。</strong></p>
 </div>
 <div id="思考练习-3" class="section level2 hasAnchor">
@@ -691,7 +726,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>能解释 ZeRO 三级各分片什么、为什么 1/2 级几乎免费、3 级（FSDP）多 1.5 倍通信。</li>
 <li>能区分数据并行（切数据、复制模型）和模型并行（切模型）。</li>
 <li>能说出流水线/张量/序列/专家并行各切什么维度、适合什么网络。</li>
-<li>知道 3D 并行的组合经验法则（TP≤8 填单机、PP 跨机、DP 兜底）。</li>
+<li>能写出 ZeRO 各级的 per-GPU 显存公式（分片项带 <code>/G</code>），并算出 N=7B/G=8 时 DDP 112GB 放不下、ZeRO-3 只要 14GB。</li>
+<li>知道 3D 并行的组合经验法则（TP≤8 填单机、PP 跨机、DP 兜底），并能用”DP×TP×PP=总卡数”自己排一个 64 卡布局、验证 Llama3 的 128×8×16=16384。</li>
 </ul>
 
 </div>
